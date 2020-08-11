@@ -1,6 +1,7 @@
 use_frameworks!
-target 'VillageWalletSDKOAIClient_Tests' do
-  pod 'VillageWalletSDKOAIClient', :path => '../'
-  
-  
+target "VillageWalletSDKOAIClient_Tests" do
+  pod "VillageWalletSDKOAIClient", :path => "../"
+
+  ## FIXME: Use Git for checkout
+  pod "VillageWalletSDK", :path => "../../../../ios/sdk/VillageWalletSDK/"
 end
