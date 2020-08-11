@@ -1,15 +1,44 @@
 PODS:
-  - VillageWalletSDKOAIClient (0.1.0)
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - ISO8601 (0.6.0)
+  - JSONModel (1.8.0)
+  - VillageWalletSDKOAIClient (0.1.0):
+    - AFNetworking (~> 3)
+    - ISO8601 (~> 0.6)
+    - JSONModel (~> 1.2)
 
 DEPENDENCIES:
   - VillageWalletSDKOAIClient (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - ISO8601
+    - JSONModel
 
 EXTERNAL SOURCES:
   VillageWalletSDKOAIClient:
     :path: "../"
 
 SPEC CHECKSUMS:
-  VillageWalletSDKOAIClient: cba50d2c3c42854d3f4d8aeac12a1caaf0c92abf
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  ISO8601: d3ea3ba9b752820cf92c6b47a9ee327e9f0e13fc
+  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  VillageWalletSDKOAIClient: 05b970202138a9526ea405162854503ea7ed3733
 
 PODFILE CHECKSUM: e823784c2409c7c2400d5430d94ec88459337155
 
