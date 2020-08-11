@@ -1,0 +1,16 @@
+PODS:
+  - VillageWalletSDKOAIClient (0.1.0)
+
+DEPENDENCIES:
+  - VillageWalletSDKOAIClient (from `../`)
+
+EXTERNAL SOURCES:
+  VillageWalletSDKOAIClient:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  VillageWalletSDKOAIClient: cba50d2c3c42854d3f4d8aeac12a1caaf0c92abf
+
+PODFILE CHECKSUM: e823784c2409c7c2400d5430d94ec88459337155
+
+COCOAPODS: 1.9.3

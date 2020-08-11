@@ -1,0 +1,6 @@
+use_frameworks!
+target 'VillageWalletSDKOAIClient_Tests' do
+  pod 'VillageWalletSDKOAIClient', :path => '../'
+  
+  
+end
