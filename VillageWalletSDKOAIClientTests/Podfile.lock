@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - ISO8601 (0.6.0)
   - JSONModel (1.8.0)
+  - SwiftHamcrest (2.2.1)
   - VillageWalletSDK (0.0.1)
   - VillageWalletSDKOAIClient (0.1.0):
     - AFNetworking (~> 3)
@@ -24,6 +25,7 @@ PODS:
     - VillageWalletSDK (= 0.0.1)
 
 DEPENDENCIES:
+  - SwiftHamcrest (~> 2.2.1)
   - VillageWalletSDK (from `../../../../ios/sdk/VillageWalletSDK/`)
   - VillageWalletSDKOAIClient (from `../`)
 
@@ -32,6 +34,7 @@ SPEC REPOS:
     - AFNetworking
     - ISO8601
     - JSONModel
+    - SwiftHamcrest
 
 EXTERNAL SOURCES:
   VillageWalletSDK:
@@ -43,9 +46,10 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   ISO8601: d3ea3ba9b752820cf92c6b47a9ee327e9f0e13fc
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  SwiftHamcrest: 67454f9c4c7fae8d7a0f82dfd42f8a54a79095b1
   VillageWalletSDK: ab57de62097af74c526ac36c59bc6407eed617ca
   VillageWalletSDKOAIClient: 2f812a8c16963861d6e0bb6dfb32fff5e7712680
 
-PODFILE CHECKSUM: 44ba769bedabe2790e5d8addbaaef53a3e7e508a
+PODFILE CHECKSUM: e0a219d4122b50a9ce846ff4760ff0590e7968ba
 
 COCOAPODS: 1.9.3
