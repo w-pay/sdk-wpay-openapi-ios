@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		65F543035EBAFD69B76E845B /* Pods_VillageWalletSDKOAIClient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155C65ABB17431754A7ECFAE /* Pods_VillageWalletSDKOAIClient_Tests.framework */; };
 		BC8DC03364D7D4FDD56C83B0 /* TestMerchantPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC6CDE16B574F3B342D9D /* TestMerchantPayloads.swift */; };
 		BC8DC108C45FE3961FA44016 /* TestPaymentInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC2D2E2A262C19FB912F7 /* TestPaymentInstrument.swift */; };
@@ -47,7 +46,6 @@
 		59F566AFD315E93D985EB0F6 /* VillageWalletSDKOAIClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VillageWalletSDKOAIClient.podspec; path = ../VillageWalletSDKOAIClient.podspec; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* VillageWalletSDKOAIClient_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VillageWalletSDKOAIClient_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		B2E20E2D032DA94CACD25CCD /* Pods-VillageWalletSDKOAIClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VillageWalletSDKOAIClient_Tests.debug.xcconfig"; path = "Target Support Files/Pods-VillageWalletSDKOAIClient_Tests/Pods-VillageWalletSDKOAIClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC8DC09A09C65F8686B4B1FB /* TestNewPaymentRequestQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNewPaymentRequestQRCode.swift; sourceTree = "<group>"; };
 		BC8DC12922D672EFDE3DA93D /* ApiResultMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResultMatchers.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				BC8DC847AD7D274D0CF715F6 /* data */,
 				BC8DCD70E2321C41CAD09F30 /* Date.swift */,
@@ -335,7 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				BC8DCAC899BACCF6046C68BB /* TestBasket.swift in Sources */,
 				BC8DCE64ADEDF4827AAB67BB /* TestMerchantSchema.swift in Sources */,
 				BC8DC03364D7D4FDD56C83B0 /* TestMerchantPayloads.swift in Sources */,
