@@ -7,7 +7,7 @@ public class OpenApiClientFactory: Configurable {
 
 	private var host: String = "localhost:3000"
 
-	init(requestHeadersFactory: RequestHeadersFactory, contextRoot: String) {
+	public init(requestHeadersFactory: RequestHeadersFactory, contextRoot: String) {
 		self.requestHeadersFactory = requestHeadersFactory
 		self.contextRoot = contextRoot
 	}

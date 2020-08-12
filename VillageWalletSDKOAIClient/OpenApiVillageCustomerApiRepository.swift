@@ -2,7 +2,7 @@ import UIKit
 import VillageWalletSDK
 
 public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageCustomerApiRepository {
-	override init(requestHeadersFactory: RequestHeadersFactory, contextRoot: String) {
+	override public init(requestHeadersFactory: RequestHeadersFactory, contextRoot: String) {
 		super.init(requestHeadersFactory: requestHeadersFactory, contextRoot: contextRoot)
 	}
 
