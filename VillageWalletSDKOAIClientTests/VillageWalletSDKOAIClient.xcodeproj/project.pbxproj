@@ -9,6 +9,36 @@
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		65F543035EBAFD69B76E845B /* Pods_VillageWalletSDKOAIClient_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155C65ABB17431754A7ECFAE /* Pods_VillageWalletSDKOAIClient_Tests.framework */; };
+		BC8DC03364D7D4FDD56C83B0 /* TestMerchantPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC6CDE16B574F3B342D9D /* TestMerchantPayloads.swift */; };
+		BC8DC108C45FE3961FA44016 /* TestPaymentInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC2D2E2A262C19FB912F7 /* TestPaymentInstrument.swift */; };
+		BC8DC36858F154CF8068EA88 /* TestCustomerPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC8846552ACA6DFBC8772 /* TestCustomerPaymentRequest.swift */; };
+		BC8DC4B89FC5C511C658645B /* TestCreatePaymentSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC48CA5DEF8CB35803B99 /* TestCreatePaymentSessionRequest.swift */; };
+		BC8DC4D30E9227D80E7DB6CE /* HealthCheckMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCE74977FD4F6411F2972 /* HealthCheckMatcher.swift */; };
+		BC8DC4FB30A1D27202219E95 /* TestNewPaymentRequestQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC09A09C65F8686B4B1FB /* TestNewPaymentRequestQRCode.swift */; };
+		BC8DC56FF27F18DCB49E3F89 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCD70E2321C41CAD09F30 /* Date.swift */; };
+		BC8DC5BF080E5BC6E7CA8D9D /* TestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = BC8DC5F8D8AE77D49A472C96 /* TestPlan.xctestplan */; };
+		BC8DC646B27CF2054CD5BF5E /* VillageCustomerApiRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC1CB11F6564FCCF444ED /* VillageCustomerApiRepositoryTest.swift */; };
+		BC8DC68FB9327FBE622C6144 /* ApiResultMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC12922D672EFDE3DA93D /* ApiResultMatchers.swift */; };
+		BC8DC6DC69CEE7DD5B5FE1C7 /* BasketMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC5E2B0EBD2118BE8FB59 /* BasketMatcher.swift */; };
+		BC8DC74DB36F773D693EE58F /* QRCodeMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCF8F52D0A0FD691C2F85 /* QRCodeMatcher.swift */; };
+		BC8DC822D510993CAE1BBD32 /* SdkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCC4B721C65CBEBC5F35D /* SdkFactory.swift */; };
+		BC8DC834979460DC102115F7 /* PaymentInstrumentMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC20A8FF9B58973C1D31D /* PaymentInstrumentMatchers.swift */; };
+		BC8DC8682E6579F10AEBEE8C /* StringMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCCBD0AC1C0FCAD91ECDF /* StringMatchers.swift */; };
+		BC8DC8C269D14376953389D4 /* VillageApiRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCB3C85192BC08857A63C /* VillageApiRepositoryTest.swift */; };
+		BC8DC941F8BE4E5CEAD3212C /* OpenApiSdkFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCCAF8A93CAEBA4004A58 /* OpenApiSdkFactory.swift */; };
+		BC8DC96AEC26CD240EB9B148 /* MerchantTransactionMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCDB881B79A735A79D132 /* MerchantTransactionMatchers.swift */; };
+		BC8DC9A39DA9E218011698AB /* TestUpdatePaymentSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCA13B6C9978B224EFEE1 /* TestUpdatePaymentSessionRequest.swift */; };
+		BC8DCA97AFF0794A16218D24 /* CustomerTransactionsMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCFE1693FD8D89E39F7FA /* CustomerTransactionsMatchers.swift */; };
+		BC8DCAC899BACCF6046C68BB /* TestBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC2E437961DCFB1BA7579 /* TestBasket.swift */; };
+		BC8DCC6F42DAE1118FAAACB7 /* TestNewPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC52B5F981DA4022CA2FC /* TestNewPaymentRequest.swift */; };
+		BC8DCCE28FD67578BECB9E25 /* VillageMerchantApiRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC1392CE56AB28C2F694C /* VillageMerchantApiRepositoryTest.swift */; };
+		BC8DCDBFEFCC41AD77545974 /* PaymentSessionMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCEE825C798829875A8A8 /* PaymentSessionMatchers.swift */; };
+		BC8DCE36E6DF0835503FF80B /* CustomerPaymentRequestMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC44719CAD86E2C6DF86B /* CustomerPaymentRequestMatcher.swift */; };
+		BC8DCE64ADEDF4827AAB67BB /* TestMerchantSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC5D216F61505F18F80DE /* TestMerchantSchema.swift */; };
+		BC8DCEB613A4C112F033298B /* MerchantPayloadMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCE25AE7CE6867EDF5588 /* MerchantPayloadMatchers.swift */; };
+		BC8DCECB0CC8311AFDD8E4F8 /* MerchantSchemasMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC978E57F75855116E1C6 /* MerchantSchemasMatcher.swift */; };
+		BC8DCF6B4811C12516EABE62 /* TestTransactionRefundDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC4532A2CE4E30C11EE0D /* TestTransactionRefundDetails.swift */; };
+		BC8DCF8E68266B345FC7E7A7 /* MerchantPaymentsMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC3ED21D52EA923F4A6C5 /* MerchantPaymentsMatchers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +49,36 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		B2E20E2D032DA94CACD25CCD /* Pods-VillageWalletSDKOAIClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VillageWalletSDKOAIClient_Tests.debug.xcconfig"; path = "Target Support Files/Pods-VillageWalletSDKOAIClient_Tests/Pods-VillageWalletSDKOAIClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC8DC09A09C65F8686B4B1FB /* TestNewPaymentRequestQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNewPaymentRequestQRCode.swift; sourceTree = "<group>"; };
+		BC8DC12922D672EFDE3DA93D /* ApiResultMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResultMatchers.swift; sourceTree = "<group>"; };
+		BC8DC1392CE56AB28C2F694C /* VillageMerchantApiRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillageMerchantApiRepositoryTest.swift; sourceTree = "<group>"; };
+		BC8DC1CB11F6564FCCF444ED /* VillageCustomerApiRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillageCustomerApiRepositoryTest.swift; sourceTree = "<group>"; };
+		BC8DC20A8FF9B58973C1D31D /* PaymentInstrumentMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInstrumentMatchers.swift; sourceTree = "<group>"; };
+		BC8DC2D2E2A262C19FB912F7 /* TestPaymentInstrument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPaymentInstrument.swift; sourceTree = "<group>"; };
+		BC8DC2E437961DCFB1BA7579 /* TestBasket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBasket.swift; sourceTree = "<group>"; };
+		BC8DC3ED21D52EA923F4A6C5 /* MerchantPaymentsMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantPaymentsMatchers.swift; sourceTree = "<group>"; };
+		BC8DC44719CAD86E2C6DF86B /* CustomerPaymentRequestMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerPaymentRequestMatcher.swift; sourceTree = "<group>"; };
+		BC8DC4532A2CE4E30C11EE0D /* TestTransactionRefundDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTransactionRefundDetails.swift; sourceTree = "<group>"; };
+		BC8DC48CA5DEF8CB35803B99 /* TestCreatePaymentSessionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCreatePaymentSessionRequest.swift; sourceTree = "<group>"; };
+		BC8DC52B5F981DA4022CA2FC /* TestNewPaymentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNewPaymentRequest.swift; sourceTree = "<group>"; };
+		BC8DC5D216F61505F18F80DE /* TestMerchantSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMerchantSchema.swift; sourceTree = "<group>"; };
+		BC8DC5E2B0EBD2118BE8FB59 /* BasketMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketMatcher.swift; sourceTree = "<group>"; };
+		BC8DC5F8D8AE77D49A472C96 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file.xctestplan; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		BC8DC6CDE16B574F3B342D9D /* TestMerchantPayloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMerchantPayloads.swift; sourceTree = "<group>"; };
+		BC8DC8846552ACA6DFBC8772 /* TestCustomerPaymentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCustomerPaymentRequest.swift; sourceTree = "<group>"; };
+		BC8DC978E57F75855116E1C6 /* MerchantSchemasMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantSchemasMatcher.swift; sourceTree = "<group>"; };
+		BC8DCA13B6C9978B224EFEE1 /* TestUpdatePaymentSessionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUpdatePaymentSessionRequest.swift; sourceTree = "<group>"; };
+		BC8DCB3C85192BC08857A63C /* VillageApiRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillageApiRepositoryTest.swift; sourceTree = "<group>"; };
+		BC8DCC4B721C65CBEBC5F35D /* SdkFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SdkFactory.swift; sourceTree = "<group>"; };
+		BC8DCCAF8A93CAEBA4004A58 /* OpenApiSdkFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenApiSdkFactory.swift; sourceTree = "<group>"; };
+		BC8DCCBD0AC1C0FCAD91ECDF /* StringMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringMatchers.swift; sourceTree = "<group>"; };
+		BC8DCD70E2321C41CAD09F30 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		BC8DCDB881B79A735A79D132 /* MerchantTransactionMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantTransactionMatchers.swift; sourceTree = "<group>"; };
+		BC8DCE25AE7CE6867EDF5588 /* MerchantPayloadMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantPayloadMatchers.swift; sourceTree = "<group>"; };
+		BC8DCE74977FD4F6411F2972 /* HealthCheckMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthCheckMatcher.swift; sourceTree = "<group>"; };
+		BC8DCEE825C798829875A8A8 /* PaymentSessionMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSessionMatchers.swift; sourceTree = "<group>"; };
+		BC8DCF8F52D0A0FD691C2F85 /* QRCodeMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeMatcher.swift; sourceTree = "<group>"; };
+		BC8DCFE1693FD8D89E39F7FA /* CustomerTransactionsMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerTransactionsMatchers.swift; sourceTree = "<group>"; };
 		C5D2401389B940E03CADBBB2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +126,14 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				BC8DC847AD7D274D0CF715F6 /* data */,
+				BC8DCD70E2321C41CAD09F30 /* Date.swift */,
+				BC8DCA46EAF1AC85641F5957 /* matchers */,
+				BC8DC7D756DD039305C5E0FB /* openapi */,
+				BC8DCC4B721C65CBEBC5F35D /* SdkFactory.swift */,
+				BC8DCB3C85192BC08857A63C /* VillageApiRepositoryTest.swift */,
+				BC8DC1CB11F6564FCCF444ED /* VillageCustomerApiRepositoryTest.swift */,
+				BC8DC1392CE56AB28C2F694C /* VillageMerchantApiRepositoryTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -74,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEA1AFB9204008FA782 /* Info.plist */,
+				BC8DC5F8D8AE77D49A472C96 /* TestPlan.xctestplan */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -85,6 +154,51 @@
 				C5D2401389B940E03CADBBB2 /* README.md */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		BC8DC7D756DD039305C5E0FB /* openapi */ = {
+			isa = PBXGroup;
+			children = (
+				BC8DCCAF8A93CAEBA4004A58 /* OpenApiSdkFactory.swift */,
+			);
+			path = openapi;
+			sourceTree = "<group>";
+		};
+		BC8DC847AD7D274D0CF715F6 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BC8DC2E437961DCFB1BA7579 /* TestBasket.swift */,
+				BC8DC5D216F61505F18F80DE /* TestMerchantSchema.swift */,
+				BC8DC6CDE16B574F3B342D9D /* TestMerchantPayloads.swift */,
+				BC8DC52B5F981DA4022CA2FC /* TestNewPaymentRequest.swift */,
+				BC8DC2D2E2A262C19FB912F7 /* TestPaymentInstrument.swift */,
+				BC8DC8846552ACA6DFBC8772 /* TestCustomerPaymentRequest.swift */,
+				BC8DC09A09C65F8686B4B1FB /* TestNewPaymentRequestQRCode.swift */,
+				BC8DC4532A2CE4E30C11EE0D /* TestTransactionRefundDetails.swift */,
+				BC8DC48CA5DEF8CB35803B99 /* TestCreatePaymentSessionRequest.swift */,
+				BC8DCA13B6C9978B224EFEE1 /* TestUpdatePaymentSessionRequest.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		BC8DCA46EAF1AC85641F5957 /* matchers */ = {
+			isa = PBXGroup;
+			children = (
+				BC8DC5E2B0EBD2118BE8FB59 /* BasketMatcher.swift */,
+				BC8DCF8F52D0A0FD691C2F85 /* QRCodeMatcher.swift */,
+				BC8DCCBD0AC1C0FCAD91ECDF /* StringMatchers.swift */,
+				BC8DC12922D672EFDE3DA93D /* ApiResultMatchers.swift */,
+				BC8DCE74977FD4F6411F2972 /* HealthCheckMatcher.swift */,
+				BC8DC978E57F75855116E1C6 /* MerchantSchemasMatcher.swift */,
+				BC8DCEE825C798829875A8A8 /* PaymentSessionMatchers.swift */,
+				BC8DCE25AE7CE6867EDF5588 /* MerchantPayloadMatchers.swift */,
+				BC8DC3ED21D52EA923F4A6C5 /* MerchantPaymentsMatchers.swift */,
+				BC8DC20A8FF9B58973C1D31D /* PaymentInstrumentMatchers.swift */,
+				BC8DCDB881B79A735A79D132 /* MerchantTransactionMatchers.swift */,
+				BC8DCFE1693FD8D89E39F7FA /* CustomerTransactionsMatchers.swift */,
+				BC8DC44719CAD86E2C6DF86B /* CustomerPaymentRequestMatcher.swift */,
+			);
+			path = matchers;
 			sourceTree = "<group>";
 		};
 		D13E516B16A7FA1530FDDEC7 /* Pods */ = {
@@ -157,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8DC5BF080E5BC6E7CA8D9D /* TestPlan.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +336,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				BC8DCAC899BACCF6046C68BB /* TestBasket.swift in Sources */,
+				BC8DCE64ADEDF4827AAB67BB /* TestMerchantSchema.swift in Sources */,
+				BC8DC03364D7D4FDD56C83B0 /* TestMerchantPayloads.swift in Sources */,
+				BC8DCC6F42DAE1118FAAACB7 /* TestNewPaymentRequest.swift in Sources */,
+				BC8DC108C45FE3961FA44016 /* TestPaymentInstrument.swift in Sources */,
+				BC8DC36858F154CF8068EA88 /* TestCustomerPaymentRequest.swift in Sources */,
+				BC8DC4FB30A1D27202219E95 /* TestNewPaymentRequestQRCode.swift in Sources */,
+				BC8DCF6B4811C12516EABE62 /* TestTransactionRefundDetails.swift in Sources */,
+				BC8DC4B89FC5C511C658645B /* TestCreatePaymentSessionRequest.swift in Sources */,
+				BC8DC9A39DA9E218011698AB /* TestUpdatePaymentSessionRequest.swift in Sources */,
+				BC8DC56FF27F18DCB49E3F89 /* Date.swift in Sources */,
+				BC8DC6DC69CEE7DD5B5FE1C7 /* BasketMatcher.swift in Sources */,
+				BC8DC74DB36F773D693EE58F /* QRCodeMatcher.swift in Sources */,
+				BC8DC8682E6579F10AEBEE8C /* StringMatchers.swift in Sources */,
+				BC8DC68FB9327FBE622C6144 /* ApiResultMatchers.swift in Sources */,
+				BC8DC4D30E9227D80E7DB6CE /* HealthCheckMatcher.swift in Sources */,
+				BC8DCECB0CC8311AFDD8E4F8 /* MerchantSchemasMatcher.swift in Sources */,
+				BC8DCDBFEFCC41AD77545974 /* PaymentSessionMatchers.swift in Sources */,
+				BC8DCEB613A4C112F033298B /* MerchantPayloadMatchers.swift in Sources */,
+				BC8DCF8E68266B345FC7E7A7 /* MerchantPaymentsMatchers.swift in Sources */,
+				BC8DC834979460DC102115F7 /* PaymentInstrumentMatchers.swift in Sources */,
+				BC8DC96AEC26CD240EB9B148 /* MerchantTransactionMatchers.swift in Sources */,
+				BC8DCA97AFF0794A16218D24 /* CustomerTransactionsMatchers.swift in Sources */,
+				BC8DCE36E6DF0835503FF80B /* CustomerPaymentRequestMatcher.swift in Sources */,
+				BC8DC941F8BE4E5CEAD3212C /* OpenApiSdkFactory.swift in Sources */,
+				BC8DC822D510993CAE1BBD32 /* SdkFactory.swift in Sources */,
+				BC8DC8C269D14376953389D4 /* VillageApiRepositoryTest.swift in Sources */,
+				BC8DC646B27CF2054CD5BF5E /* VillageCustomerApiRepositoryTest.swift in Sources */,
+				BC8DCCE28FD67578BECB9E25 /* VillageMerchantApiRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -324,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

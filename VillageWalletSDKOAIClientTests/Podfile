@@ -1,5 +1,8 @@
 use_frameworks!
+
 target "VillageWalletSDKOAIClient_Tests" do
+  platform :ios, "11.0"
+
   pod "VillageWalletSDKOAIClient", :path => "../"
 
   ## FIXME: Use Git for checkout
