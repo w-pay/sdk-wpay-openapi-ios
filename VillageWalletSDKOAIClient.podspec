@@ -149,5 +149,5 @@ Pod::Spec.new do |spec|
   spec.dependency "AFNetworking", "~> 3"
   spec.dependency "JSONModel", "~> 1.2"
   spec.dependency "ISO8601", "~> 0.6"
-  spec.dependency "VillageWalletSDK", "0.0.1"
+  spec.dependency "VillageWalletSDK", "1.0.0"
 end

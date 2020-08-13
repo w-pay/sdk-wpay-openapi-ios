@@ -5,8 +5,7 @@ target "VillageWalletSDKOAIClient_Tests" do
 
   pod "VillageWalletSDKOAIClient", :path => "../"
 
-  ## FIXME: Use Git for checkout
-  pod "VillageWalletSDK", :path => "../../../../ios/sdk/VillageWalletSDK/"
+  pod "VillageWalletSDK", :git => "git@github.com:woolworthslimited/paysdk2-ios.git", :tag => "v1.0.0"
 
   pod "SwiftHamcrest", "~> 2.2.1"
 end
