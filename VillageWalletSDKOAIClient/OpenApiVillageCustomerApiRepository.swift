@@ -71,7 +71,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 		})
 	}
 
-	public func retrievePaymentRequestDetailsByRequestId(
+	public func retrievePaymentRequestDetailsById(
 		paymentRequestId: String,
 		callback: @escaping ApiResult<CustomerPaymentRequest>
 	) {
@@ -111,8 +111,8 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	}
 
 	public func makePayment(
-		paymentRequest: CustomerPaymentRequest,
-		instrument: PaymentInstrument,
+		paymentRequestId: String,
+		instrument: PaymentInstrumentIdentifier,
 		callback: @escaping ApiResult<CustomerTransactionSummary>
 	) {
 		let api = createCustomerApi()
@@ -125,7 +125,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 
 		api.makeCustomerPayment(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
-			paymentRequestId: paymentRequest.paymentRequestId(),
+			paymentRequestId: paymentRequestId,
 			customerPaymentDetails: body,
 			xEverdayPayWallet: (instrument.wallet() == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { results, error in
@@ -195,7 +195,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			})
 	}
 
-	public func retrieveCustomerPaymentSession(
+	public func retrieveCustomerPaymentSessionById(
 		paymentSessionId: String,
 		callback: @escaping ApiResult<PaymentSession>
 	) {
@@ -213,7 +213,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			})
 	}
 
-	public func retrieveCustomerPaymentSessionByQR(
+	public func retrieveCustomerPaymentSessionByQRCode(
 		qrCodeId: String,
 		callback: @escaping ApiResult<PaymentSession>
 	) {
