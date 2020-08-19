@@ -90,13 +90,13 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 	}
 
 	func testShouldRetrievePaymentRequestDetailsByRequestId() {
-		let qrCodeId = "75ba5b0b-7e5d-47fe-9508-29ca69fdb1d5"
+		let paymentRequestId = "75ba5b0b-7e5d-47fe-9508-29ca69fdb1d5"
 
 		let promise = apiResultExpectation()
 		var result: CustomerPaymentRequest!
 
-		api.retrievePaymentRequestDetailsByRequestId(
-			paymentRequestId: qrCodeId,
+		api.retrievePaymentRequestDetailsById(
+			paymentRequestId: paymentRequestId,
 
 			callback: isSuccessfulWith { (value: CustomerPaymentRequest?, response) in
 				result = value
@@ -111,11 +111,13 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 	}
 
 	func testShouldMakePayment() {
+		let paymentRequestId = "75ba5b0b-7e5d-47fe-9508-29ca69fdb1d5"
+
 		let promise = apiResultExpectation()
 		var result: CustomerTransactionSummary!
 
 		api.makePayment(
-			paymentRequest: aNewCustomerPaymentRequest(),
+			paymentRequestId: paymentRequestId,
 			instrument: aSelectedPaymentInstrument(),
 			callback: isSuccessfulWith { (value: CustomerTransactionSummary?, response) in
 				result = value
@@ -207,7 +209,7 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: PaymentSession!
 
-		api.retrieveCustomerPaymentSession(
+		api.retrieveCustomerPaymentSessionById(
 			paymentSessionId: paymentSessionId,
 			callback: isSuccessfulWith { (value: PaymentSession?, response) in
 				result = value
@@ -227,7 +229,7 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: PaymentSession!
 
-		api.retrieveCustomerPaymentSessionByQR(
+		api.retrieveCustomerPaymentSessionByQRCode(
 			qrCodeId: qrCodeId,
 			callback: isSuccessfulWith { (value: PaymentSession?, response) in
 				result = value
