@@ -1,6 +1,6 @@
-#import "OAICommonTransactionSummaryAllOf.h"
+#import "OAIMerchantPaymentSessionPaymentSessionIdData.h"
 
-@implementation OAICommonTransactionSummaryAllOf
+@implementation OAIMerchantPaymentSessionPaymentSessionIdData
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"transactionId": @"transactionId", @"clientReference": @"clientReference", @"type": @"type", @"executionTime": @"executionTime", @"status": @"status", @"statusDetail": @"statusDetail", @"refundReason": @"refundReason" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"merchantInfo": @"merchantInfo", @"paymentRequestId": @"paymentRequestId" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"clientReference", @"statusDetail", @"refundReason"];
+  NSArray *optionalProperties = @[@"paymentRequestId"];
   return [optionalProperties containsObject:propertyName];
 }
 

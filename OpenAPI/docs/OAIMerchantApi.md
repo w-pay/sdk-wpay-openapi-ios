@@ -5,14 +5,13 @@ All URIs are relative to *http://localhost:3000*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelPaymentQRCode**](OAIMerchantApi.md#cancelpaymentqrcode) | **DELETE** /merchant/qr/{qrId} | Invalidate QR Code
-[**createCustomerPaymentSession**](OAIMerchantApi.md#createcustomerpaymentsession) | **POST** /merchant/payment/session | Create Payment Session
 [**createMerchantSchema**](OAIMerchantApi.md#createmerchantschema) | **POST** /merchant/schema | Add Schema
 [**createPaymentQRCode**](OAIMerchantApi.md#createpaymentqrcode) | **POST** /merchant/qr | Create QR Code
 [**createPaymentRequest**](OAIMerchantApi.md#createpaymentrequest) | **POST** /merchant/payments | Create Payment
+[**createPaymentSession**](OAIMerchantApi.md#createpaymentsession) | **POST** /merchant/payment/session | Create Payment Session
 [**deleteMerchantPayment**](OAIMerchantApi.md#deletemerchantpayment) | **DELETE** /merchant/payments/{paymentRequestId} | Delete Payment
-[**deleteMerchantPaymentSession**](OAIMerchantApi.md#deletemerchantpaymentsession) | **DELETE** /merchant/payment/session/{paymentSessionId} | Delete Payment Session
+[**deletePaymentSession**](OAIMerchantApi.md#deletepaymentsession) | **DELETE** /merchant/payment/session/{paymentSessionId} | Delete Payment Session
 [**getMerchantPaymentDetails**](OAIMerchantApi.md#getmerchantpaymentdetails) | **GET** /merchant/payments/{paymentRequestId} | Get Payment Details
-[**getMerchantPaymentSession**](OAIMerchantApi.md#getmerchantpaymentsession) | **GET** /merchant/payment/session/{paymentSessionId} | Get Payment Session
 [**getMerchantPayments**](OAIMerchantApi.md#getmerchantpayments) | **GET** /merchant/payments | Get Payment List
 [**getMerchantPreferences**](OAIMerchantApi.md#getmerchantpreferences) | **GET** /merchant/preferences | Get Preferences
 [**getMerchantSchemaDetails**](OAIMerchantApi.md#getmerchantschemadetails) | **GET** /merchant/schema/{schemaId} | Get Schema Details
@@ -20,9 +19,10 @@ Method | HTTP request | Description
 [**getMerchantTransactionDetails**](OAIMerchantApi.md#getmerchanttransactiondetails) | **GET** /merchant/transactions/{transactionId} | Get Transaction Details
 [**getMerchantTransactions**](OAIMerchantApi.md#getmerchanttransactions) | **GET** /merchant/transactions | Get Transaction List
 [**getPaymentQRCodeContent**](OAIMerchantApi.md#getpaymentqrcodecontent) | **GET** /merchant/qr/{qrId} | Get QR Code Content
+[**getPaymentSession**](OAIMerchantApi.md#getpaymentsession) | **GET** /merchant/payment/session/{paymentSessionId} | Get Payment Session
+[**merchantUpdatePaymentSession**](OAIMerchantApi.md#merchantupdatepaymentsession) | **POST** /merchant/payment/session/{paymentSessionId} | Update Payment Session
 [**refundMerchantTransaction**](OAIMerchantApi.md#refundmerchanttransaction) | **POST** /merchant/transactions/{transactionId}/refund | Refund Transaction
 [**setMerchantPreferences**](OAIMerchantApi.md#setmerchantpreferences) | **POST** /merchant/preferences | Set Preferences
-[**updateMerchantPaymentSession**](OAIMerchantApi.md#updatemerchantpaymentsession) | **POST** /merchant/payment/session/{paymentSessionId} | Update Payment Session
 
 
 # **cancelPaymentQRCode**
@@ -79,67 +79,6 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createCustomerPaymentSession**
-```objc
--(NSURLSessionTask*) createCustomerPaymentSessionWithXMerchantID: (NSString*) xMerchantID
-    createPaymentSessionRequest: (OAICreatePaymentSessionRequest*) createPaymentSessionRequest
-        completionHandler: (void (^)(OAICreateMerchantPaymentSessionResponse* output, NSError* error)) handler;
-```
-
-Create Payment Session
-
-Create a new payment session
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-
-
-NSString* xMerchantID = 10001; // 
-OAICreatePaymentSessionRequest* createPaymentSessionRequest = [[OAICreatePaymentSessionRequest alloc] init]; // 
-
-OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
-
-// Create Payment Session
-[apiInstance createCustomerPaymentSessionWithXMerchantID:xMerchantID
-              createPaymentSessionRequest:createPaymentSessionRequest
-          completionHandler: ^(OAICreateMerchantPaymentSessionResponse* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->createCustomerPaymentSession: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
- **createPaymentSessionRequest** | [**OAICreatePaymentSessionRequest***](OAICreatePaymentSessionRequest.md)|  | 
-
-### Return type
-
-[**OAICreateMerchantPaymentSessionResponse***](OAICreateMerchantPaymentSessionResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -327,6 +266,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **createPaymentSession**
+```objc
+-(NSURLSessionTask*) createPaymentSessionWithXMerchantID: (NSString*) xMerchantID
+    createPaymentSessionRequest: (OAICreatePaymentSessionRequest*) createPaymentSessionRequest
+        completionHandler: (void (^)(OAICreateMerchantPaymentSessionResponse* output, NSError* error)) handler;
+```
+
+Create Payment Session
+
+Create a new payment session
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xMerchantID = 10001; // 
+OAICreatePaymentSessionRequest* createPaymentSessionRequest = [[OAICreatePaymentSessionRequest alloc] init]; // 
+
+OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
+
+// Create Payment Session
+[apiInstance createPaymentSessionWithXMerchantID:xMerchantID
+              createPaymentSessionRequest:createPaymentSessionRequest
+          completionHandler: ^(OAICreateMerchantPaymentSessionResponse* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIMerchantApi->createPaymentSession: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xMerchantID** | **NSString***|  | 
+ **createPaymentSessionRequest** | [**OAICreatePaymentSessionRequest***](OAICreatePaymentSessionRequest.md)|  | 
+
+### Return type
+
+[**OAICreateMerchantPaymentSessionResponse***](OAICreateMerchantPaymentSessionResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteMerchantPayment**
 ```objc
 -(NSURLSessionTask*) deleteMerchantPaymentWithXMerchantID: (NSString*) xMerchantID
@@ -385,9 +385,9 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteMerchantPaymentSession**
+# **deletePaymentSession**
 ```objc
--(NSURLSessionTask*) deleteMerchantPaymentSessionWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) deletePaymentSessionWithXMerchantID: (NSString*) xMerchantID
     paymentSessionId: (NSString*) paymentSessionId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
@@ -412,11 +412,11 @@ NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the speci
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Delete Payment Session
-[apiInstance deleteMerchantPaymentSessionWithXMerchantID:xMerchantID
+[apiInstance deletePaymentSessionWithXMerchantID:xMerchantID
               paymentSessionId:paymentSessionId
           completionHandler: ^(NSError* error) {
                         if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->deleteMerchantPaymentSession: %@", error);
+                            NSLog(@"Error calling OAIMerchantApi->deletePaymentSession: %@", error);
                         }
                     }];
 ```
@@ -492,67 +492,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OAIGetMerchantPaymentDetailsResults***](OAIGetMerchantPaymentDetailsResults.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getMerchantPaymentSession**
-```objc
--(NSURLSessionTask*) getMerchantPaymentSessionWithXMerchantID: (NSString*) xMerchantID
-    paymentSessionId: (NSString*) paymentSessionId
-        completionHandler: (void (^)(OAICustomerPaymentSessionResult* output, NSError* error)) handler;
-```
-
-Get Payment Session
-
-Get the details of a payment session
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-
-
-NSString* xMerchantID = 10001; // 
-NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
-
-OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
-
-// Get Payment Session
-[apiInstance getMerchantPaymentSessionWithXMerchantID:xMerchantID
-              paymentSessionId:paymentSessionId
-          completionHandler: ^(OAICustomerPaymentSessionResult* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->getMerchantPaymentSession: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
- **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
-
-### Return type
-
-[**OAICustomerPaymentSessionResult***](OAICustomerPaymentSessionResult.md)
 
 ### Authorization
 
@@ -1004,6 +943,129 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getPaymentSession**
+```objc
+-(NSURLSessionTask*) getPaymentSessionWithXMerchantID: (NSString*) xMerchantID
+    paymentSessionId: (NSString*) paymentSessionId
+        completionHandler: (void (^)(OAICustomerPaymentSessionResult* output, NSError* error)) handler;
+```
+
+Get Payment Session
+
+Get the details of a payment session
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xMerchantID = 10001; // 
+NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
+
+OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
+
+// Get Payment Session
+[apiInstance getPaymentSessionWithXMerchantID:xMerchantID
+              paymentSessionId:paymentSessionId
+          completionHandler: ^(OAICustomerPaymentSessionResult* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIMerchantApi->getPaymentSession: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xMerchantID** | **NSString***|  | 
+ **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
+
+### Return type
+
+[**OAICustomerPaymentSessionResult***](OAICustomerPaymentSessionResult.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **merchantUpdatePaymentSession**
+```objc
+-(NSURLSessionTask*) merchantUpdatePaymentSessionWithXMerchantID: (NSString*) xMerchantID
+    paymentSessionId: (NSString*) paymentSessionId
+    updatePaymentSessionRequest1: (OAIUpdatePaymentSessionRequest1*) updatePaymentSessionRequest1
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Update Payment Session
+
+Update the payment session details
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xMerchantID = 10001; // 
+NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
+OAIUpdatePaymentSessionRequest1* updatePaymentSessionRequest1 = [[OAIUpdatePaymentSessionRequest1 alloc] init]; // 
+
+OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
+
+// Update Payment Session
+[apiInstance merchantUpdatePaymentSessionWithXMerchantID:xMerchantID
+              paymentSessionId:paymentSessionId
+              updatePaymentSessionRequest1:updatePaymentSessionRequest1
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAIMerchantApi->merchantUpdatePaymentSession: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xMerchantID** | **NSString***|  | 
+ **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
+ **updatePaymentSessionRequest1** | [**OAIUpdatePaymentSessionRequest1***](OAIUpdatePaymentSessionRequest1.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **refundMerchantTransaction**
 ```objc
 -(NSURLSessionTask*) refundMerchantTransactionWithXMerchantID: (NSString*) xMerchantID
@@ -1111,68 +1173,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xMerchantID** | **NSString***|  | 
  **merchantPreferences** | [**OAIMerchantPreferences***](OAIMerchantPreferences.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateMerchantPaymentSession**
-```objc
--(NSURLSessionTask*) updateMerchantPaymentSessionWithXMerchantID: (NSString*) xMerchantID
-    paymentSessionId: (NSString*) paymentSessionId
-    updatePaymentSessionRequest1: (OAIUpdatePaymentSessionRequest1*) updatePaymentSessionRequest1
-        completionHandler: (void (^)(NSError* error)) handler;
-```
-
-Update Payment Session
-
-Update the payment session details
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-
-
-NSString* xMerchantID = 10001; // 
-NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
-OAIUpdatePaymentSessionRequest1* updatePaymentSessionRequest1 = [[OAIUpdatePaymentSessionRequest1 alloc] init]; // 
-
-OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
-
-// Update Payment Session
-[apiInstance updateMerchantPaymentSessionWithXMerchantID:xMerchantID
-              paymentSessionId:paymentSessionId
-              updatePaymentSessionRequest1:updatePaymentSessionRequest1
-          completionHandler: ^(NSError* error) {
-                        if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->updateMerchantPaymentSession: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
- **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
- **updatePaymentSessionRequest1** | [**OAIUpdatePaymentSessionRequest1***](OAIUpdatePaymentSessionRequest1.md)|  | 
 
 ### Return type
 

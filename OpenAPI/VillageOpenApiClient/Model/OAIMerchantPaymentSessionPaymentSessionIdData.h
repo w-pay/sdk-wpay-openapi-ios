@@ -14,21 +14,21 @@
 */
 
 
-#import "OAIQr.h"
-@protocol OAIQr;
-@class OAIQr;
+#import "OAIDynamicPayload.h"
+@protocol OAIDynamicPayload;
+@class OAIDynamicPayload;
 
 
 
-@protocol OAICreatePaymentRequestResultsData
+@protocol OAIMerchantPaymentSessionPaymentSessionIdData
 @end
 
-@interface OAICreatePaymentRequestResultsData : OAIObject
+@interface OAIMerchantPaymentSessionPaymentSessionIdData : OAIObject
 
-/* The ID of the new payment request 
+
+@property(nonatomic) OAIDynamicPayload* merchantInfo;
+/* The ID of the associated payment request [optional]
  */
 @property(nonatomic) NSString* paymentRequestId;
-
-@property(nonatomic) OAIQr* qr;
 
 @end

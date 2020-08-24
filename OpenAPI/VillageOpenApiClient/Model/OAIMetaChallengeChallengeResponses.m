@@ -1,6 +1,6 @@
-#import "OAICommonTransactionSummaryAllOf.h"
+#import "OAIMetaChallengeChallengeResponses.h"
 
-@implementation OAICommonTransactionSummaryAllOf
+@implementation OAIMetaChallengeChallengeResponses
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"transactionId": @"transactionId", @"clientReference": @"clientReference", @"type": @"type", @"executionTime": @"executionTime", @"status": @"status", @"statusDetail": @"statusDetail", @"refundReason": @"refundReason" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"instrumentId": @"instrumentId", @"type": @"type", @"token": @"token", @"reference": @"reference" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"clientReference", @"statusDetail", @"refundReason"];
+  NSArray *optionalProperties = @[@"reference"];
   return [optionalProperties containsObject:propertyName];
 }
 

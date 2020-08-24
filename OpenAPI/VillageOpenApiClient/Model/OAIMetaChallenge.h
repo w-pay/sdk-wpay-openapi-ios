@@ -14,21 +14,19 @@
 */
 
 
-#import "OAIQr.h"
-@protocol OAIQr;
-@class OAIQr;
+#import "OAIMetaChallengeChallengeResponses.h"
+@protocol OAIMetaChallengeChallengeResponses;
+@class OAIMetaChallengeChallengeResponses;
 
 
 
-@protocol OAICreateMerchantPaymentSessionResponseData
+@protocol OAIMetaChallenge
 @end
 
-@interface OAICreateMerchantPaymentSessionResponseData : OAIObject
+@interface OAIMetaChallenge : OAIObject
 
-/* The ID of the new payment session 
+/* The collection of challenges [optional]
  */
-@property(nonatomic) NSString* paymentSessionId;
-
-@property(nonatomic) OAIQr* qr;
+@property(nonatomic) NSArray<OAIMetaChallengeChallengeResponses>* challengeResponses;
 
 @end
