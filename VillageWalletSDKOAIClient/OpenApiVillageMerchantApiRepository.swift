@@ -83,7 +83,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			})
 	}
 
-	public func retrievePaymentRequestQRCodeContent(
+	public func retrievePaymentRequestBy(
 		qrCodeId: String,
 		callback: @escaping ApiResult<QRCode>
 	) {
@@ -375,12 +375,12 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let body = OAICreatePaymentSessionRequest()
 		body.data = OAIMerchantPaymentSessionData()
 		body.data.location = request.location()
-		body.data.additionalInfo = toDynamicPayload(payload: request.additionalInfo())
+		body.data.merchantInfo = toDynamicPayload(payload: request.merchantInfo())
 		body.data.generateQR = request.generateQR() as NSNumber
 		body.data.timeToLivePaymentSession = request.timeToLivePaymentSession() as NSNumber?
 		body.data.timeToLiveQR = request.timeToLiveQR() as NSNumber?
 
-		api.createCustomerPaymentSession(
+		api.createPaymentSession(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			createPaymentSessionRequest: body,
 			completionHandler: { result, error in
@@ -398,7 +398,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 	) {
 		let api = createMerchantApi()
 
-		api.getMerchantPaymentSession(
+		api.getPaymentSession(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentSessionId: paymentSessionId,
 			completionHandler: { result, error in
@@ -408,6 +408,50 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 
 				callback(OpenApiPaymentSession(session: result!.data), nil)
 			})
+	}
+
+	public func updatePaymentSession(
+		paymentSessionId: String,
+		session: MerchantUpdatePaymentSessionRequest,
+		callback: @escaping ApiResult<Void>
+	) {
+		let api = createMerchantApi()
+
+		let body = OAIUpdatePaymentSessionRequest1()
+		body.data = OAIMerchantPaymentSessionPaymentSessionIdData()
+		body.data.paymentRequestId = session.paymentRequestId()
+		body.data.merchantInfo = toDynamicPayload(payload: session.merchantInfo())
+
+		api.merchantUpdatePaymentSession(
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			paymentSessionId: paymentSessionId,
+			updatePaymentSessionRequest1: body,
+			completionHandler: { error in
+				guard error == nil else {
+					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+				}
+
+				callback(nil, nil)
+			})
+	}
+
+	public func deletePaymentSession(
+		paymentSessionId: String,
+		callback: @escaping ApiResult<Void>
+	) {
+		let api = createMerchantApi()
+
+		api.deletePaymentSession(
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			paymentSessionId: paymentSessionId,
+			completionHandler: { error in
+				guard error == nil else {
+					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+				}
+
+				callback(nil, nil)
+			}
+		)
 	}
 
 	public func checkHealth(callback: @escaping ApiResult<HealthCheck>) {

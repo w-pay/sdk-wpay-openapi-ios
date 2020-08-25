@@ -28,7 +28,15 @@ class OpenApiPaymentSession: PaymentSession {
 		session.location
 	}
 
-	func additionalInfo() -> DynamicPayload {
-		OpenApiDynamicPayload(payload: session.additionalInfo)
+	func merchantInfo() -> DynamicPayload {
+		OpenApiDynamicPayload(payload: session.merchantInfo)
+	}
+
+	func customerInfo() -> DynamicPayload? {
+		guard let info = session.customerInfo else {
+			return nil
+		}
+
+		return OpenApiDynamicPayload(payload: info)
 	}
 }

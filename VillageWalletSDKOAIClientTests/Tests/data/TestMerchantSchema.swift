@@ -17,4 +17,8 @@ class TestMerchantSchema: MerchantSchema {
 	func description() -> String? {
 		nil
 	}
+
+	func created() -> Date? {
+		nil
+	}
 }

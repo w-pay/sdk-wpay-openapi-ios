@@ -12,8 +12,8 @@ class OpenApiUsedPaymentInstrument: CustomerTransactionUsedPaymentInstrument {
 		instrument.paymentInstrumentId
 	}
 
-	func amount() -> NSNumber {
-		instrument.amount
+	func amount() -> Decimal {
+		instrument.amount.decimalValue
 	}
 
 	func paymentTransactionRef() -> String? {

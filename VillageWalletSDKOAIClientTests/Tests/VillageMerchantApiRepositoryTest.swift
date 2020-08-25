@@ -91,7 +91,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: QRCode!
 
-		api.retrievePaymentRequestQRCodeContent(
+		api.retrievePaymentRequestBy(
 			qrCodeId: qrCodeId,
 			callback: isSuccessfulWith(callback: { value, response in
 				result = value
@@ -229,11 +229,11 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		wait(for: [promise], timeout: 2)
 
 		assertThat(result, hasEntry(
-			equalTo("preferenceGroup"), hasEntry(
-			  equalTo("preference"),
-				not(blankOrNilString())
-			)
-		))
+			equalTo("qrTemplates"), allOf(
+			  hasEntry(equalTo("PAYMENT_REQUEST"), not(blankOrNilString())),
+				hasEntry(equalTo("PAYMENT_SESSION"), not(blankOrNilString()))
+		  ))
+		)
 	}
 
 	func testShouldSetPreferences() {
@@ -342,6 +342,33 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		wait(for: [promise], timeout: 2)
 
 		assertThat(result, hasPaymentSession())
+	}
+
+	func testShouldUpdatePaymentSession() {
+		let paymentSessionId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
+
+		let promise = apiResultExpectation()
+
+		api.updatePaymentSession(
+			paymentSessionId: paymentSessionId,
+			session: TestMerchantUpdatePaymentSessionRequest(),
+			callback: isSuccessful(promise: promise)
+		)
+
+		wait(for: [promise], timeout: 2)
+	}
+
+	func testShouldDeletePaymentSession() {
+		let paymentSessionId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
+
+		let promise = apiResultExpectation()
+
+		api.deletePaymentSession(
+			paymentSessionId: paymentSessionId,
+			callback: isSuccessful(promise: promise)
+		)
+
+		wait(for: [promise], timeout: 2)
 	}
 
 	func testShouldCheckHealth() {

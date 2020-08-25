@@ -51,4 +51,8 @@ class OpenApiMerchantSchema: MerchantSchema {
 	func description() -> String? {
 		aSchema.description
 	}
+
+	func created() -> Date? {
+		aSchema.created
+	}
 }

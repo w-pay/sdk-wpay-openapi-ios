@@ -30,6 +30,7 @@ func isCustomerTransactionSummary() -> Matcher<CustomerTransactionSummary> {
 		assertThat(item.instruments().count, greaterThanOrEqualTo(1))
 		assertThat(item.instruments(), hasItems(withCustomerPaymentInstruments()))
 		assertThat(item.transactionId(), not(blankOrNilString()))
+		assertThat(item.clientReference(), blankOrNilString())
 
 		return true
 	}

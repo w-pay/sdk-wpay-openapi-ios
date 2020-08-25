@@ -25,6 +25,7 @@ func isMerchantTransactionSummary() -> Matcher<MerchantTransactionSummary> {
 		assertThat(item.executionTime(), not(nilValue()))
 		assertThat(item.status(), not(nilValue()))
 		assertThat(item.transactionId(), not(blankOrNilString()))
+		assertThat(item.clientReference(), blankOrNilString())
 
 		return true
 	}

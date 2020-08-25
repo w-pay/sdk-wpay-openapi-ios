@@ -30,6 +30,7 @@ func isMerchantSchema() -> Matcher<MerchantSchema> {
 		assertThat(item.schema(), not(nilValue()))
 		assertThat(item.type(), not(blankOrNilString()))
 		assertThat(item.description(), not(blankOrNilString()))
+		assertThat(item.created(), not(nilValue()))
 
 		return true
 	}

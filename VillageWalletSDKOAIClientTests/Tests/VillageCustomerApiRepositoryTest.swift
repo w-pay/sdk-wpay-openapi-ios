@@ -75,7 +75,7 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: CustomerPaymentRequest!
 
-		api.retrievePaymentRequestDetailsByQRCode(
+		api.retrievePaymentRequestDetailsBy(
 			qrCodeId: qrCodeId,
 			callback: isSuccessfulWith { (value: CustomerPaymentRequest?, response) in
 				result = value
@@ -95,7 +95,7 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: CustomerPaymentRequest!
 
-		api.retrievePaymentRequestDetailsById(
+		api.retrievePaymentRequestDetailsBy(
 			paymentRequestId: paymentRequestId,
 
 			callback: isSuccessfulWith { (value: CustomerPaymentRequest?, response) in
@@ -118,7 +118,10 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 
 		api.makePayment(
 			paymentRequestId: paymentRequestId,
-			instrument: aSelectedPaymentInstrument(),
+			primaryInstrument: aSelectedPaymentInstrument(),
+			secondaryInstruments: nil,
+			clientReference: nil,
+			challengeResponses: nil,
 			callback: isSuccessfulWith { (value: CustomerTransactionSummary?, response) in
 				result = value
 
@@ -147,6 +150,17 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		wait(for: [promise], timeout: 2)
 
 		assertThat(result, isAllPaymentInstruments())
+	}
+
+	func testShouldDeletePaymentInstrument() {
+		let promise = apiResultExpectation()
+
+		api.deletePaymentInstrument(
+			instrument: aSelectedPaymentInstrument(),
+			callback: isSuccessful(promise: promise)
+		)
+
+		wait(for: [promise], timeout: 2)
 	}
 
 	func testShouldInitiatePaymentInstrumentAddition() {
@@ -183,8 +197,8 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, hasEntry(equalTo("preferenceGroup"),
-			hasEntry(equalTo("preference"), not(blankOrNilString()))
+		assertThat(result, hasEntry(equalTo("payments"),
+			hasEntry(equalTo("defaultInstrument"), not(blankOrNilString()))
 		))
 	}
 
@@ -209,7 +223,7 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: PaymentSession!
 
-		api.retrieveCustomerPaymentSessionById(
+		api.retrievePaymentSessionBy(
 			paymentSessionId: paymentSessionId,
 			callback: isSuccessfulWith { (value: PaymentSession?, response) in
 				result = value
@@ -229,7 +243,7 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var result: PaymentSession!
 
-		api.retrieveCustomerPaymentSessionByQRCode(
+		api.retrievePaymentSessionBy(
 			qrCodeId: qrCodeId,
 			callback: isSuccessfulWith { (value: PaymentSession?, response) in
 				result = value
@@ -248,9 +262,9 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 
 		let promise = apiResultExpectation()
 
-		api.updateCustomerPaymentSession(
+		api.updatePaymentSession(
 			paymentSessionId: paymentSessionId,
-			session: TestUpdatePaymentSessionRequest(),
+			session: TestCustomerUpdatePaymentSessionRequest(),
 			callback: isSuccessful(promise: promise)
 		)
 
