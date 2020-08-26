@@ -8,7 +8,7 @@ class TestCreatePaymentSessionRequest: CreatePaymentSessionRequest {
 		"somewhere"
 	}
 
-	func additionalInfo() -> DynamicPayload {
+	func merchantInfo() -> DynamicPayload {
 		TestCreatePaymentSessionRequestPayload()
 	}
 

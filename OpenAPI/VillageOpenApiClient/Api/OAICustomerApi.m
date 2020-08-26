@@ -62,6 +62,198 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 #pragma mark - Api Methods
 
 ///
+/// Update Payment Session
+/// Update the payment session details
+///  @param xWalletID  
+///
+///  @param paymentSessionId The ID of the specific payment session to retrieve 
+///
+///  @param updatePaymentSessionRequest  
+///
+///  @returns void
+///
+-(NSURLSessionTask*) customerUpdatePaymentSessionWithXWalletID: (NSString*) xWalletID
+    paymentSessionId: (NSString*) paymentSessionId
+    updatePaymentSessionRequest: (OAIUpdatePaymentSessionRequest*) updatePaymentSessionRequest
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter 'xWalletID' is set
+    if (xWalletID == nil) {
+        NSParameterAssert(xWalletID);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xWalletID"] };
+            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'paymentSessionId' is set
+    if (paymentSessionId == nil) {
+        NSParameterAssert(paymentSessionId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"paymentSessionId"] };
+            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'updatePaymentSessionRequest' is set
+    if (updatePaymentSessionRequest == nil) {
+        NSParameterAssert(updatePaymentSessionRequest);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"updatePaymentSessionRequest"] };
+            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/customer/payment/session/{paymentSessionId}"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (paymentSessionId != nil) {
+        pathParams[@"paymentSessionId"] = paymentSessionId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    if (xWalletID != nil) {
+        headerParams[@"X-Wallet-ID"] = xWalletID;
+    }
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"ApiKeyAuth", @"bearerAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = updatePaymentSessionRequest;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: nil
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler(error);
+                                }
+                            }];
+}
+
+///
+/// Delete a payment instrument
+/// Delete an existing payment instrument
+///  @param xWalletID  
+///
+///  @param paymentInstrumentId The ID of the specific instrument 
+///
+///  @param xEverdayPayWallet The payment instrument to be deleted is in the everyday pay wallet (optional, default to @(NO))
+///
+///  @returns void
+///
+-(NSURLSessionTask*) deletePaymentInstrumentWithXWalletID: (NSString*) xWalletID
+    paymentInstrumentId: (NSString*) paymentInstrumentId
+    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter 'xWalletID' is set
+    if (xWalletID == nil) {
+        NSParameterAssert(xWalletID);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xWalletID"] };
+            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'paymentInstrumentId' is set
+    if (paymentInstrumentId == nil) {
+        NSParameterAssert(paymentInstrumentId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"paymentInstrumentId"] };
+            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/customer/instruments/{paymentInstrumentId}"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (paymentInstrumentId != nil) {
+        pathParams[@"paymentInstrumentId"] = paymentInstrumentId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    if (xWalletID != nil) {
+        headerParams[@"X-Wallet-ID"] = xWalletID;
+    }
+    if (xEverdayPayWallet != nil) {
+        // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
+        headerParams[@"X-Everday-Pay-Wallet"] = [xEverdayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+    }
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"ApiKeyAuth", @"bearerAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"DELETE"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: nil
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler(error);
+                                }
+                            }];
+}
+
+///
 /// Get Payment Details
 /// Get the details for a specific payment request so that the customer can pay using it
 ///  @param xWalletID  
@@ -987,106 +1179,6 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
     bodyParam = customerPreferences;
-
-    return [self.apiClient requestWithPath: resourcePath
-                                    method: @"POST"
-                                pathParams: pathParams
-                               queryParams: queryParams
-                                formParams: formParams
-                                     files: localVarFiles
-                                      body: bodyParam
-                              headerParams: headerParams
-                              authSettings: authSettings
-                        requestContentType: requestContentType
-                       responseContentType: responseContentType
-                              responseType: nil
-                           completionBlock: ^(id data, NSError *error) {
-                                if(handler) {
-                                    handler(error);
-                                }
-                            }];
-}
-
-///
-/// Update Payment Session
-/// Update the payment session details
-///  @param xWalletID  
-///
-///  @param paymentSessionId The ID of the specific payment session to retrieve 
-///
-///  @param updatePaymentSessionRequest  
-///
-///  @returns void
-///
--(NSURLSessionTask*) updateCustomerPaymentSessionWithXWalletID: (NSString*) xWalletID
-    paymentSessionId: (NSString*) paymentSessionId
-    updatePaymentSessionRequest: (OAIUpdatePaymentSessionRequest*) updatePaymentSessionRequest
-    completionHandler: (void (^)(NSError* error)) handler {
-    // verify the required parameter 'xWalletID' is set
-    if (xWalletID == nil) {
-        NSParameterAssert(xWalletID);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xWalletID"] };
-            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'paymentSessionId' is set
-    if (paymentSessionId == nil) {
-        NSParameterAssert(paymentSessionId);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"paymentSessionId"] };
-            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'updatePaymentSessionRequest' is set
-    if (updatePaymentSessionRequest == nil) {
-        NSParameterAssert(updatePaymentSessionRequest);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"updatePaymentSessionRequest"] };
-            NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
-        }
-        return nil;
-    }
-
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/customer/payment/session/{paymentSessionId}"];
-
-    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (paymentSessionId != nil) {
-        pathParams[@"paymentSessionId"] = paymentSessionId;
-    }
-
-    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
-    [headerParams addEntriesFromDictionary:self.defaultHeaders];
-    if (xWalletID != nil) {
-        headerParams[@"X-Wallet-ID"] = xWalletID;
-    }
-    // HTTP header `Accept`
-    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[]];
-    if(acceptHeader.length > 0) {
-        headerParams[@"Accept"] = acceptHeader;
-    }
-
-    // response content type
-    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
-
-    // request content type
-    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
-
-    // Authentication setting
-    NSArray *authSettings = @[@"ApiKeyAuth", @"bearerAuth"];
-
-    id bodyParam = nil;
-    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = updatePaymentSessionRequest;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"

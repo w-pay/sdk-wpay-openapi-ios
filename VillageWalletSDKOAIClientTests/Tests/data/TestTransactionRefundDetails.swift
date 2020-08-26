@@ -9,6 +9,10 @@ func aNewTransactionRefund() -> TransactionRefundDetails {
 
 class TestTransactionRefundDetails: TransactionRefundDetails {
 	func reason() -> String {
-		""
+		"no reason"
+	}
+
+	func clientReference() -> String? {
+		nil
 	}
 }

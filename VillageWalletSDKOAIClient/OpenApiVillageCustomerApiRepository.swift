@@ -53,7 +53,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			})
 	}
 
-	public func retrievePaymentRequestDetailsByQRCode(
+	public func retrievePaymentRequestDetailsBy(
 		qrCodeId: String,
 		callback: @escaping ApiResult<CustomerPaymentRequest>
 	) {
@@ -71,7 +71,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 		})
 	}
 
-	public func retrievePaymentRequestDetailsById(
+	public func retrievePaymentRequestDetailsBy(
 		paymentRequestId: String,
 		callback: @escaping ApiResult<CustomerPaymentRequest>
 	) {
@@ -110,24 +110,50 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 		})
 	}
 
+	public func deletePaymentInstrument(
+		instrument: PaymentInstrumentIdentifier,
+		callback: @escaping ApiResult<Void>
+	) {
+		let api = createCustomerApi()
+
+		api.deletePaymentInstrument(
+			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			paymentInstrumentId: instrument.paymentInstrumentId(),
+			xEverdayPayWallet: (instrument.wallet() == Wallet.EVERYDAY_PAY) as NSNumber,
+			completionHandler: { error in
+				guard error == nil else {
+					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+				}
+
+				callback(nil, nil)
+			}
+		)
+	}
+
 	public func makePayment(
 		paymentRequestId: String,
-		instrument: PaymentInstrumentIdentifier,
+		primaryInstrument: PaymentInstrumentIdentifier,
+		secondaryInstruments: [SecondaryPaymentInstrument]?,
+		clientReference: String?,
+		challengeResponses: [ChallengeResponse]?,
 		callback: @escaping ApiResult<CustomerTransactionSummary>
 	) {
 		let api = createCustomerApi()
 
 		let body = OAICustomerPaymentDetails()
 		body.data = OAICustomerPaymentsPaymentRequestIdData()
-		body.data.primaryInstrumentId = instrument.paymentInstrumentId()
-		body.data.secondaryInstruments = []
-		body.meta = [:]
+		body.data.primaryInstrumentId = primaryInstrument.paymentInstrumentId()
+		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
+		body.data.clientReference = clientReference
+
+		body.meta = OAIMetaChallenge()
+		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
 
 		api.makeCustomerPayment(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentRequestId: paymentRequestId,
 			customerPaymentDetails: body,
-			xEverdayPayWallet: (instrument.wallet() == Wallet.EVERYDAY_PAY) as NSNumber,
+			xEverdayPayWallet: (primaryInstrument.wallet() == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { results, error in
 				guard error == nil else {
 					return callback(nil, self.extractHttpResponse(error: error! as NSError))
@@ -195,7 +221,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			})
 	}
 
-	public func retrieveCustomerPaymentSessionById(
+	public func retrievePaymentSessionBy(
 		paymentSessionId: String,
 		callback: @escaping ApiResult<PaymentSession>
 	) {
@@ -213,7 +239,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			})
 	}
 
-	public func retrieveCustomerPaymentSessionByQRCode(
+	public func retrievePaymentSessionBy(
 		qrCodeId: String,
 		callback: @escaping ApiResult<PaymentSession>
 	) {
@@ -231,18 +257,18 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 		})
 	}
 
-	public func updateCustomerPaymentSession(
+	public func updatePaymentSession(
 		paymentSessionId: String,
-		session: UpdatePaymentSessionRequest,
+		session: CustomerUpdatePaymentSessionRequest,
 		callback: @escaping ApiResult<Void>
 	) {
 		let api = createCustomerApi()
 
 		let body = OAIUpdatePaymentSessionRequest()
 		body.data = OAICustomerPaymentSessionPaymentSessionIdData()
-		body.data.additionalInfo = toDynamicPayload(payload: session.additionalInfo())
+		body.data.customerInfo = toDynamicPayload(payload: session.customerInfo())
 
-		api.updateCustomerPaymentSession(
+		api.customerUpdatePaymentSession(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentSessionId: paymentSessionId,
 			updatePaymentSessionRequest: body,
@@ -267,4 +293,27 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 				callback(OpenApiHealthCheck(check: results!.data), nil)
 		})
 	}
+}
+
+func toSecondaryInstrument(
+	instrument: SecondaryPaymentInstrument
+) -> OAICustomerPaymentsPaymentRequestIdDataSecondaryInstruments {
+	let oaiInstrument = OAICustomerPaymentsPaymentRequestIdDataSecondaryInstruments()
+	oaiInstrument.instrumentId = instrument.paymentInstrumentId()
+	oaiInstrument.amount = NSDecimalNumber(decimal: instrument.amount())
+
+	return oaiInstrument
+}
+
+func toChallengeResponse(
+	response: ChallengeResponse
+) -> OAIMetaChallengeChallengeResponses {
+	let cr = OAIMetaChallengeChallengeResponses()
+
+	cr.instrumentId = response.instrumentId()
+	cr.type = response.type().rawValue
+	cr.token = response.token()
+	cr.reference = response.reference()
+
+	return cr;
 }

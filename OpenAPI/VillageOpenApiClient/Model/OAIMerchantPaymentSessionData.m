@@ -20,7 +20,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"location": @"location", @"additionalInfo": @"additionalInfo", @"generateQR": @"generateQR", @"timeToLivePaymentSession": @"timeToLivePaymentSession", @"timeToLiveQR": @"timeToLiveQR" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"location": @"location", @"merchantInfo": @"merchantInfo", @"generateQR": @"generateQR", @"timeToLivePaymentSession": @"timeToLivePaymentSession", @"timeToLiveQR": @"timeToLiveQR", @"paymentRequestId": @"paymentRequestId" }];
 }
 
 /**
@@ -30,7 +30,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"generateQR", @"timeToLivePaymentSession", @"timeToLiveQR"];
+  NSArray *optionalProperties = @[@"generateQR", @"timeToLivePaymentSession", @"timeToLiveQR", @"paymentRequestId"];
   return [optionalProperties containsObject:propertyName];
 }
 

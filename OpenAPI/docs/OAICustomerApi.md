@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost:3000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**customerUpdatePaymentSession**](OAICustomerApi.md#customerupdatepaymentsession) | **POST** /customer/payment/session/{paymentSessionId} | Update Payment Session
+[**deletePaymentInstrument**](OAICustomerApi.md#deletepaymentinstrument) | **DELETE** /customer/instruments/{paymentInstrumentId} | Delete a payment instrument
 [**getCustomerPaymentDetailsByPaymentId**](OAICustomerApi.md#getcustomerpaymentdetailsbypaymentid) | **GET** /customer/payments/{paymentRequestId} | Get Payment Details
 [**getCustomerPaymentDetailsByQRCodeId**](OAICustomerApi.md#getcustomerpaymentdetailsbyqrcodeid) | **GET** /customer/qr/{qrId} | Get Payment From QR
 [**getCustomerPaymentInstruments**](OAICustomerApi.md#getcustomerpaymentinstruments) | **GET** /customer/instruments | Get Payment Instruments
@@ -15,8 +17,137 @@ Method | HTTP request | Description
 [**initiatePaymentInstrumentAddition**](OAICustomerApi.md#initiatepaymentinstrumentaddition) | **POST** /customer/instruments | Initiate Instrument Addition
 [**makeCustomerPayment**](OAICustomerApi.md#makecustomerpayment) | **PUT** /customer/payments/{paymentRequestId} | Pay Payment
 [**setCustomerPreferences**](OAICustomerApi.md#setcustomerpreferences) | **POST** /customer/preferences | Set Preferences
-[**updateCustomerPaymentSession**](OAICustomerApi.md#updatecustomerpaymentsession) | **POST** /customer/payment/session/{paymentSessionId} | Update Payment Session
 
+
+# **customerUpdatePaymentSession**
+```objc
+-(NSURLSessionTask*) customerUpdatePaymentSessionWithXWalletID: (NSString*) xWalletID
+    paymentSessionId: (NSString*) paymentSessionId
+    updatePaymentSessionRequest: (OAIUpdatePaymentSessionRequest*) updatePaymentSessionRequest
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Update Payment Session
+
+Update the payment session details
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+// Configure HTTP basic authorization (authentication scheme: bearerAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
+
+NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
+NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
+OAIUpdatePaymentSessionRequest* updatePaymentSessionRequest = [[OAIUpdatePaymentSessionRequest alloc] init]; // 
+
+OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
+
+// Update Payment Session
+[apiInstance customerUpdatePaymentSessionWithXWalletID:xWalletID
+              paymentSessionId:paymentSessionId
+              updatePaymentSessionRequest:updatePaymentSessionRequest
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAICustomerApi->customerUpdatePaymentSession: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xWalletID** | **NSString***|  | 
+ **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
+ **updatePaymentSessionRequest** | [**OAIUpdatePaymentSessionRequest***](OAIUpdatePaymentSessionRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deletePaymentInstrument**
+```objc
+-(NSURLSessionTask*) deletePaymentInstrumentWithXWalletID: (NSString*) xWalletID
+    paymentInstrumentId: (NSString*) paymentInstrumentId
+    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Delete a payment instrument
+
+Delete an existing payment instrument
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+// Configure HTTP basic authorization (authentication scheme: bearerAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
+
+NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
+NSString* paymentInstrumentId = @"paymentInstrumentId_example"; // The ID of the specific instrument
+NSNumber* xEverdayPayWallet = @(NO); // The payment instrument to be deleted is in the everyday pay wallet (optional) (default to @(NO))
+
+OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
+
+// Delete a payment instrument
+[apiInstance deletePaymentInstrumentWithXWalletID:xWalletID
+              paymentInstrumentId:paymentInstrumentId
+              xEverdayPayWallet:xEverdayPayWallet
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAICustomerApi->deletePaymentInstrument: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xWalletID** | **NSString***|  | 
+ **paymentInstrumentId** | **NSString***| The ID of the specific instrument | 
+ **xEverdayPayWallet** | **NSNumber***| The payment instrument to be deleted is in the everyday pay wallet | [optional] [default to @(NO)]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCustomerPaymentDetailsByPaymentId**
 ```objc
@@ -727,71 +858,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xWalletID** | **NSString***|  | 
  **customerPreferences** | [**OAICustomerPreferences***](OAICustomerPreferences.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateCustomerPaymentSession**
-```objc
--(NSURLSessionTask*) updateCustomerPaymentSessionWithXWalletID: (NSString*) xWalletID
-    paymentSessionId: (NSString*) paymentSessionId
-    updatePaymentSessionRequest: (OAIUpdatePaymentSessionRequest*) updatePaymentSessionRequest
-        completionHandler: (void (^)(NSError* error)) handler;
-```
-
-Update Payment Session
-
-Update the payment session details
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-// Configure HTTP basic authorization (authentication scheme: bearerAuth)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-
-
-NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
-NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
-OAIUpdatePaymentSessionRequest* updatePaymentSessionRequest = [[OAIUpdatePaymentSessionRequest alloc] init]; // 
-
-OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
-
-// Update Payment Session
-[apiInstance updateCustomerPaymentSessionWithXWalletID:xWalletID
-              paymentSessionId:paymentSessionId
-              updatePaymentSessionRequest:updatePaymentSessionRequest
-          completionHandler: ^(NSError* error) {
-                        if (error) {
-                            NSLog(@"Error calling OAICustomerApi->updateCustomerPaymentSession: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xWalletID** | **NSString***|  | 
- **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
- **updatePaymentSessionRequest** | [**OAIUpdatePaymentSessionRequest***](OAIUpdatePaymentSessionRequest.md)|  | 
 
 ### Return type
 

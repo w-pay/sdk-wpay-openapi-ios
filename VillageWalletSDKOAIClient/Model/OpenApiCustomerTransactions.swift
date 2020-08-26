@@ -63,6 +63,10 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	func grossAmount() -> Decimal {
 		summary.grossAmount.decimalValue
 	}
+
+	func clientReference() -> String? {
+		summary.clientReference
+	}
 }
 
 class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
@@ -122,5 +126,9 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 
 	func grossAmount() -> Decimal {
 		details.grossAmount.decimalValue
+	}
+
+	func clientReference() -> String? {
+		details.clientReference
 	}
 }

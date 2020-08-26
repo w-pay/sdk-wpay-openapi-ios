@@ -11,7 +11,8 @@ func hasPaymentSession() -> Matcher<PaymentSession> {
 		assertThat(item.walletId(), nilValue())
 		assertThat(item.expiryTime(), not(nilValue()))
 		assertThat(item.location(), not(blankOrNilString()))
-		assertThat(item.additionalInfo(), not(nilValue()))
+		assertThat(item.merchantInfo(), not(nilValue()))
+		assertThat(item.customerInfo(), nilValue())
 
 		return true
 	}

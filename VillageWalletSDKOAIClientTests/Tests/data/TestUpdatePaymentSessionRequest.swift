@@ -3,8 +3,18 @@ import VillageWalletSDK
 
 @testable import VillageWalletSDKOAIClient
 
-class TestUpdatePaymentSessionRequest: UpdatePaymentSessionRequest {
-	func additionalInfo() -> DynamicPayload {
+class TestCustomerUpdatePaymentSessionRequest: CustomerUpdatePaymentSessionRequest {
+	func customerInfo() -> DynamicPayload {
+		TestUpdatePaymentSessionRequestPayload()
+	}
+}
+
+class TestMerchantUpdatePaymentSessionRequest: MerchantUpdatePaymentSessionRequest {
+	func paymentRequestId() -> String? {
+		nil
+	}
+
+	func merchantInfo() -> DynamicPayload {
 		TestUpdatePaymentSessionRequestPayload()
 	}
 }
