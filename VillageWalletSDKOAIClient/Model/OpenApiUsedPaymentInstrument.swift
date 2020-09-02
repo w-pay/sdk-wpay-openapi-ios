@@ -8,15 +8,15 @@ class OpenApiUsedPaymentInstrument: CustomerTransactionUsedPaymentInstrument {
 		self.instrument = instrument
 	}
 
-	func paymentInstrumentId() -> String {
+	var paymentInstrumentId: String {
 		instrument.paymentInstrumentId
 	}
 
-	func amount() -> Decimal {
+	var amount: Decimal {
 		instrument.amount.decimalValue
 	}
 
-	func paymentTransactionRef() -> String? {
+	var paymentTransactionRef: String? {
 		instrument.paymentTransactionRef
 	}
 }

@@ -6,37 +6,37 @@ import VillageWalletSDK
 func aNewBasket() -> Basket { TestBasket() }
 
 class TestBasket: Basket {
-	func items() -> [BasketItem] {
+	var items: [BasketItem] {
 		[ TestBasketItem() ]
 	}
 }
 
 class TestBasketItem: BasketItem {
-	func label() -> String {
+	var label: String {
 		"Item 1"
 	}
 
-	func description() -> String? {
+	var description: String? {
 		"This is item 1"
 	}
 
-	func quantity() -> Int? {
+	var quantity: Int? {
 		Int(3)
 	}
 
-	func unitPrice() -> Decimal? {
+	var unitPrice: Decimal? {
 		Decimal(2.1)
 	}
 
-	func unitMeasure() -> String? {
+	var unitMeasure: String? {
 		"EACH"
 	}
 
-	func totalPrice() -> Decimal? {
+	var totalPrice: Decimal? {
 		Decimal(6.3)
 	}
 
-	func tags() -> [String: String] {
+	var tags: [String: String] {
 		[
 			"property1": "string",
 			"property2": "string"

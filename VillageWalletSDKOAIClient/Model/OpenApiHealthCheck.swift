@@ -8,7 +8,7 @@ class OpenApiHealthCheck: HealthCheck {
 		self.check = check
 	}
 
-	func result() -> HealthCheckStatus? {
+	var result: HealthCheckStatus? {
 		HealthCheckStatus.valueOf(value: check.healthCheck)
 	}
 }

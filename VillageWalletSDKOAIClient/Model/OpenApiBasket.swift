@@ -8,7 +8,7 @@ class OpenApiBasket: Basket {
 		self.basket = basket
 	}
 
-	func items() -> [BasketItem] {
+	var items: [BasketItem] {
 		self.basket.items.map({ item in OpenApiBasketItem(item: item as! OAIBasketItems) })
 	}
 }
@@ -20,31 +20,31 @@ class OpenApiBasketItem: BasketItem {
 		self.item = item
 	}
 
-	func label() -> String {
+	var label: String {
 		self.item.label
 	}
 
-	func description() -> String? {
+	var description: String? {
 		self.item.description
 	}
 
-	func quantity() -> Int? {
+	var quantity: Int? {
 		self.item.quantity.intValue
 	}
 
-	func unitPrice() -> Decimal? {
+	var unitPrice: Decimal? {
 		self.item.unitPrice.decimalValue
 	}
 
-	func unitMeasure() -> String? {
+	var unitMeasure: String? {
 		self.item.unitMeasure
 	}
 
-	func totalPrice() -> Decimal? {
+	var totalPrice: Decimal? {
 		self.item.totalPrice.decimalValue
 	}
 
-	func tags() -> [String: String] {
+	var tags: [String: String] {
 		self.item.tags
 	}
 }

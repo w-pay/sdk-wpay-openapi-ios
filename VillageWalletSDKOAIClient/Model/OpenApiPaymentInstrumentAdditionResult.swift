@@ -8,11 +8,11 @@ class OpenApiPaymentInstrumentAdditionResult: PaymentInstrumentAdditionResult {
 		self.result = result
 	}
 
-	func cardCaptureURL() -> String {
+	var cardCaptureURL: String {
 		result.cardCaptureURL
 	}
 
-	func transactionRef() -> String? {
+	var transactionRef: String? {
 		result.transactionRef
 	}
 }

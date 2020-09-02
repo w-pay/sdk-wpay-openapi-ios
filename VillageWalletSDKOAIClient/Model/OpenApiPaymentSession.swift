@@ -8,31 +8,31 @@ class OpenApiPaymentSession: PaymentSession {
 		self.session = session
 	}
 
-	func paymentSessionId() -> String {
+	var paymentSessionId: String {
 		session.paymentSessionId
 	}
 
-	func merchantId() -> String {
+	var merchantId: String {
 		session.merchantId
 	}
 
-	func walletId() -> String? {
+	var walletId: String? {
 		session.walletId
 	}
 
-	func expiryTime() -> Date {
+	var expiryTime: Date {
 		session.expiryTime
 	}
 
-	func location() -> String {
+	var location: String {
 		session.location
 	}
 
-	func merchantInfo() -> DynamicPayload {
+	var merchantInfo: DynamicPayload {
 		OpenApiDynamicPayload(payload: session.merchantInfo)
 	}
 
-	func customerInfo() -> DynamicPayload? {
+	var customerInfo: DynamicPayload? {
 		guard let info = session.customerInfo else {
 			return nil
 		}

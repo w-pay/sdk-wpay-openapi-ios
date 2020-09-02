@@ -6,19 +6,19 @@ import VillageWalletSDK
 func aNewSchema() -> MerchantSchema { TestMerchantSchema() }
 
 class TestMerchantSchema: MerchantSchema {
-	func schema() -> [String: AnyObject] {
+	var schema: [String: AnyObject] {
 		[:]
 	}
 
-	func type() -> String? {
+	var type: String? {
 		nil
 	}
 
-	func description() -> String? {
+	var description: String? {
 		nil
 	}
 
-	func created() -> Date? {
+	var created: Date? {
 		nil
 	}
 }

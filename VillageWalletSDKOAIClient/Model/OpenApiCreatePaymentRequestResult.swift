@@ -8,11 +8,11 @@ class OpenApiCreatePaymentRequestResult: CreatePaymentRequestResult {
 		self.result = result
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		result.paymentRequestId
 	}
 
-	func qr() -> QRCode? {
+	var qr: QRCode? {
 		guard let qr = result.qr else {
 			return nil
 		}

@@ -8,7 +8,7 @@ class OpenApiMerchantPaymentSummaries: MerchantPaymentSummaries {
 		self.thePayments = payments
 	}
 
-	func payments() -> [MerchantPaymentSummary] {
+	var payments: [MerchantPaymentSummary] {
 		thePayments.map { it in OpenApiMerchantPaymentSummary(payment: it) }
 	}
 }
@@ -20,27 +20,27 @@ class OpenApiMerchantPaymentSummary: MerchantPaymentSummary {
 		self.payment = payment
 	}
 
-	func usesRemaining() -> Int? {
+	var usesRemaining: Int? {
 		payment.usesRemaining as? Int
 	}
 
-	func expiryTime() -> Date? {
+	var expiryTime: Date? {
 		payment.expiryTime
 	}
 
-	func specificWalletId() -> String? {
+	var specificWalletId: String? {
 		payment.specificWalletId
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		payment.paymentRequestId
 	}
 
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		payment.merchantReferenceId
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		payment.grossAmount.decimalValue
 	}
 }
@@ -52,7 +52,7 @@ class OpenApiMerchantPaymentDetails: MerchantPaymentDetails {
 		self.details = details
 	}
 
-	func basket() -> Basket? {
+	var basket: Basket? {
 		guard let basket = details.basket else {
 			return nil
 		}
@@ -60,7 +60,7 @@ class OpenApiMerchantPaymentDetails: MerchantPaymentDetails {
 		return OpenApiBasket(basket: basket)
 	}
 
-	func posPayload() -> PosPayload? {
+	var posPayload: PosPayload? {
 		guard let payload = details.posPayload else {
 		  return nil
 		}
@@ -68,7 +68,7 @@ class OpenApiMerchantPaymentDetails: MerchantPaymentDetails {
 		return OpenApiPosPayload(thePayload: payload)
 	}
 
-	func merchantPayload() -> MerchantPayload? {
+	var merchantPayload: MerchantPayload? {
 		guard let payload = details.merchantPayload else {
 		  return nil
 		}
@@ -76,27 +76,27 @@ class OpenApiMerchantPaymentDetails: MerchantPaymentDetails {
 		return OpenApiMerchantPayload(aPayload: payload)
 	}
 
-	func usesRemaining() -> Int? {
+	var usesRemaining: Int? {
 		details.usesRemaining as? Int
 	}
 
-	func expiryTime() -> Date? {
+	var expiryTime: Date? {
 		details.expiryTime
 	}
 
-	func specificWalletId() -> String? {
+	var specificWalletId: String? {
 		details.specificWalletId
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		details.paymentRequestId
 	}
 
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		details.merchantReferenceId
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		details.grossAmount.decimalValue
 	}
 }

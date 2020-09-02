@@ -8,11 +8,11 @@ func aNewTransactionRefund() -> TransactionRefundDetails {
 }
 
 class TestTransactionRefundDetails: TransactionRefundDetails {
-	func reason() -> String {
+	var reason: String {
 		"no reason"
 	}
 
-	func clientReference() -> String? {
+	var clientReference: String? {
 		nil
 	}
 }

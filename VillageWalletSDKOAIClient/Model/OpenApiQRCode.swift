@@ -8,27 +8,27 @@ class OpenApiQRCode: QRCode {
 		self.code = code
 	}
 
-	func qrId() -> String {
+	var qrId: String {
 		code.qrId
 	}
 
-	func referenceId() -> String {
+	var referenceId: String {
 		code.referenceId
 	}
 
-	func referenceType() -> QRCodePaymentReferenceType? {
+	var referenceType: QRCodePaymentReferenceType? {
 		QRCodePaymentReferenceType.valueOf(value: code.referenceType)
 	}
 
-	func content() -> String {
+	var content: String {
 		code.content
 	}
 
-	func image() -> String {
+	var image: String {
 		code.image
 	}
 
-	func expiryTime() -> Date? {
+	var expiryTime: Date? {
 		code.expiryTime
 	}
 }

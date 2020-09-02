@@ -6,6 +6,6 @@ import VillageWalletSDK
 
 func isHealthyService() -> Matcher<HealthCheck> {
 	Matcher("A healthy service") { (item) -> Bool in
-		item.result() == HealthCheckStatus.SUCCESS
+		item.result == HealthCheckStatus.SUCCESS
 	}
 }

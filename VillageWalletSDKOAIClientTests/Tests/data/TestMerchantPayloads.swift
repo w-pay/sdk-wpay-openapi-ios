@@ -12,21 +12,21 @@ func aNewMerchantPayload() -> MerchantPayload {
 }
 
 class TestPosPayload: PosPayload {
-	func schemaId() -> String? {
+	var schemaId: String? {
 		"abc123"
 	}
 
-	func payload() -> [String: AnyObject] {
+	var payload: [String: AnyObject] {
 		[:]
 	}
 }
 
 class TestMerchantPayload: MerchantPayload {
-	func schemaId() -> String? {
+	var schemaId: String? {
 		"abc123"
 	}
 
-	func payload() -> [String: AnyObject] {
+	var payload: [String: AnyObject] {
 		[:]
 	}
 }

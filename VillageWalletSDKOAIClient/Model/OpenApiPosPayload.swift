@@ -8,11 +8,11 @@ class OpenApiPosPayload: PosPayload {
 		self.thePayload = thePayload
 	}
 
-	func schemaId() -> String? {
+	var schemaId: String? {
 		thePayload.schemaId
 	}
 
-	func payload() -> [String: AnyObject] {
+	var payload: [String: AnyObject] {
 		thePayload.payload
 	}
 }

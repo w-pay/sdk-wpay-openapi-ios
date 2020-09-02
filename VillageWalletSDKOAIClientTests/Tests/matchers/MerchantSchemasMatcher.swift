@@ -7,7 +7,7 @@ import VillageWalletSDK
 func isMerchantSchemaSummaries() -> Matcher<MerchantSchemaSummaries> {
 	Matcher("A list of schemas") { (item) -> Bool in
 		let schemaMatcher = isMerchantSchemaSummary()
-		let schemas = item.schemas()
+		let schemas = item.schemas
 
 		assertThat(schemas.count, greaterThan(0))
 
@@ -17,9 +17,9 @@ func isMerchantSchemaSummaries() -> Matcher<MerchantSchemaSummaries> {
 
 func isMerchantSchemaSummary() -> Matcher<MerchantSchemaSummary> {
 	Matcher("Merchant Schema Summary") { (item) -> Bool in
-		assertThat(item.schemaId(), not(blankOrNilString()))
-		assertThat(item.type(), not(blankOrNilString()))
-		assertThat(item.description(), not(blankOrNilString()))
+		assertThat(item.schemaId, not(blankOrNilString()))
+		assertThat(item.type, not(blankOrNilString()))
+		assertThat(item.description, not(blankOrNilString()))
 
 		return true
 	}
@@ -27,10 +27,10 @@ func isMerchantSchemaSummary() -> Matcher<MerchantSchemaSummary> {
 
 func isMerchantSchema() -> Matcher<MerchantSchema> {
 	Matcher("A Merchant Schema Summary") { (item) -> Bool in
-		assertThat(item.schema(), not(nilValue()))
-		assertThat(item.type(), not(blankOrNilString()))
-		assertThat(item.description(), not(blankOrNilString()))
-		assertThat(item.created(), not(nilValue()))
+		assertThat(item.schema, not(nilValue()))
+		assertThat(item.type, not(blankOrNilString()))
+		assertThat(item.description, not(blankOrNilString()))
+		assertThat(item.created, not(nilValue()))
 
 		return true
 	}

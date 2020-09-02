@@ -8,7 +8,7 @@ class OpenApiMerchantTransactionSummaries: MerchantTransactionSummaries {
 		self.theTransactions = transactions
 	}
 
-	func transactions() -> [MerchantTransactionSummary] {
+	var transactions: [MerchantTransactionSummary] {
 		theTransactions.map { it in OpenApiMerchantTransactionSummary(summary: it) }
 	}
 }
@@ -20,47 +20,47 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 		self.summary = summary
 	}
 
-	func walletId() -> String {
+	var walletId: String {
 		summary.walletId
 	}
 
-	func transactionId() -> String {
+	var transactionId: String {
 		summary.transactionId
 	}
 
-	func type() -> TransactionSummaryPaymentType? {
+	var type: TransactionSummaryPaymentType? {
 		TransactionSummaryPaymentType.valueOf(value: summary.type)
 	}
 
-	func executionTime() -> Date {
+	var executionTime: Date {
 		summary.executionTime
 	}
 
-	func status() -> TransactionSummaryPaymentStatus? {
+	var status: TransactionSummaryPaymentStatus? {
 		TransactionSummaryPaymentStatus.valueOf(value: summary.status)
 	}
 
-	func statusDetail() -> AnyObject? {
+	var statusDetail: AnyObject? {
 		nil
 	}
 
-	func refundReason() -> String? {
+	var refundReason: String? {
 		summary.refundReason
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		summary.paymentRequestId
 	}
 
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		summary.merchantReferenceId
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		summary.grossAmount.decimalValue
 	}
 
-	func clientReference() -> String? {
+	var clientReference: String? {
 		summary.clientReference
 	}
 }
@@ -72,7 +72,7 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 		self.details = details
 	}
 
-	func basket() -> Basket? {
+	var basket: Basket? {
 		guard let basket = details.basket else {
 			return nil
 		}
@@ -80,7 +80,7 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 		return OpenApiBasket(basket: basket)
 	}
 
-	func posPayload() -> PosPayload? {
+	var posPayload: PosPayload? {
 		guard let payload = details.posPayload else {
 			return nil
 		}
@@ -88,7 +88,7 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 		return OpenApiPosPayload(thePayload: payload)
 	}
 
-	func merchantPayload() -> MerchantPayload? {
+	var merchantPayload: MerchantPayload? {
 		guard let payload = details.merchantPayload else {
 			return nil
 		}
@@ -96,47 +96,47 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 		return OpenApiMerchantPayload(aPayload: payload)
 	}
 
-	func walletId() -> String {
+	var walletId: String {
 		details.walletId
 	}
 
-	func transactionId() -> String {
+	var transactionId: String {
 		details.transactionId
 	}
 
-	func type() -> TransactionSummaryPaymentType? {
+	var type: TransactionSummaryPaymentType? {
 		TransactionSummaryPaymentType.valueOf(value: details.type)
 	}
 
-	func executionTime() -> Date {
+	var executionTime: Date {
 		details.executionTime
 	}
 
-	func status() -> TransactionSummaryPaymentStatus? {
+	var status: TransactionSummaryPaymentStatus? {
 		TransactionSummaryPaymentStatus.valueOf(value: details.status)
 	}
 
-	func statusDetail() -> AnyObject? {
+	var statusDetail: AnyObject? {
 		nil
 	}
 
-	func refundReason() -> String? {
+	var refundReason: String? {
 		details.refundReason
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		details.paymentRequestId
 	}
 
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		details.merchantReferenceId
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		details.grossAmount.decimalValue
 	}
 
-	func clientReference() -> String? {
+	var clientReference: String? {
 		details.clientReference
 	}
 }
