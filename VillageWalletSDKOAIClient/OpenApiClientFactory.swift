@@ -59,10 +59,10 @@ public class OpenApiClientFactory: Configurable {
 			let info = (error as NSError).userInfo
 			let data = info["com.alamofire.serialization.response.error.response"] as? HTTPURLResponse
 
-			if data != nil {
-				var reason: ApiError.HTTPErrorReason?
+			if let response = data {
+				let reason: ApiError.HTTPErrorReason
 
-				switch data?.statusCode {
+				switch response.statusCode {
 					case 400:
 						reason = .invalidInput
 						break
@@ -79,7 +79,7 @@ public class OpenApiClientFactory: Configurable {
 						reason = .serverError
 				}
 
-				throw ApiError.httpError(reason: reason!, response: data!)
+				throw ApiError.httpError(reason: reason, response: response)
 			}
 		}
 	}
