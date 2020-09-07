@@ -65,15 +65,12 @@ public class OpenApiClientFactory: Configurable {
 				switch response.statusCode {
 					case 400:
 						reason = .invalidInput
-						break
 
 					case 401:
 						reason = .unauthorised
-						break
 
 					case 422:
 						reason = .processingError
-						break
 
 					default:
 						reason = .serverError
