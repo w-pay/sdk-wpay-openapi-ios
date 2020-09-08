@@ -5,17 +5,19 @@ All URIs are relative to *http://localhost:3000*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**customerUpdatePaymentSession**](OAICustomerApi.md#customerupdatepaymentsession) | **POST** /customer/payment/session/{paymentSessionId} | Update Payment Session
+[**deleteCustomerPaymentSession**](OAICustomerApi.md#deletecustomerpaymentsession) | **DELETE** /customer/payment/session/{paymentSessionId} | Delete Payment Session
 [**deletePaymentInstrument**](OAICustomerApi.md#deletepaymentinstrument) | **DELETE** /customer/instruments/{paymentInstrumentId} | Delete a payment instrument
-[**getCustomerPaymentDetailsByPaymentId**](OAICustomerApi.md#getcustomerpaymentdetailsbypaymentid) | **GET** /customer/payments/{paymentRequestId} | Get Payment Details
-[**getCustomerPaymentDetailsByQRCodeId**](OAICustomerApi.md#getcustomerpaymentdetailsbyqrcodeid) | **GET** /customer/qr/{qrId} | Get Payment From QR
 [**getCustomerPaymentInstruments**](OAICustomerApi.md#getcustomerpaymentinstruments) | **GET** /customer/instruments | Get Payment Instruments
+[**getCustomerPaymentRequestDetailsByPaymentId**](OAICustomerApi.md#getcustomerpaymentrequestdetailsbypaymentid) | **GET** /customer/payments/{paymentRequestId} | Get Payment Request details
+[**getCustomerPaymentRequestDetailsByQRCodeId**](OAICustomerApi.md#getcustomerpaymentrequestdetailsbyqrcodeid) | **GET** /customer/qr/{qrId} | Get Payment Request details from a QR code
 [**getCustomerPaymentSession**](OAICustomerApi.md#getcustomerpaymentsession) | **GET** /customer/payment/session/{paymentSessionId} | Get Payment Session
-[**getCustomerPaymentSessionByQr**](OAICustomerApi.md#getcustomerpaymentsessionbyqr) | **GET** /customer/payment/session/qr/{qrId} | Get Payment Session
+[**getCustomerPaymentSessionByQRCodeId**](OAICustomerApi.md#getcustomerpaymentsessionbyqrcodeid) | **GET** /customer/payment/session/qr/{qrId} | Get Payment Session
 [**getCustomerPreferences**](OAICustomerApi.md#getcustomerpreferences) | **GET** /customer/preferences | Get Preferences
 [**getCustomerTransactionDetails**](OAICustomerApi.md#getcustomertransactiondetails) | **GET** /customer/transactions/{transactionId} | Get Transaction Details
 [**getCustomerTransactions**](OAICustomerApi.md#getcustomertransactions) | **GET** /customer/transactions | Get Transaction List
 [**initiatePaymentInstrumentAddition**](OAICustomerApi.md#initiatepaymentinstrumentaddition) | **POST** /customer/instruments | Initiate Instrument Addition
 [**makeCustomerPayment**](OAICustomerApi.md#makecustomerpayment) | **PUT** /customer/payments/{paymentRequestId} | Pay Payment
+[**preApprovePaymentSession**](OAICustomerApi.md#preapprovepaymentsession) | **PUT** /customer/payment/session/{paymentSessionId} | Pre-Approve payment
 [**setCustomerPreferences**](OAICustomerApi.md#setcustomerpreferences) | **POST** /customer/preferences | Set Preferences
 
 
@@ -84,6 +86,64 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteCustomerPaymentSession**
+```objc
+-(NSURLSessionTask*) deleteCustomerPaymentSessionWithXWalletID: (NSString*) xWalletID
+    paymentSessionId: (NSString*) paymentSessionId
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Delete Payment Session
+
+Deletes a payment session by setting its expiration date/time to now
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
+NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to delete
+
+OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
+
+// Delete Payment Session
+[apiInstance deleteCustomerPaymentSessionWithXWalletID:xWalletID
+              paymentSessionId:paymentSessionId
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAICustomerApi->deleteCustomerPaymentSession: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xWalletID** | **NSString***|  | 
+ **paymentSessionId** | **NSString***| The ID of the specific payment session to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deletePaymentInstrument**
 ```objc
 -(NSURLSessionTask*) deletePaymentInstrumentWithXWalletID: (NSString*) xWalletID
@@ -149,134 +209,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getCustomerPaymentDetailsByPaymentId**
-```objc
--(NSURLSessionTask*) getCustomerPaymentDetailsByPaymentIdWithXWalletID: (NSString*) xWalletID
-    paymentRequestId: (NSString*) paymentRequestId
-        completionHandler: (void (^)(OAIGetCustomerPaymentResult* output, NSError* error)) handler;
-```
-
-Get Payment Details
-
-Get the details for a specific payment request so that the customer can pay using it
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-// Configure HTTP basic authorization (authentication scheme: bearerAuth)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-
-
-NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
-NSString* paymentRequestId = @"paymentRequestId_example"; // The ID of the specific payment request
-
-OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
-
-// Get Payment Details
-[apiInstance getCustomerPaymentDetailsByPaymentIdWithXWalletID:xWalletID
-              paymentRequestId:paymentRequestId
-          completionHandler: ^(OAIGetCustomerPaymentResult* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling OAICustomerApi->getCustomerPaymentDetailsByPaymentId: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xWalletID** | **NSString***|  | 
- **paymentRequestId** | **NSString***| The ID of the specific payment request | 
-
-### Return type
-
-[**OAIGetCustomerPaymentResult***](OAIGetCustomerPaymentResult.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getCustomerPaymentDetailsByQRCodeId**
-```objc
--(NSURLSessionTask*) getCustomerPaymentDetailsByQRCodeIdWithXWalletID: (NSString*) xWalletID
-    qrId: (NSString*) qrId
-        completionHandler: (void (^)(OAIGetCustomerPaymentResult* output, NSError* error)) handler;
-```
-
-Get Payment From QR
-
-Get the details for a specific payment from a QR Code ID so that the customer can pay using it
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-// Configure HTTP basic authorization (authentication scheme: bearerAuth)
-[apiConfig setUsername:@"YOUR_USERNAME"];
-[apiConfig setPassword:@"YOUR_PASSWORD"];
-
-
-NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
-NSString* qrId = @"qrId_example"; // The ID of the specific QR Code
-
-OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
-
-// Get Payment From QR
-[apiInstance getCustomerPaymentDetailsByQRCodeIdWithXWalletID:xWalletID
-              qrId:qrId
-          completionHandler: ^(OAIGetCustomerPaymentResult* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling OAICustomerApi->getCustomerPaymentDetailsByQRCodeId: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xWalletID** | **NSString***|  | 
- **qrId** | **NSString***| The ID of the specific QR Code | 
-
-### Return type
-
-[**OAIGetCustomerPaymentResult***](OAIGetCustomerPaymentResult.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getCustomerPaymentInstruments**
 ```objc
 -(NSURLSessionTask*) getCustomerPaymentInstrumentsWithXWalletID: (NSString*) xWalletID
@@ -329,6 +261,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OAIGetCustomerPaymentInstrumentsResults***](OAIGetCustomerPaymentInstrumentsResults.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCustomerPaymentRequestDetailsByPaymentId**
+```objc
+-(NSURLSessionTask*) getCustomerPaymentRequestDetailsByPaymentIdWithXWalletID: (NSString*) xWalletID
+    paymentRequestId: (NSString*) paymentRequestId
+        completionHandler: (void (^)(OAIGetCustomerPaymentRequestResult* output, NSError* error)) handler;
+```
+
+Get Payment Request details
+
+Get the details for a specific payment request so that the customer can pay using it
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+// Configure HTTP basic authorization (authentication scheme: bearerAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
+
+NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
+NSString* paymentRequestId = @"paymentRequestId_example"; // The ID of the specific payment request
+
+OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
+
+// Get Payment Request details
+[apiInstance getCustomerPaymentRequestDetailsByPaymentIdWithXWalletID:xWalletID
+              paymentRequestId:paymentRequestId
+          completionHandler: ^(OAIGetCustomerPaymentRequestResult* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAICustomerApi->getCustomerPaymentRequestDetailsByPaymentId: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xWalletID** | **NSString***|  | 
+ **paymentRequestId** | **NSString***| The ID of the specific payment request | 
+
+### Return type
+
+[**OAIGetCustomerPaymentRequestResult***](OAIGetCustomerPaymentRequestResult.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCustomerPaymentRequestDetailsByQRCodeId**
+```objc
+-(NSURLSessionTask*) getCustomerPaymentRequestDetailsByQRCodeIdWithXWalletID: (NSString*) xWalletID
+    qrId: (NSString*) qrId
+        completionHandler: (void (^)(OAIGetCustomerPaymentRequestResult* output, NSError* error)) handler;
+```
+
+Get Payment Request details from a QR code
+
+Get the details for a specific payment from a QR Code ID so that the customer can pay using it
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+// Configure HTTP basic authorization (authentication scheme: bearerAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
+
+NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
+NSString* qrId = @"qrId_example"; // The ID of the specific QR Code
+
+OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
+
+// Get Payment Request details from a QR code
+[apiInstance getCustomerPaymentRequestDetailsByQRCodeIdWithXWalletID:xWalletID
+              qrId:qrId
+          completionHandler: ^(OAIGetCustomerPaymentRequestResult* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAICustomerApi->getCustomerPaymentRequestDetailsByQRCodeId: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xWalletID** | **NSString***|  | 
+ **qrId** | **NSString***| The ID of the specific QR Code | 
+
+### Return type
+
+[**OAIGetCustomerPaymentRequestResult***](OAIGetCustomerPaymentRequestResult.md)
 
 ### Authorization
 
@@ -405,9 +465,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getCustomerPaymentSessionByQr**
+# **getCustomerPaymentSessionByQRCodeId**
 ```objc
--(NSURLSessionTask*) getCustomerPaymentSessionByQrWithXWalletID: (NSString*) xWalletID
+-(NSURLSessionTask*) getCustomerPaymentSessionByQRCodeIdWithXWalletID: (NSString*) xWalletID
     qrId: (NSString*) qrId
         completionHandler: (void (^)(OAICustomerPaymentSessionResult* output, NSError* error)) handler;
 ```
@@ -435,14 +495,14 @@ NSString* qrId = @"qrId_example"; // The ID of the qr relating to the payment se
 OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 
 // Get Payment Session
-[apiInstance getCustomerPaymentSessionByQrWithXWalletID:xWalletID
+[apiInstance getCustomerPaymentSessionByQRCodeIdWithXWalletID:xWalletID
               qrId:qrId
           completionHandler: ^(OAICustomerPaymentSessionResult* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
                         if (error) {
-                            NSLog(@"Error calling OAICustomerApi->getCustomerPaymentSessionByQr: %@", error);
+                            NSLog(@"Error calling OAICustomerApi->getCustomerPaymentSessionByQRCodeId: %@", error);
                         }
                     }];
 ```
@@ -810,6 +870,75 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **preApprovePaymentSession**
+```objc
+-(NSURLSessionTask*) preApprovePaymentSessionWithXWalletID: (NSString*) xWalletID
+    paymentSessionId: (NSString*) paymentSessionId
+    customerPaymentDetails1: (OAICustomerPaymentDetails1*) customerPaymentDetails1
+    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Pre-Approve payment
+
+Pre-Approve a payment session to make a payment using the instrument details provided
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+// Configure HTTP basic authorization (authentication scheme: bearerAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
+
+NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
+NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session
+OAICustomerPaymentDetails1* customerPaymentDetails1 = [[OAICustomerPaymentDetails1 alloc] init]; // 
+NSNumber* xEverdayPayWallet = @(NO); // The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
+
+OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
+
+// Pre-Approve payment
+[apiInstance preApprovePaymentSessionWithXWalletID:xWalletID
+              paymentSessionId:paymentSessionId
+              customerPaymentDetails1:customerPaymentDetails1
+              xEverdayPayWallet:xEverdayPayWallet
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAICustomerApi->preApprovePaymentSession: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xWalletID** | **NSString***|  | 
+ **paymentSessionId** | **NSString***| The ID of the specific payment session | 
+ **customerPaymentDetails1** | [**OAICustomerPaymentDetails1***](OAICustomerPaymentDetails1.md)|  | 
+ **xEverdayPayWallet** | **NSNumber***| The makes instruments available in the everyday pay wallet available for payments | [optional] [default to @(NO)]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

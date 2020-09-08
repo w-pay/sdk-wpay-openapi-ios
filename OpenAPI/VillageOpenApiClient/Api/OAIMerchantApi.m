@@ -3,7 +3,7 @@
 #import "OAIApiClient.h"
 #import "OAICreateMerchantPaymentSessionResponse.h"
 #import "OAICreateMerchantSchemaResults.h"
-#import "OAICreatePaymentQRCodeResults.h"
+#import "OAICreatePaymentRequestQRCodeResults.h"
 #import "OAICreatePaymentRequestResults.h"
 #import "OAICreatePaymentSessionRequest.h"
 #import "OAICustomerPaymentSessionResult.h"
@@ -78,7 +78,7 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) cancelPaymentQRCodeWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) cancelPaymentRequestQRCodeWithXMerchantID: (NSString*) xMerchantID
     qrId: (NSString*) qrId
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'xMerchantID' is set
@@ -238,89 +238,6 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Create QR Code
-/// Create a new QR code for an existing payment
-///  @param xMerchantID  
-///
-///  @param paymentQRCodeDetails  
-///
-///  @returns OAICreatePaymentQRCodeResults*
-///
--(NSURLSessionTask*) createPaymentQRCodeWithXMerchantID: (NSString*) xMerchantID
-    paymentQRCodeDetails: (OAIPaymentQRCodeDetails*) paymentQRCodeDetails
-    completionHandler: (void (^)(OAICreatePaymentQRCodeResults* output, NSError* error)) handler {
-    // verify the required parameter 'xMerchantID' is set
-    if (xMerchantID == nil) {
-        NSParameterAssert(xMerchantID);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xMerchantID"] };
-            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'paymentQRCodeDetails' is set
-    if (paymentQRCodeDetails == nil) {
-        NSParameterAssert(paymentQRCodeDetails);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"paymentQRCodeDetails"] };
-            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/merchant/qr"];
-
-    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-
-    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
-    [headerParams addEntriesFromDictionary:self.defaultHeaders];
-    if (xMerchantID != nil) {
-        headerParams[@"X-Merchant-ID"] = xMerchantID;
-    }
-    // HTTP header `Accept`
-    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
-    if(acceptHeader.length > 0) {
-        headerParams[@"Accept"] = acceptHeader;
-    }
-
-    // response content type
-    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
-
-    // request content type
-    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
-
-    // Authentication setting
-    NSArray *authSettings = @[@"ApiKeyAuth"];
-
-    id bodyParam = nil;
-    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = paymentQRCodeDetails;
-
-    return [self.apiClient requestWithPath: resourcePath
-                                    method: @"POST"
-                                pathParams: pathParams
-                               queryParams: queryParams
-                                formParams: formParams
-                                     files: localVarFiles
-                                      body: bodyParam
-                              headerParams: headerParams
-                              authSettings: authSettings
-                        requestContentType: requestContentType
-                       responseContentType: responseContentType
-                              responseType: @"OAICreatePaymentQRCodeResults*"
-                           completionBlock: ^(id data, NSError *error) {
-                                if(handler) {
-                                    handler((OAICreatePaymentQRCodeResults*)data, error);
-                                }
-                            }];
-}
-
-///
 /// Create Payment
 /// Create a new payment request that can then be presented to a customer for payment
 ///  @param xMerchantID  
@@ -399,6 +316,89 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((OAICreatePaymentRequestResults*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Create QR Code for a payment request
+/// Create a new QR code for an existing payment request
+///  @param xMerchantID  
+///
+///  @param paymentQRCodeDetails  
+///
+///  @returns OAICreatePaymentRequestQRCodeResults*
+///
+-(NSURLSessionTask*) createPaymentRequestQRCodeWithXMerchantID: (NSString*) xMerchantID
+    paymentQRCodeDetails: (OAIPaymentQRCodeDetails*) paymentQRCodeDetails
+    completionHandler: (void (^)(OAICreatePaymentRequestQRCodeResults* output, NSError* error)) handler {
+    // verify the required parameter 'xMerchantID' is set
+    if (xMerchantID == nil) {
+        NSParameterAssert(xMerchantID);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xMerchantID"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'paymentQRCodeDetails' is set
+    if (paymentQRCodeDetails == nil) {
+        NSParameterAssert(paymentQRCodeDetails);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"paymentQRCodeDetails"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/merchant/qr"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    if (xMerchantID != nil) {
+        headerParams[@"X-Merchant-ID"] = xMerchantID;
+    }
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"ApiKeyAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = paymentQRCodeDetails;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAICreatePaymentRequestQRCodeResults*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAICreatePaymentRequestQRCodeResults*)data, error);
                                 }
                             }];
 }
@@ -487,7 +487,7 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 }
 
 ///
-/// Delete Payment
+/// Delete Payment Request
 /// Cancel an existing payment by setting the expiration date/time to now and setting the remaining uses to 0.  Will only be successful if the payment is still pending.  Completed payments need to be refunded using the dedicated API for that purpose
 ///  @param xMerchantID  
 ///
@@ -495,7 +495,7 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) deleteMerchantPaymentWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) deleteMerchantPaymentRequestWithXMerchantID: (NSString*) xMerchantID
     paymentRequestId: (NSString*) paymentRequestId
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'xMerchantID' is set
@@ -1232,11 +1232,11 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 ///
 ///  @param qrId The ID of the specific QR Code 
 ///
-///  @returns OAICreatePaymentQRCodeResults*
+///  @returns OAICreatePaymentRequestQRCodeResults*
 ///
--(NSURLSessionTask*) getPaymentQRCodeContentWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getPaymentRequestQRCodeContentWithXMerchantID: (NSString*) xMerchantID
     qrId: (NSString*) qrId
-    completionHandler: (void (^)(OAICreatePaymentQRCodeResults* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAICreatePaymentRequestQRCodeResults* output, NSError* error)) handler {
     // verify the required parameter 'xMerchantID' is set
     if (xMerchantID == nil) {
         NSParameterAssert(xMerchantID);
@@ -1302,10 +1302,10 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAICreatePaymentQRCodeResults*"
+                              responseType: @"OAICreatePaymentRequestQRCodeResults*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAICreatePaymentQRCodeResults*)data, error);
+                                    handler((OAICreatePaymentRequestQRCodeResults*)data, error);
                                 }
                             }];
 }

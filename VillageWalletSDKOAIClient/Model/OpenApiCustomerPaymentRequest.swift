@@ -2,9 +2,9 @@ import UIKit
 import VillageWalletSDK
 
 class OpenApiCustomerPaymentRequest: CustomerPaymentRequest {
-	private let customerPaymentDetails: OAICustomerPaymentDetail
+	private let customerPaymentDetails: OAICustomerPaymentRequestDetails
 
-	init(customerPaymentDetails: OAICustomerPaymentDetail) {
+	init(customerPaymentDetails: OAICustomerPaymentRequestDetails) {
 		self.customerPaymentDetails = customerPaymentDetails
 	}
 

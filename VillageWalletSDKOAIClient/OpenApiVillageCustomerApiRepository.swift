@@ -59,7 +59,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	) {
 		let api = createCustomerApi()
 
-		api.getCustomerPaymentDetailsByQRCodeId(
+		api.getCustomerPaymentRequestDetailsByQRCodeId(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			qrId: qrCodeId,
 			completionHandler: { results, error in
@@ -79,7 +79,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	) {
 		let api = createCustomerApi()
 
-		api.getCustomerPaymentDetailsByPaymentId(
+		api.getCustomerPaymentRequestDetailsByPaymentId(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentRequestId: paymentRequestId,
 			completionHandler: { results, error in
@@ -255,7 +255,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	) {
 		let api = createCustomerApi()
 
-		api.getCustomerPaymentSessionByQr(
+		api.getCustomerPaymentSessionByQRCodeId(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			qrId: qrCodeId,
 			completionHandler: { results, error in

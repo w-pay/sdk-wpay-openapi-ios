@@ -46,9 +46,9 @@ class OpenApiMerchantPaymentSummary: MerchantPaymentSummary {
 }
 
 class OpenApiMerchantPaymentDetails: MerchantPaymentDetails {
-	private let details: OAIMerchantPaymentDetail
+	private let details: OAIMerchantPaymentDetails
 
-	init(details: OAIMerchantPaymentDetail) {
+	init(details: OAIMerchantPaymentDetails) {
 		self.details = details
 	}
 
