@@ -8,15 +8,15 @@ func aNewPaymentRequestQRCode() -> NewPaymentRequestQRCode {
 }
 
 class TestNewPaymentRequestQRCode: NewPaymentRequestQRCode {
-	func referenceId() -> String {
+	var referenceId: String {
 		"abc123def"
 	}
 
-	func referenceType() -> QRCodePaymentReferenceType {
+	var referenceType: QRCodePaymentReferenceType {
 		QRCodePaymentReferenceType.PAYMENT_SESSION
 	}
 
-	func timeToLive() -> Int {
+	var timeToLive: Int {
 		0
 	}
 }

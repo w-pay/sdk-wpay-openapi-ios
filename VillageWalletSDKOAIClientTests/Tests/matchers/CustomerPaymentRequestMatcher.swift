@@ -7,8 +7,8 @@ import VillageWalletSDK
 
 func isCustomerPaymentRequest() -> Matcher<CustomerPaymentRequest> {
 	Matcher("A customer payment request") { (item) -> Bool in
-		assertThat(item.merchantId(), not(blankOrNilString()))
-		assertThat(item.basket()!, isBasket())
+		assertThat(item.merchantId, not(blankOrNilString()))
+		assertThat(item.basket!, isBasket())
 
 		return true
 	}

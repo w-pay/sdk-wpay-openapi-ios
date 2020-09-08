@@ -3,28 +3,28 @@ import VillageWalletSDK
 
 @testable import VillageWalletSDKOAIClient
 
-func aNewCustomerPaymentRequest() -> CustomerPaymentRequest {
+var aNewCustomerPaymentRequest: CustomerPaymentRequest {
 	TestCustomerPaymentRequest()
 }
 
 class TestCustomerPaymentRequest: CustomerPaymentRequest {
-	func merchantId() -> String {
+	var merchantId: String {
 		"abc123"
 	}
 
-	func basket() -> Basket? {
+	var basket: Basket? {
 		aNewBasket()
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		"def456"
 	}
 
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		"hij789"
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		Decimal(10)
 	}
 }

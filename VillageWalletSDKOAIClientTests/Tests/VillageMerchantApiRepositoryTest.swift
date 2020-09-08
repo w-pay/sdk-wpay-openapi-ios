@@ -6,19 +6,11 @@ import VillageWalletSDK
 
 class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 	private let apiFactory = OpenApiSdkFactory()
-	private var api: VillageMerchantApiRepository!
-
-	override func setUpWithError() throws {
-		api = apiFactory.createMerchantApi()
+	private var api: VillageMerchantApiRepository! {
+		let api = apiFactory.createMerchantApi()
 		api.setHost(host: "http://localhost:8080")
 
-		try super.tearDownWithError()
-	}
-
-	override func tearDownWithError() throws {
-		api = nil
-
-		try super.tearDownWithError()
+		return api
 	}
 
 	func testShouldRetrieveTransactions() {
@@ -28,81 +20,81 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		let page = 2
 
 		let promise = apiResultExpectation()
-		var result: MerchantTransactionSummaries!
+		var value: MerchantTransactionSummaries!
 
 		api.retrieveTransactions(
 			page: page,
 			pageSize: pageSize,
 			endTime: endTime,
 			startTime: startTime,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantTransactionSummaries())
+		assertThat(value, isMerchantTransactionSummaries())
 	}
 
 	func testShouldRetrieveTransactionDetails() {
 		let transactionId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
 
 		let promise = apiResultExpectation()
-		var result: MerchantTransactionDetails!
+		var value: MerchantTransactionDetails!
 
 		api.retrieveTransactionDetails(
 			transactionId: transactionId,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantTransactionDetails())
+		assertThat(value, isMerchantTransactionDetails())
 	}
 
 	func testShouldCreatePaymentRequestQRCode() {
 		let promise = apiResultExpectation()
-		var result: QRCode!
+		var value: QRCode!
 
 		api.createPaymentRequestQRCode(
 			details: aNewPaymentRequestQRCode(),
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith{ result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isAQrCode())
+		assertThat(value, isAQrCode())
 	}
 
 	func testShouldRetrievePaymentRequestQRCodeContent() {
 		let qrCodeId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
 
 		let promise = apiResultExpectation()
-		var result: QRCode!
+		var value: QRCode!
 
 		api.retrievePaymentRequestBy(
 			qrCodeId: qrCodeId,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isAQrCode())
+		assertThat(value, isAQrCode())
 	}
 
 	func testShouldCancelPaymentQRCode() {
@@ -112,7 +104,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 
 		api.cancelPaymentQRCode(
 			qrCodeId: qrCodeId,
-			callback: isSuccessful(promise: promise)
+			completion: isSuccessful(promise: promise)
 		)
 
 		wait(for: [promise], timeout: 2)
@@ -124,62 +116,62 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		let page = 2
 
 		let promise = apiResultExpectation()
-		var result: MerchantPaymentSummaries!
+		var value: MerchantPaymentSummaries!
 
 		api.retrievePaymentList(
 			type: type,
 			page: page,
 			pageSize: pageSize,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantPaymentSummaries())
+		assertThat(value, isMerchantPaymentSummaries())
 	}
 
 	func testShouldCreateNewPaymentRequest() {
 		let request = aNewPaymentRequest()
 
 		let promise = apiResultExpectation()
-		var result: CreatePaymentRequestResult!
+		var value: CreatePaymentRequestResult!
 
 		api.createNewPaymentRequest(
 			paymentRequest: request,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, hasPaymentRequestCreated())
+		assertThat(value, hasPaymentRequestCreated())
 	}
 
 	func testShouldRetrievePaymentRequestDetails() {
 		let paymentRequestId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
 
 		let promise = apiResultExpectation()
-		var result: MerchantPaymentDetails!
+		var value: MerchantPaymentDetails!
 
 		api.retrievePaymentRequestDetails(
 			paymentRequestId: paymentRequestId,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantPaymentDetails())
+		assertThat(value, isMerchantPaymentDetails())
 	}
 
 	func testShouldDeletePaymentRequest() {
@@ -189,7 +181,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 
 		api.deletePaymentRequest(
 			paymentRequestId: paymentRequestId,
-			callback: isSuccessful(promise: promise)
+			completion: isSuccessful(promise: promise)
 		)
 
 		wait(for: [promise], timeout: 2)
@@ -199,36 +191,36 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		let transactionId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
 
 		let promise = apiResultExpectation()
-		var result: MerchantTransactionSummary!
+		var value: MerchantTransactionSummary!
 
 		api.refundTransaction(
 			transactionId: transactionId,
 			refundDetails: aNewTransactionRefund(),
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantTransactionSummary())
+		assertThat(value, isMerchantTransactionSummary())
 	}
 
 	func testShouldRetrievePreferences() {
 		let promise = apiResultExpectation()
-		var result: MerchantPreferences!
+		var value: MerchantPreferences!
 
-		api.retrievePreferences(callback: isSuccessfulWith(callback: { value, response in
-			result = value
+		api.retrievePreferences(completion: isSuccessfulWith { result in
+			value = try! result.get()
 
 			promise.fulfill()
-		}))
+		})
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, hasEntry(
+		assertThat(value, hasEntry(
 			equalTo("qrTemplates"), allOf(
 			  hasEntry(equalTo("PAYMENT_REQUEST"), not(blankOrNilString())),
 				hasEntry(equalTo("PAYMENT_SESSION"), not(blankOrNilString()))
@@ -245,7 +237,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 					"preference": "value"
 				]
 			],
-			callback: isSuccessful(promise: promise)
+			completion: isSuccessful(promise: promise)
 		)
 
 		wait(for: [promise], timeout: 2)
@@ -253,95 +245,95 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 
 	func testShouldRetrieveSchemas() {
 		let promise = apiResultExpectation()
-		var result: MerchantSchemaSummaries!
+		var value: MerchantSchemaSummaries!
 
 		api.retrieveSchemas(
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantSchemaSummaries())
+		assertThat(value, isMerchantSchemaSummaries())
 	}
 
 	func testShouldRetrieveSchemaDetails() {
 		let schemaId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
 
 		let promise = apiResultExpectation()
-		var result: MerchantSchema!
+		var value: MerchantSchema!
 
 		api.retrieveSchemaDetails(
 			schemaId: schemaId,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantSchema())
+		assertThat(value, isMerchantSchema())
 	}
 
 	func testShouldCreateSchema() {
 		let promise = apiResultExpectation()
-		var result: MerchantSchemaSummary!
+		var value: MerchantSchemaSummary!
 
 		api.createSchema(
 			schema: aNewSchema(),
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isMerchantSchemaSummary())
+		assertThat(value, isMerchantSchemaSummary())
 	}
 
 	func testShouldCreatePaymentSession() {
 		let promise = apiResultExpectation()
-		var result: CreatePaymentSessionResult!
+		var value: CreatePaymentSessionResult!
 
 		api.createPaymentSession(
 			request: TestCreatePaymentSessionRequest(),
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, hasPaymentSessionCreated())
+		assertThat(value, hasPaymentSessionCreated())
 	}
 
 	func testShouldRetrievePaymentSession() {
 		let paymentSessionId = "a5bbfe1a-c1b9-11ea-924f-33c96a9759eb"
 
 		let promise = apiResultExpectation()
-		var result: PaymentSession!
+		var value: PaymentSession!
 
 		api.retrievePaymentSession(
 			paymentSessionId: paymentSessionId,
-			callback: isSuccessfulWith(callback: { value, response in
-				result = value
+			completion: isSuccessfulWith { result in
+				value = try! result.get()
 
 				promise.fulfill()
-			})
+			}
 		)
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, hasPaymentSession())
+		assertThat(value, hasPaymentSession())
 	}
 
 	func testShouldUpdatePaymentSession() {
@@ -352,7 +344,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		api.updatePaymentSession(
 			paymentSessionId: paymentSessionId,
 			session: TestMerchantUpdatePaymentSessionRequest(),
-			callback: isSuccessful(promise: promise)
+			completion: isSuccessful(promise: promise)
 		)
 
 		wait(for: [promise], timeout: 2)
@@ -365,7 +357,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 
 		api.deletePaymentSession(
 			paymentSessionId: paymentSessionId,
-			callback: isSuccessful(promise: promise)
+			completion: isSuccessful(promise: promise)
 		)
 
 		wait(for: [promise], timeout: 2)
@@ -373,16 +365,16 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 
 	func testShouldCheckHealth() {
 		let promise = apiResultExpectation()
-		var result: HealthCheck!
+		var value: HealthCheck!
 
-		api.checkHealth(callback: isSuccessfulWith { (value: HealthCheck?, response) in
-			result = value
+		api.checkHealth(completion: isSuccessfulWith { result in
+			value = try! result.get()
 
 			promise.fulfill()
 		})
 
 		wait(for: [promise], timeout: 2)
 
-		assertThat(result, isHealthyService())
+		assertThat(value, isHealthyService())
 	}
 }

@@ -11,7 +11,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		pageSize: Int?,
 		endTime: Date?,
 		startTime: Date?,
-		callback: @escaping ApiResult<MerchantTransactionSummaries>
+		completion: @escaping ApiCompletion<MerchantTransactionSummaries>
 	) {
 		let api = createMerchantApi()
 
@@ -23,18 +23,18 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			page: page as NSNumber?,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantTransactionSummaries(
+				completion(.success(OpenApiMerchantTransactionSummaries(
 					transactions: result!.data.transactions as! [OAIMerchantTransactionSummary]
-				), nil)
+				)))
 			})
 	}
 
 	public func retrieveTransactionDetails(
 		transactionId: String,
-		callback: @escaping ApiResult<MerchantTransactionDetails>
+		completion: @escaping ApiCompletion<MerchantTransactionDetails>
 	) {
 		let api = createMerchantApi()
 
@@ -43,27 +43,27 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			transactionId: transactionId,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantTransactionDetails(
+				completion(.success(OpenApiMerchantTransactionDetails(
 					details: result!.data
-				), nil)
+				)))
 			})
 	}
 
 	public func createPaymentRequestQRCode(
 		details: NewPaymentRequestQRCode,
-		callback: @escaping ApiResult<QRCode>
+		completion: @escaping ApiCompletion<QRCode>
 	) {
 		let api = createMerchantApi()
 
 		let body = OAIPaymentQRCodeDetails()
 		body.data = OAIMerchantQrData()
-		body.data.referenceId = details.referenceId()
-		body.data.timeToLive = details.timeToLive() as NSNumber?
+		body.data.referenceId = details.referenceId
+		body.data.timeToLive = details.timeToLive as NSNumber?
 
-		switch(details.referenceType()) {
+		switch(details.referenceType) {
 			case QRCodePaymentReferenceType.PAYMENT_SESSION:
 				body.data.referenceType = "SESSION"
 
@@ -76,16 +76,16 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			paymentQRCodeDetails: body,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiQRCode(code: result!.data), nil)
+				completion(.success(OpenApiQRCode(code: result!.data)))
 			})
 	}
 
 	public func retrievePaymentRequestBy(
 		qrCodeId: String,
-		callback: @escaping ApiResult<QRCode>
+		completion: @escaping ApiCompletion<QRCode>
 	) {
 		let api = createMerchantApi()
 
@@ -94,16 +94,16 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			qrId: qrCodeId,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiQRCode(code: result!.data), nil)
+				completion(.success(OpenApiQRCode(code: result!.data)))
 			})
 	}
 
 	public func cancelPaymentQRCode(
 		qrCodeId: String,
-		callback: @escaping ApiResult<Void>
+		completion: @escaping ApiCompletion<Void>
 	) {
 		let api = createMerchantApi()
 
@@ -112,10 +112,10 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			qrId: qrCodeId,
 			completionHandler: { error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(nil, nil)
+				completion(.success(Void()))
 			})
 	}
 
@@ -123,7 +123,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		type: String?,
 		page: Int?,
 		pageSize: Int?,
-		callback: @escaping ApiResult<MerchantPaymentSummaries>
+		completion: @escaping ApiCompletion<MerchantPaymentSummaries>
 	) {
 		let api = createMerchantApi()
 
@@ -134,68 +134,65 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			page: page as NSNumber?,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantPaymentSummaries(
+				completion(.success(OpenApiMerchantPaymentSummaries(
 					payments: result!.data.payments as! [OAIMerchantPaymentSummary]
-				), nil)
+				)))
 			})
 	}
 
 	public func createNewPaymentRequest(
 		paymentRequest: NewPaymentRequest,
-		callback: @escaping ApiResult<CreatePaymentRequestResult>
+		completion: @escaping ApiCompletion<CreatePaymentRequestResult>
 	) {
 		let api = createMerchantApi()
 
 		let body = OAIMerchantPaymentRequest()
 		body.data = OAIMerchantPaymentsData()
-		body.data.merchantReferenceId = paymentRequest.merchantReferenceId()
-		body.data.grossAmount = NSDecimalNumber(decimal: paymentRequest.grossAmount())
-		body.data.generateQR = paymentRequest.generateQR() as NSNumber
-		body.data.maxUses = paymentRequest.maxUses() as NSNumber?
-		body.data.timeToLivePayment = paymentRequest.timeToLivePayment() as NSNumber?
-		body.data.timeToLiveQR = paymentRequest.timeToLiveQR() as NSNumber?
-		body.data.specificWalletId = paymentRequest.specificWalletId()
+		body.data.merchantReferenceId = paymentRequest.merchantReferenceId
+		body.data.grossAmount = NSDecimalNumber(decimal: paymentRequest.grossAmount)
+		body.data.generateQR = paymentRequest.generateQR as NSNumber
+		body.data.maxUses = paymentRequest.maxUses as NSNumber?
+		body.data.timeToLivePayment = paymentRequest.timeToLivePayment as NSNumber?
+		body.data.timeToLiveQR = paymentRequest.timeToLiveQR as NSNumber?
+		body.data.specificWalletId = paymentRequest.specificWalletId
 
-		let posPayload: PosPayload? = paymentRequest.posPayload()
-		if (posPayload != nil) {
+		if let posPayload = paymentRequest.posPayload {
 			body.data.posPayload = OAIPosPayload()
-			body.data.posPayload.schemaId = posPayload?.schemaId()
-			body.data.posPayload.payload = posPayload?.payload() as? [String: NSObject]
+			body.data.posPayload.schemaId = posPayload.schemaId
+			body.data.posPayload.payload = posPayload.payload as? [String: NSObject]
 		}
 
-		let merchantPayload: MerchantPayload? = paymentRequest.merchantPayload()
-		if (merchantPayload != nil) {
+		if let merchantPayload = paymentRequest.merchantPayload {
 			body.data.merchantPayload = OAIMerchantPayload()
-			body.data.merchantPayload.schemaId = merchantPayload?.schemaId()
-			body.data.merchantPayload.payload = merchantPayload?.payload() as? [String: NSObject]
+			body.data.merchantPayload.schemaId = merchantPayload.schemaId
+			body.data.merchantPayload.payload = merchantPayload.payload as? [String: NSObject]
 		}
 
-		let basket: Basket? = paymentRequest.basket()
-		if (basket != nil) {
+		if let basket = paymentRequest.basket {
 			body.data.basket = OAIBasket()
-			body.data.basket.items = basket?.items().map { it in
+			body.data.basket.items = basket.items.map { it in
 				let item = OAIBasketItems()
-				item.label = it.label()
-				item._description = it.description()
+				item.label = it.label
+				item._description = it.description
 
-				if let quantity = it.quantity() {
+				if let quantity = it.quantity {
 					item.quantity = NSNumber(value: quantity)
 				}
 
-				if let unitPrice = it.unitPrice() {
+				if let unitPrice = it.unitPrice {
 					item.unitPrice = NSDecimalNumber(decimal: unitPrice)
 				}
 
-				item.unitMeasure = it.unitMeasure()
+				item.unitMeasure = it.unitMeasure
 
-				if let totalPrice = it.totalPrice() {
+				if let totalPrice = it.totalPrice {
 					item.totalPrice = NSDecimalNumber(decimal: totalPrice)
 				}
 
-				item.tags = it.tags()
+				item.tags = it.tags
 
 				return item
 			}
@@ -206,16 +203,16 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			merchantPaymentRequest: body,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiCreatePaymentRequestResult(result: result!.data), nil)
+				completion(.success(OpenApiCreatePaymentRequestResult(result: result!.data)))
 			})
 	}
 
 	public func retrievePaymentRequestDetails(
 		paymentRequestId: String,
-		callback: @escaping ApiResult<MerchantPaymentDetails>
+		completion: @escaping ApiCompletion<MerchantPaymentDetails>
 	) {
 		let api = createMerchantApi()
 
@@ -224,16 +221,16 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			paymentRequestId: paymentRequestId,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantPaymentDetails(details: result!.data), nil)
+				completion(.success(OpenApiMerchantPaymentDetails(details: result!.data)))
 			})
 	}
 
 	public func deletePaymentRequest(
 		paymentRequestId: String,
-		callback: @escaping ApiResult<Void>
+		completion: @escaping ApiCompletion<Void>
 	) {
 		let api = createMerchantApi()
 
@@ -242,23 +239,23 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			paymentRequestId: paymentRequestId,
 			completionHandler: { error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(nil, nil)
+				completion(.success(Void()))
 			})
 	}
 
 	public func refundTransaction(
 		transactionId: String,
 		refundDetails: TransactionRefundDetails,
-		callback: @escaping ApiResult<MerchantTransactionSummary>
+		completion: @escaping ApiCompletion<MerchantTransactionSummary>
 	) {
 		let api = createMerchantApi()
 
 		let body = OAIRefundMerchantTransactionRequest()
 		body.data = OAIMerchantTransactionsTransactionIdRefundData()
-		body.data.reason = refundDetails.reason()
+		body.data.reason = refundDetails.reason
 
 		api.refundMerchantTransaction(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
@@ -266,30 +263,30 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			refundMerchantTransactionRequest: body,
 			completionHandler: { result, error in
 			guard error == nil else {
-				return callback(nil, self.extractHttpResponse(error: error! as NSError))
+				return completion(self.extractError(error: error! as NSError))
 			}
 
-			callback(OpenApiMerchantTransactionSummary(summary: result!.data), nil)
+			completion(.success(OpenApiMerchantTransactionSummary(summary: result!.data)))
 		})
 	}
 
-	public func retrievePreferences(callback: @escaping ApiResult<MerchantPreferences>) {
+	public func retrievePreferences(completion: @escaping ApiCompletion<MerchantPreferences>) {
 		let api = createMerchantApi()
 
 		api.getMerchantPreferences(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(result!.data, nil)
+				completion(.success(result!.data))
 			})
 	}
 
 	public func setPreferences(
 		preferences: MerchantPreferences,
-		callback: @escaping ApiResult<Void>
+		completion: @escaping ApiCompletion<Void>
 	) {
 		let api = createMerchantApi()
 
@@ -301,32 +298,32 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			merchantPreferences: body,
 			completionHandler: { error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(nil, nil)
+				completion(.success(Void()))
 			})
 	}
 
-	public func retrieveSchemas(callback: @escaping ApiResult<MerchantSchemaSummaries>) {
+	public func retrieveSchemas(completion: @escaping ApiCompletion<MerchantSchemaSummaries>) {
 		let api = createMerchantApi()
 
 		api.getMerchantSchemas(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantSchemaSummaries(
+				completion(.success(OpenApiMerchantSchemaSummaries(
 					schemas: result!.data.schemas as! [OAIMerchantSchemaSummary]
-				), nil)
+				)))
 			})
 	}
 
 	public func retrieveSchemaDetails(
 		schemaId: String,
-		callback: @escaping ApiResult<MerchantSchema>
+		completion: @escaping ApiCompletion<MerchantSchema>
 	) {
 		let api = createMerchantApi()
 
@@ -335,66 +332,66 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			schemaId: schemaId,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantSchema(schema: result!.data), nil)
+				completion(.success(OpenApiMerchantSchema(schema: result!.data)))
 			})
 	}
 
 	public func createSchema(
 		schema: MerchantSchema,
-		callback: @escaping ApiResult<MerchantSchemaSummary>
+		completion: @escaping ApiCompletion<MerchantSchemaSummary>
 	) {
 		let api = createMerchantApi()
 
 		let body = OAIMerchantSchema()
 		body.data = OAIMerchantSchemaData()
-		body.data.schema = (schema.schema() as! [String: NSObject])
-		body.data.type = schema.type()
-		body.data._description = schema.description()
+		body.data.schema = (schema.schema as! [String: NSObject])
+		body.data.type = schema.type
+		body.data._description = schema.description
 
 		api.createMerchantSchema(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			merchantSchema: body,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiMerchantSchemaSummary(summary: result!.data), nil)
+				completion(.success(OpenApiMerchantSchemaSummary(summary: result!.data)))
 			})
 	}
 
 	public func createPaymentSession(
 		request: CreatePaymentSessionRequest,
-		callback: @escaping ApiResult<CreatePaymentSessionResult>
+		completion: @escaping ApiCompletion<CreatePaymentSessionResult>
 	) {
 		let api = createMerchantApi()
 
 		let body = OAICreatePaymentSessionRequest()
 		body.data = OAIMerchantPaymentSessionData()
-		body.data.location = request.location()
-		body.data.merchantInfo = toDynamicPayload(payload: request.merchantInfo())
-		body.data.generateQR = request.generateQR() as NSNumber
-		body.data.timeToLivePaymentSession = request.timeToLivePaymentSession() as NSNumber?
-		body.data.timeToLiveQR = request.timeToLiveQR() as NSNumber?
+		body.data.location = request.location
+		body.data.merchantInfo = toDynamicPayload(payload: request.merchantInfo)
+		body.data.generateQR = request.generateQR as NSNumber
+		body.data.timeToLivePaymentSession = request.timeToLivePaymentSession as NSNumber?
+		body.data.timeToLiveQR = request.timeToLiveQR as NSNumber?
 
 		api.createPaymentSession(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			createPaymentSessionRequest: body,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiCreatePaymentSessionResult(result: result!.data), nil)
+				completion(.success(OpenApiCreatePaymentSessionResult(result: result!.data)))
 			})
 	}
 
 	public func retrievePaymentSession(
 		paymentSessionId: String,
-		callback: @escaping ApiResult<PaymentSession>
+		completion: @escaping ApiCompletion<PaymentSession>
 	) {
 		let api = createMerchantApi()
 
@@ -403,24 +400,24 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			paymentSessionId: paymentSessionId,
 			completionHandler: { result, error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(OpenApiPaymentSession(session: result!.data), nil)
+				completion(.success(OpenApiPaymentSession(session: result!.data)))
 			})
 	}
 
 	public func updatePaymentSession(
 		paymentSessionId: String,
 		session: MerchantUpdatePaymentSessionRequest,
-		callback: @escaping ApiResult<Void>
+		completion: @escaping ApiCompletion<Void>
 	) {
 		let api = createMerchantApi()
 
 		let body = OAIUpdatePaymentSessionRequest1()
 		body.data = OAIMerchantPaymentSessionPaymentSessionIdData()
-		body.data.paymentRequestId = session.paymentRequestId()
-		body.data.merchantInfo = toDynamicPayload(payload: session.merchantInfo())
+		body.data.paymentRequestId = session.paymentRequestId
+		body.data.merchantInfo = toDynamicPayload(payload: session.merchantInfo)
 
 		api.merchantUpdatePaymentSession(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
@@ -428,16 +425,16 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			updatePaymentSessionRequest1: body,
 			completionHandler: { error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(nil, nil)
+				completion(.success(Void()))
 			})
 	}
 
 	public func deletePaymentSession(
 		paymentSessionId: String,
-		callback: @escaping ApiResult<Void>
+		completion: @escaping ApiCompletion<Void>
 	) {
 		let api = createMerchantApi()
 
@@ -446,23 +443,23 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			paymentSessionId: paymentSessionId,
 			completionHandler: { error in
 				guard error == nil else {
-					return callback(nil, self.extractHttpResponse(error: error! as NSError))
+					return completion(self.extractError(error: error! as NSError))
 				}
 
-				callback(nil, nil)
+				completion(.success(Void()))
 			}
 		)
 	}
 
-	public func checkHealth(callback: @escaping ApiResult<HealthCheck>) {
+	public func checkHealth(completion: @escaping ApiCompletion<HealthCheck>) {
 		let api = createAdministrationApi()
 
 		api.checkHealth(completionHandler: { result, error in
 			guard error == nil else {
-				return callback(nil, self.extractHttpResponse(error: error! as NSError))
+				return completion(self.extractError(error: error! as NSError))
 			}
 
-			callback(OpenApiHealthCheck(check: result!.data), nil)
+			completion(.success(OpenApiHealthCheck(check: result!.data)))
 		})
 	}
 }

@@ -8,11 +8,11 @@ class OpenApiMerchantPayload: MerchantPayload {
 		self.aPayload = aPayload
 	}
 
-	func schemaId() -> String? {
+	var schemaId: String? {
 		aPayload.schemaId
 	}
 
-	func payload() -> [String: AnyObject] {
+	var payload: [String: AnyObject] {
 		aPayload.payload
 	}
 }

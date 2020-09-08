@@ -8,43 +8,43 @@ func aNewPaymentRequest() -> NewPaymentRequest {
 }
 
 class TestNewPaymentRequest: NewPaymentRequest {
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		"123456"
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		Decimal(12000)
 	}
 
-	func generateQR() -> Bool {
+	var generateQR: Bool {
 		true
 	}
 
-	func maxUses() -> Int? {
+	var maxUses: Int? {
 		1
 	}
 
-	func timeToLivePayment() -> Int? {
+	var timeToLivePayment: Int? {
 		300
 	}
 
-	func timeToLiveQR() -> Int? {
+	var timeToLiveQR: Int? {
 		60
 	}
 
-	func specificWalletId() -> String? {
+	var specificWalletId: String? {
 		""
 	}
 
-	func basket() -> Basket? {
+	var basket: Basket? {
 		aNewBasket()
 	}
 
-	func posPayload() -> PosPayload? {
+	var posPayload: PosPayload? {
 		aNewPosPayload()
 	}
 
-	func merchantPayload() -> MerchantPayload? {
+	var merchantPayload: MerchantPayload? {
 		aNewMerchantPayload()
 	}
 }

@@ -8,11 +8,11 @@ class OpenApiDynamicPayload: DynamicPayload {
 		self.aPayload = payload
 	}
 
-	func schemaId() -> String? {
+	var schemaId: String? {
 		aPayload.schemaId
 	}
 
-	func payload() -> [String: AnyObject] {
+	var payload: [String: AnyObject] {
 		aPayload.payload as [String: AnyObject]
 	}
 }

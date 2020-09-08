@@ -14,7 +14,7 @@ class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, AllPaymentInstrum
 		super.init(creditCards: creditCards, giftCards: giftCards, wallet: Wallet.MERCHANT)
 	}
 
-	func everydayPay() -> PaymentInstruments? {
+	var everydayPay: PaymentInstruments? {
 		guard let everydayData = everydayPayData else {
 			return nil
 		}
@@ -37,11 +37,11 @@ class OpenApiPaymentInstruments: PaymentInstruments {
 		self.wallet = wallet
 	}
 
-	func creditCards() -> [CreditCard] {
+	var creditCards: [CreditCard] {
 		theCreditCards.map({ item in OpenApiCreditCard(creditCard: item, wallet: wallet) })
 	}
 
-	func giftCards() -> [GiftCard] {
+	var giftCards: [GiftCard] {
 		theGiftCards.map({ item in OpenApiGiftCard(giftCard: item, wallet: wallet) })
 	}
 }
@@ -55,75 +55,75 @@ class OpenApiCreditCard: CreditCard {
 		self.theWallet = wallet
 	}
 
-	func paymentInstrumentId() -> String {
+	var paymentInstrumentId: String {
 		creditCard.paymentInstrumentId
 	}
 
-	func cardSuffix() -> String {
+	var cardSuffix: String {
 		creditCard.cardSuffix
 	}
 
-	func cardName() -> String {
+	var cardName: String {
 		creditCard.cardName
 	}
 
-	func cvvValidated() -> Bool {
+	var cvvValidated: Bool {
 		creditCard.cvvValidated.boolValue
 	}
 
-	func expired() -> Bool {
+	var expired: Bool {
 		creditCard.expired.boolValue
 	}
 
-	func expiryMonth() -> String {
+	var expiryMonth: String {
 		creditCard.expiryMonth
 	}
 
-	func expiryYear() -> String {
+	var expiryYear: String {
 		creditCard.expiryYear
 	}
 
-	func requiresCVV() -> Bool {
+	var requiresCVV: Bool {
 		creditCard.requiresCVV.boolValue
 	}
 
-	func scheme() -> String {
+	var scheme: String {
 		creditCard.scheme
 	}
 
-	func updateURL() -> URL {
+	var updateURL: URL {
 		URL(string: creditCard.updateURL)!
 	}
 
-	func stepUp() -> CreditCardStepUp {
+	var stepUp: CreditCardStepUp {
 		OpenApiCreditCardStepUp(stepUp: creditCard.stepUp)
 	}
 
-	func allowed() -> Bool {
+	var allowed: Bool {
 		creditCard.allowed.boolValue
 	}
 
-	func lastUpdated() -> Date {
+	var lastUpdated: Date {
 		creditCard.lastUpdated
 	}
 
-	func lastUsed() -> Date? {
+	var lastUsed: Date? {
 		creditCard.lastUsed
 	}
 
-	func paymentToken() -> String {
+	var paymentToken: String {
 		creditCard.paymentToken
 	}
 
-	func primary() -> Bool {
+	var primary: Bool {
 		creditCard.primary.boolValue
 	}
 
-	func status() -> PaymentInstrumentStatus? {
+	var status: PaymentInstrumentStatus? {
 		PaymentInstrumentStatus.valueOf(value: creditCard.status)
 	}
 
-	func wallet() -> Wallet {
+	var wallet: Wallet {
 		theWallet
 	}
 }
@@ -137,19 +137,19 @@ class OpenApiGiftCard: GiftCard {
 		self.theWallet = wallet
 	}
 
-	func paymentInstrumentId() -> String {
+	var paymentInstrumentId: String {
 		giftCard.paymentInstrumentId
 	}
 
-	func cardSuffix() -> String {
+	var cardSuffix: String {
 		giftCard.cardSuffix
 	}
 
-	func programName() -> String {
+	var programName: String {
 		giftCard.programName
 	}
 
-	func stepUp() -> GiftCardStepUp? {
+	var stepUp: GiftCardStepUp? {
 		guard let stepUp = giftCard.stepUp else {
 			return nil
 		}
@@ -157,31 +157,31 @@ class OpenApiGiftCard: GiftCard {
 		return OpenApiGiftCardStepUp(stepUp: stepUp)
 	}
 
-	func allowed() -> Bool {
+	var allowed: Bool {
 		giftCard.allowed.boolValue
 	}
 
-	func lastUpdated() -> Date {
+	var lastUpdated: Date {
 		giftCard.lastUpdated
 	}
 
-	func lastUsed() -> Date? {
+	var lastUsed: Date? {
 		giftCard.lastUsed
 	}
 
-	func paymentToken() -> String {
+	var paymentToken: String {
 		giftCard.paymentToken
 	}
 
-	func primary() -> Bool {
+	var primary: Bool {
 		giftCard.primary.boolValue
 	}
 
-	func status() -> PaymentInstrumentStatus? {
+	var status: PaymentInstrumentStatus? {
 		PaymentInstrumentStatus.valueOf(value: giftCard.status)
 	}
 
-	func wallet() -> Wallet {
+	var wallet: Wallet {
 		theWallet
 	}
 }
@@ -193,15 +193,15 @@ class OpenApiCreditCardStepUp: CreditCardStepUp {
 		self.stepUp = stepUp
 	}
 
-	func type() -> String {
+	var type: String {
 		stepUp.type
 	}
 
-	func mandatory() -> Bool {
+	var mandatory: Bool {
 		stepUp.mandatory.boolValue
 	}
 
-	func url() -> URL {
+	var url: URL {
 		URL(string: stepUp.url)!
 	}
 }
@@ -213,11 +213,11 @@ class OpenApiGiftCardStepUp: GiftCardStepUp {
 		self.stepUp = stepUp
 	}
 
-	func type() -> String {
+	var type: String {
 		stepUp.type
 	}
 
-	func mandatory() -> Bool {
+	var mandatory: Bool {
 		stepUp.mandatory.boolValue
 	}
 }

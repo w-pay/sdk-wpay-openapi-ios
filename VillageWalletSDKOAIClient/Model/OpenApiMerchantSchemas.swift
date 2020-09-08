@@ -8,7 +8,7 @@ class OpenApiMerchantSchemaSummaries: MerchantSchemaSummaries {
 		self.theSchemas = schemas
 	}
 
-	func schemas() -> [MerchantSchemaSummary] {
+	var schemas: [MerchantSchemaSummary] {
 		theSchemas.map { it in OpenApiMerchantSchemaSummary(summary: it) }
 	}
 }
@@ -20,15 +20,15 @@ class OpenApiMerchantSchemaSummary: MerchantSchemaSummary {
 		self.summary = summary
 	}
 
-	func schemaId() -> String {
+	var schemaId: String {
 		summary.schemaId
 	}
 
-	func type() -> String {
+	var type: String {
 		summary.type
 	}
 
-	func description() -> String? {
+	var description: String? {
 		summary.description
 	}
 }
@@ -40,19 +40,19 @@ class OpenApiMerchantSchema: MerchantSchema {
 		self.aSchema = schema
 	}
 
-	func schema() -> [String: AnyObject] {
+	var schema: [String: AnyObject] {
 		aSchema.schema
 	}
 
-	func type() -> String? {
+	var type: String? {
 		aSchema.type
 	}
 
-	func description() -> String? {
+	var description: String? {
 		aSchema.description
 	}
 
-	func created() -> Date? {
+	var created: Date? {
 		aSchema.created
 	}
 }

@@ -42,22 +42,59 @@ public class OpenApiClientFactory: Configurable {
 		return nil
 	}
 
-	internal func extractHttpResponse(error: NSError) -> HTTPURLResponse {
-		let info = (error as NSError).userInfo
-		let data = info["com.alamofire.serialization.response.error.response"] as? HTTPURLResponse
-
-		guard data != nil else {
-			fatalError("No HTTP response data in error")
+	internal func extractError<T>(error: NSError) -> Result<T, ApiError> {
+		do {
+			try self.extractHttpError(error: error)
+			try self.extractJsonDecodingError(error: error)
+		}
+		catch {
+			return .failure(error as! ApiError)
 		}
 
-		return data!
+		return .failure(.error(error: error))
+	}
+
+	internal func extractHttpError(error: NSError) throws -> Void {
+		if (error.domain == "com.alamofire.error.serialization.response") {
+			let info = (error as NSError).userInfo
+			let data = info["com.alamofire.serialization.response.error.response"] as? HTTPURLResponse
+
+			if let response = data {
+				let reason: ApiError.HTTPErrorReason
+
+				switch response.statusCode {
+					case 400:
+						reason = .invalidInput
+
+					case 401:
+						reason = .unauthorised
+
+					case 422:
+						reason = .processingError
+
+					default:
+						reason = .serverError
+				}
+
+				throw ApiError.httpError(reason: reason, response: response)
+			}
+		}
+	}
+
+	internal func extractJsonDecodingError(error: NSError) throws -> Void {
+		if (error.domain == "JSONModelErrorDomain") {
+			throw ApiError.jsonDecoding(
+				message: error.localizedDescription,
+				details: error.userInfo
+			)
+		}
 	}
 
 	internal func toDynamicPayload(payload: DynamicPayload) -> OAIDynamicPayload {
 		let dto = OAIDynamicPayload()
 
-		dto.schemaId = payload.schemaId()
-		dto.payload = (payload.payload() as! [String: NSObject])
+		dto.schemaId = payload.schemaId
+		dto.payload = (payload.payload as! [String: NSObject])
 
 		return dto
 	}

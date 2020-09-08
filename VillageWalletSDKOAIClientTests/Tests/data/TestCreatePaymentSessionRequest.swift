@@ -4,33 +4,33 @@ import VillageWalletSDK
 @testable import VillageWalletSDKOAIClient
 
 class TestCreatePaymentSessionRequest: CreatePaymentSessionRequest {
-	func location() -> String {
+	var location: String {
 		"somewhere"
 	}
 
-	func merchantInfo() -> DynamicPayload {
+	var merchantInfo: DynamicPayload {
 		TestCreatePaymentSessionRequestPayload()
 	}
 
-	func generateQR() -> Bool {
+	var generateQR: Bool {
 		true
 	}
 
-	func timeToLivePaymentSession() -> Int {
+	var timeToLivePaymentSession: Int {
 		0
 	}
 
-	func timeToLiveQR() -> Int {
+	var timeToLiveQR: Int {
 		0
 	}
 }
 
 class TestCreatePaymentSessionRequestPayload: DynamicPayload {
-	func schemaId() -> String? {
+	var schemaId: String? {
 		"abc123"
 	}
 
-	func payload() -> [String: AnyObject] {
+	var payload: [String: AnyObject] {
 		[:]
 	}
 }

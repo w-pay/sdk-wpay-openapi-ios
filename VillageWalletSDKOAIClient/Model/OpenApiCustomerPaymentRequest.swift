@@ -8,23 +8,23 @@ class OpenApiCustomerPaymentRequest: CustomerPaymentRequest {
 		self.customerPaymentDetails = customerPaymentDetails
 	}
 
-	func paymentRequestId() -> String {
+	var paymentRequestId: String {
 		customerPaymentDetails.paymentRequestId
 	}
 
-	func merchantReferenceId() -> String {
+	var merchantReferenceId: String {
 		customerPaymentDetails.merchantReferenceId
 	}
 
-	func grossAmount() -> Decimal {
+	var grossAmount: Decimal {
 		customerPaymentDetails.grossAmount.decimalValue
 	}
 
-	func merchantId() -> String {
+	var merchantId: String {
 		customerPaymentDetails.merchantId
 	}
 
-	func basket() -> Basket? {
+	var basket: Basket? {
 		guard let basket = customerPaymentDetails.basket else {
 			return nil
 		}

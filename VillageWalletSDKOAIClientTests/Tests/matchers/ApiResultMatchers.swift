@@ -4,20 +4,23 @@ import VillageWalletSDK
 
 @testable import VillageWalletSDKOAIClient
 
-func isSuccessfulWith<T>(callback: @escaping ApiResult<T>) -> ApiResult<T> {
-	{ (result: T?, response: HTTPURLResponse?) in
-			guard response == nil else {
-				XCTFail("Received response \(response!)")
+func isSuccessfulWith<T>(completion: @escaping ApiCompletion<T>) -> ApiCompletion<T> {
+	{ (result) in
+			switch(result) {
+				case .failure(let error):
+					XCTFail("Received error \(error)")
+					break
 
-				return
+				default: break
+					// do nothing
 			}
 
-			callback(result, response)
+		completion(result)
 	}
 }
 
-func isSuccessful<T>(promise: XCTestExpectation) -> ApiResult<T> {
-	isSuccessfulWith { (result: T?, response: HTTPURLResponse?) in
+func isSuccessful<T>(promise: XCTestExpectation) -> ApiCompletion<T> {
+	isSuccessfulWith { result in
 		promise.fulfill()
 	}
 }

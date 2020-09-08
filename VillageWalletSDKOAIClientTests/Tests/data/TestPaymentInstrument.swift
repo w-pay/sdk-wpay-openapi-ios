@@ -12,49 +12,49 @@ func aNewPaymentInstrument() -> PaymentInstrumentAddition {
 }
 
 class TestPaymentInstrument: PaymentInstrument {
-	func allowed() -> Bool {
+	var allowed: Bool {
 		true
 	}
 
-	func cardSuffix() -> String {
+	var cardSuffix: String {
 		"1234"
 	}
 
-	func lastUpdated() -> Date {
+	var lastUpdated: Date {
 		Date()
 	}
 
-	func lastUsed() -> Date? {
+	var lastUsed: Date? {
 		Date()
 	}
 
-	func paymentInstrumentId() -> String {
+	var paymentInstrumentId: String {
 		"abc123"
 	}
 
-	func paymentToken() -> String {
+	var paymentToken: String {
 		"def123fgh"
 	}
 
-	func primary() -> Bool {
+	var primary: Bool {
 		true
 	}
 
-	func status() -> PaymentInstrumentStatus? {
+	var status: PaymentInstrumentStatus? {
 		PaymentInstrumentStatus.VERIFIED
 	}
 
-	func wallet() -> Wallet {
+	var wallet: Wallet {
 		Wallet.MERCHANT
 	}
 }
 
 class TestPaymentInstrumentAddition: PaymentInstrumentAddition {
-	func clientReference() -> String {
+	var clientReference: String {
 		"abc123"
 	}
 
-	func wallet() -> Wallet {
+	var wallet: Wallet {
 		Wallet.EVERYDAY_PAY
 	}
 }

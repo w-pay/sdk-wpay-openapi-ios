@@ -8,11 +8,11 @@ class OpenApiCreatePaymentSessionResult: CreatePaymentSessionResult {
 		self.result = result
 	}
 
-	func paymentSessionId() -> String {
+	var paymentSessionId: String {
 		result.paymentSessionId
 	}
 
-	func qr() -> QRCode? {
+	var qr: QRCode? {
 		guard let qr = result.qr else {
 			return nil
 		}
