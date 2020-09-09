@@ -59,7 +59,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	) {
 		let api = createCustomerApi()
 
-		api.getCustomerPaymentDetailsByQRCodeId(
+		api.getCustomerPaymentRequestDetailsByQRCodeId(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			qrId: qrCodeId,
 			completionHandler: { results, error in
@@ -79,7 +79,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	) {
 		let api = createCustomerApi()
 
-		api.getCustomerPaymentDetailsByPaymentId(
+		api.getCustomerPaymentRequestDetailsByPaymentId(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentRequestId: paymentRequestId,
 			completionHandler: { results, error in
@@ -255,7 +255,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 	) {
 		let api = createCustomerApi()
 
-		api.getCustomerPaymentSessionByQr(
+		api.getCustomerPaymentSessionByQRCodeId(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			qrId: qrCodeId,
 			completionHandler: { results, error in
@@ -302,6 +302,59 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 
 				completion(.success(OpenApiHealthCheck(check: results!.data)))
 		})
+	}
+
+	public func deletePaymentSession(
+		paymentSessionId: String,
+		completion: @escaping ApiCompletion<Void>
+	) {
+		let api = createCustomerApi()
+
+		api.deleteCustomerPaymentSession(
+			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			paymentSessionId: paymentSessionId,
+			completionHandler: { error in
+				guard error == nil else {
+					return completion(self.extractError(error: error! as NSError))
+				}
+
+				completion(.success(Void()))
+			}
+		)
+	}
+
+	public func preApprovePaymentSession(
+		paymentSessionId: String,
+		primaryInstrument: PaymentInstrumentIdentifier,
+		secondaryInstruments: [SecondaryPaymentInstrument]?,
+		clientReference: String?,
+		challengeResponses: [ChallengeResponse]?,
+		completion: @escaping ApiCompletion<Void>
+	) {
+		let api = createCustomerApi()
+
+		let body = OAICustomerPaymentDetails1()
+		body.data = OAICustomerPaymentsPaymentRequestIdData()
+		body.data.primaryInstrumentId = primaryInstrument.paymentInstrumentId
+		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
+		body.data.clientReference = clientReference
+
+		body.meta = OAIMetaChallenge()
+		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
+
+		api.preApprovePaymentSession(
+			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			paymentSessionId: paymentSessionId,
+			customerPaymentDetails1: body,
+			xEverdayPayWallet: (primaryInstrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
+			completionHandler: { error in
+				guard error == nil else {
+					return completion(self.extractError(error: error! as NSError))
+				}
+
+				completion(.success(Void()))
+			}
+		)
 	}
 }
 

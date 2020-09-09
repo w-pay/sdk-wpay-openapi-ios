@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost:3000*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelPaymentQRCode**](OAIMerchantApi.md#cancelpaymentqrcode) | **DELETE** /merchant/qr/{qrId} | Invalidate QR Code
+[**cancelPaymentRequestQRCode**](OAIMerchantApi.md#cancelpaymentrequestqrcode) | **DELETE** /merchant/qr/{qrId} | Invalidate QR Code
 [**createMerchantSchema**](OAIMerchantApi.md#createmerchantschema) | **POST** /merchant/schema | Add Schema
-[**createPaymentQRCode**](OAIMerchantApi.md#createpaymentqrcode) | **POST** /merchant/qr | Create QR Code
 [**createPaymentRequest**](OAIMerchantApi.md#createpaymentrequest) | **POST** /merchant/payments | Create Payment
+[**createPaymentRequestQRCode**](OAIMerchantApi.md#createpaymentrequestqrcode) | **POST** /merchant/qr | Create QR Code for a payment request
 [**createPaymentSession**](OAIMerchantApi.md#createpaymentsession) | **POST** /merchant/payment/session | Create Payment Session
-[**deleteMerchantPayment**](OAIMerchantApi.md#deletemerchantpayment) | **DELETE** /merchant/payments/{paymentRequestId} | Delete Payment
+[**deleteMerchantPaymentRequest**](OAIMerchantApi.md#deletemerchantpaymentrequest) | **DELETE** /merchant/payments/{paymentRequestId} | Delete Payment Request
 [**deletePaymentSession**](OAIMerchantApi.md#deletepaymentsession) | **DELETE** /merchant/payment/session/{paymentSessionId} | Delete Payment Session
 [**getMerchantPaymentDetails**](OAIMerchantApi.md#getmerchantpaymentdetails) | **GET** /merchant/payments/{paymentRequestId} | Get Payment Details
 [**getMerchantPayments**](OAIMerchantApi.md#getmerchantpayments) | **GET** /merchant/payments | Get Payment List
@@ -18,16 +18,16 @@ Method | HTTP request | Description
 [**getMerchantSchemas**](OAIMerchantApi.md#getmerchantschemas) | **GET** /merchant/schema | Get Schema List
 [**getMerchantTransactionDetails**](OAIMerchantApi.md#getmerchanttransactiondetails) | **GET** /merchant/transactions/{transactionId} | Get Transaction Details
 [**getMerchantTransactions**](OAIMerchantApi.md#getmerchanttransactions) | **GET** /merchant/transactions | Get Transaction List
-[**getPaymentQRCodeContent**](OAIMerchantApi.md#getpaymentqrcodecontent) | **GET** /merchant/qr/{qrId} | Get QR Code Content
+[**getPaymentRequestQRCodeContent**](OAIMerchantApi.md#getpaymentrequestqrcodecontent) | **GET** /merchant/qr/{qrId} | Get QR Code Content
 [**getPaymentSession**](OAIMerchantApi.md#getpaymentsession) | **GET** /merchant/payment/session/{paymentSessionId} | Get Payment Session
 [**merchantUpdatePaymentSession**](OAIMerchantApi.md#merchantupdatepaymentsession) | **POST** /merchant/payment/session/{paymentSessionId} | Update Payment Session
 [**refundMerchantTransaction**](OAIMerchantApi.md#refundmerchanttransaction) | **POST** /merchant/transactions/{transactionId}/refund | Refund Transaction
 [**setMerchantPreferences**](OAIMerchantApi.md#setmerchantpreferences) | **POST** /merchant/preferences | Set Preferences
 
 
-# **cancelPaymentQRCode**
+# **cancelPaymentRequestQRCode**
 ```objc
--(NSURLSessionTask*) cancelPaymentQRCodeWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) cancelPaymentRequestQRCodeWithXMerchantID: (NSString*) xMerchantID
     qrId: (NSString*) qrId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
@@ -52,11 +52,11 @@ NSString* qrId = dca8edc5-bbb7-44c0-8056-a5daf4327601; // The ID of the specific
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Invalidate QR Code
-[apiInstance cancelPaymentQRCodeWithXMerchantID:xMerchantID
+[apiInstance cancelPaymentRequestQRCodeWithXMerchantID:xMerchantID
               qrId:qrId
           completionHandler: ^(NSError* error) {
                         if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->cancelPaymentQRCode: %@", error);
+                            NSLog(@"Error calling OAIMerchantApi->cancelPaymentRequestQRCode: %@", error);
                         }
                     }];
 ```
@@ -144,67 +144,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createPaymentQRCode**
-```objc
--(NSURLSessionTask*) createPaymentQRCodeWithXMerchantID: (NSString*) xMerchantID
-    paymentQRCodeDetails: (OAIPaymentQRCodeDetails*) paymentQRCodeDetails
-        completionHandler: (void (^)(OAICreatePaymentQRCodeResults* output, NSError* error)) handler;
-```
-
-Create QR Code
-
-Create a new QR code for an existing payment
-
-### Example 
-```objc
-OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: ApiKeyAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
-
-
-NSString* xMerchantID = 10001; // 
-OAIPaymentQRCodeDetails* paymentQRCodeDetails = [[OAIPaymentQRCodeDetails alloc] init]; // 
-
-OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
-
-// Create QR Code
-[apiInstance createPaymentQRCodeWithXMerchantID:xMerchantID
-              paymentQRCodeDetails:paymentQRCodeDetails
-          completionHandler: ^(OAICreatePaymentQRCodeResults* output, NSError* error) {
-                        if (output) {
-                            NSLog(@"%@", output);
-                        }
-                        if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->createPaymentQRCode: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
- **paymentQRCodeDetails** | [**OAIPaymentQRCodeDetails***](OAIPaymentQRCodeDetails.md)|  | 
-
-### Return type
-
-[**OAICreatePaymentQRCodeResults***](OAICreatePaymentQRCodeResults.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **createPaymentRequest**
 ```objc
 -(NSURLSessionTask*) createPaymentRequestWithXMerchantID: (NSString*) xMerchantID
@@ -254,6 +193,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OAICreatePaymentRequestResults***](OAICreatePaymentRequestResults.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createPaymentRequestQRCode**
+```objc
+-(NSURLSessionTask*) createPaymentRequestQRCodeWithXMerchantID: (NSString*) xMerchantID
+    paymentQRCodeDetails: (OAIPaymentQRCodeDetails*) paymentQRCodeDetails
+        completionHandler: (void (^)(OAICreatePaymentRequestQRCodeResults* output, NSError* error)) handler;
+```
+
+Create QR Code for a payment request
+
+Create a new QR code for an existing payment request
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xMerchantID = 10001; // 
+OAIPaymentQRCodeDetails* paymentQRCodeDetails = [[OAIPaymentQRCodeDetails alloc] init]; // 
+
+OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
+
+// Create QR Code for a payment request
+[apiInstance createPaymentRequestQRCodeWithXMerchantID:xMerchantID
+              paymentQRCodeDetails:paymentQRCodeDetails
+          completionHandler: ^(OAICreatePaymentRequestQRCodeResults* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIMerchantApi->createPaymentRequestQRCode: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xMerchantID** | **NSString***|  | 
+ **paymentQRCodeDetails** | [**OAIPaymentQRCodeDetails***](OAIPaymentQRCodeDetails.md)|  | 
+
+### Return type
+
+[**OAICreatePaymentRequestQRCodeResults***](OAICreatePaymentRequestQRCodeResults.md)
 
 ### Authorization
 
@@ -327,14 +327,14 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteMerchantPayment**
+# **deleteMerchantPaymentRequest**
 ```objc
--(NSURLSessionTask*) deleteMerchantPaymentWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) deleteMerchantPaymentRequestWithXMerchantID: (NSString*) xMerchantID
     paymentRequestId: (NSString*) paymentRequestId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
-Delete Payment
+Delete Payment Request
 
 Cancel an existing payment by setting the expiration date/time to now and setting the remaining uses to 0.  Will only be successful if the payment is still pending.  Completed payments need to be refunded using the dedicated API for that purpose
 
@@ -353,12 +353,12 @@ NSString* paymentRequestId = @"paymentRequestId_example"; // The ID of the speci
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
-// Delete Payment
-[apiInstance deleteMerchantPaymentWithXMerchantID:xMerchantID
+// Delete Payment Request
+[apiInstance deleteMerchantPaymentRequestWithXMerchantID:xMerchantID
               paymentRequestId:paymentRequestId
           completionHandler: ^(NSError* error) {
                         if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->deleteMerchantPayment: %@", error);
+                            NSLog(@"Error calling OAIMerchantApi->deleteMerchantPaymentRequest: %@", error);
                         }
                     }];
 ```
@@ -882,11 +882,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getPaymentQRCodeContent**
+# **getPaymentRequestQRCodeContent**
 ```objc
--(NSURLSessionTask*) getPaymentQRCodeContentWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getPaymentRequestQRCodeContentWithXMerchantID: (NSString*) xMerchantID
     qrId: (NSString*) qrId
-        completionHandler: (void (^)(OAICreatePaymentQRCodeResults* output, NSError* error)) handler;
+        completionHandler: (void (^)(OAICreatePaymentRequestQRCodeResults* output, NSError* error)) handler;
 ```
 
 Get QR Code Content
@@ -909,14 +909,14 @@ NSString* qrId = @"qrId_example"; // The ID of the specific QR Code
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get QR Code Content
-[apiInstance getPaymentQRCodeContentWithXMerchantID:xMerchantID
+[apiInstance getPaymentRequestQRCodeContentWithXMerchantID:xMerchantID
               qrId:qrId
-          completionHandler: ^(OAICreatePaymentQRCodeResults* output, NSError* error) {
+          completionHandler: ^(OAICreatePaymentRequestQRCodeResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
                         if (error) {
-                            NSLog(@"Error calling OAIMerchantApi->getPaymentQRCodeContent: %@", error);
+                            NSLog(@"Error calling OAIMerchantApi->getPaymentRequestQRCodeContent: %@", error);
                         }
                     }];
 ```
@@ -930,7 +930,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OAICreatePaymentQRCodeResults***](OAICreatePaymentQRCodeResults.md)
+[**OAICreatePaymentRequestQRCodeResults***](OAICreatePaymentRequestQRCodeResults.md)
 
 ### Authorization
 

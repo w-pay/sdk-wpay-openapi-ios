@@ -23,10 +23,10 @@
 
 
 
-@protocol OAICustomerPaymentDetails
+@protocol OAICustomerPaymentDetails1
 @end
 
-@interface OAICustomerPaymentDetails : OAIObject
+@interface OAICustomerPaymentDetails1 : OAIObject
 
 
 @property(nonatomic) OAICustomerPaymentsPaymentRequestIdData* data;

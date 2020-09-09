@@ -71,7 +71,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 				body.data.referenceType = "REQUEST"
 		}
 
-		api.createPaymentQRCode(
+		api.createPaymentRequestQRCode(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentQRCodeDetails: body,
 			completionHandler: { result, error in
@@ -89,7 +89,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 	) {
 		let api = createMerchantApi()
 
-		api.getPaymentQRCodeContent(
+		api.getPaymentRequestQRCodeContent(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			qrId: qrCodeId,
 			completionHandler: { result, error in
@@ -107,7 +107,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 	) {
 		let api = createMerchantApi()
 
-		api.cancelPaymentQRCode(
+		api.cancelPaymentRequestQRCode(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			qrId: qrCodeId,
 			completionHandler: { error in
@@ -234,7 +234,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 	) {
 		let api = createMerchantApi()
 
-		api.deleteMerchantPayment(
+		api.deleteMerchantPaymentRequest(
 			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentRequestId: paymentRequestId,
 			completionHandler: { error in

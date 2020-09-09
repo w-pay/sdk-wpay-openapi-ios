@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name = "VillageWalletSDKOAIClient"
-  spec.version = "3.0.0"
+  spec.version = "3.1.0"
   spec.summary = "Open API implementation of Village API Repositories"
 
   # This description is used to generate tags and improve search results.
@@ -149,5 +149,5 @@ Pod::Spec.new do |spec|
   spec.dependency "AFNetworking", "~> 3"
   spec.dependency "JSONModel", "~> 1.2"
   spec.dependency "ISO8601", "~> 0.6"
-  spec.dependency "VillageWalletSDK", "~> 3"
+  spec.dependency "VillageWalletSDK", "~> 3.1"
 end

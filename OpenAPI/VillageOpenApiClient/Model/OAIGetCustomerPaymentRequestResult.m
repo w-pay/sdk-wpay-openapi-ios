@@ -1,6 +1,6 @@
-#import "OAICommonPaymentSummaryAllOf.h"
+#import "OAIGetCustomerPaymentRequestResult.h"
 
-@implementation OAICommonPaymentSummaryAllOf
+@implementation OAIGetCustomerPaymentRequestResult
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"createdTime": @"createdTime" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"data": @"data", @"meta": @"meta" }];
 }
 
 /**

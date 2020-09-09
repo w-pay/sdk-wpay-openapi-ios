@@ -263,6 +263,36 @@ class VillageCustomerApiRepositoryTest: VillageApiRepositoryTest {
 		wait(for: [promise], timeout: 2)
 	}
 
+	func testShouldDeletePaymentSession() {
+		let paymentSessionId = "75ba5b0b-7e5d-47fe-9508-29ca69fdb1d5"
+
+		let promise = apiResultExpectation()
+
+		api.deletePaymentSession(
+			paymentSessionId: paymentSessionId,
+			completion: isSuccessful(promise: promise)
+		)
+
+		wait(for: [promise], timeout: 2)
+	}
+
+	func testShouldPreApprovePaymentSession() {
+		let paymentSessionId = "75ba5b0b-7e5d-47fe-9508-29ca69fdb1d5"
+
+		let promise = apiResultExpectation()
+
+		api.preApprovePaymentSession(
+			paymentSessionId: paymentSessionId,
+			primaryInstrument: aSelectedPaymentInstrument(),
+			secondaryInstruments: nil,
+			clientReference: nil,
+			challengeResponses: nil,
+			completion: isSuccessful(promise: promise)
+		)
+
+		wait(for: [promise], timeout: 2)
+	}
+
 	func testShouldCheckHealth() {
 		let promise = apiResultExpectation()
 		var value: HealthCheck!

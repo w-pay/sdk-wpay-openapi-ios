@@ -1,6 +1,6 @@
-#import "OAIGetCustomerPaymentResult.h"
+#import "OAICustomerPaymentRequestDetailsAllOf.h"
 
-@implementation OAIGetCustomerPaymentResult
+@implementation OAICustomerPaymentRequestDetailsAllOf
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"data": @"data", @"meta": @"meta" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"merchantId": @"merchantId", @"basket": @"basket" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[];
+  NSArray *optionalProperties = @[@"basket"];
   return [optionalProperties containsObject:propertyName];
 }
 

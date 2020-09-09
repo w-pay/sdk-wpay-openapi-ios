@@ -1,6 +1,6 @@
-#import "OAIMerchantPaymentDetail.h"
+#import "OAIMerchantPaymentDetails.h"
 
-@implementation OAIMerchantPaymentDetail
+@implementation OAIMerchantPaymentDetails
 
 - (instancetype)init {
   self = [super init];
