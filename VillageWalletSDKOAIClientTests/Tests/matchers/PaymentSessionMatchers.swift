@@ -7,6 +7,7 @@ import VillageWalletSDK
 func hasPaymentSession() -> Matcher<PaymentSession> {
 	Matcher("A payment session") { (item) -> Bool in
 		assertThat(item.paymentSessionId, not(blankOrNilString()))
+		assertThat(item.paymentRequestId, blankOrNilString())
 		assertThat(item.merchantId, not(blankOrNilString()))
 		assertThat(item.walletId, nilValue())
 		assertThat(item.expiryTime, not(nilValue()))

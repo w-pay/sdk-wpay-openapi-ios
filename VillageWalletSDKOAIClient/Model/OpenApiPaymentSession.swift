@@ -12,6 +12,10 @@ class OpenApiPaymentSession: PaymentSession {
 		session.paymentSessionId
 	}
 
+	var paymentRequestId: String? {
+		session.paymentRequestId
+	}
+
 	var merchantId: String {
 		session.merchantId
 	}
