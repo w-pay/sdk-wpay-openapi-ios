@@ -45,7 +45,7 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var statusDetail: AnyObject? {
-		nil
+		summary.statusDetail
 	}
 
 	var refundReason: String? {
@@ -109,7 +109,7 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var statusDetail: AnyObject? {
-		nil
+		details.statusDetail
 	}
 
 	var refundReason: String? {
