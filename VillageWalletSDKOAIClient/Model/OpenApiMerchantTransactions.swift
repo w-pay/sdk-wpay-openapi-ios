@@ -41,7 +41,7 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 	}
 
 	var statusDetail: AnyObject? {
-		nil
+		summary.statusDetail
 	}
 
 	var refundReason: String? {
@@ -117,7 +117,7 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 	}
 
 	var statusDetail: AnyObject? {
-		nil
+		details.statusDetail
 	}
 
 	var refundReason: String? {
