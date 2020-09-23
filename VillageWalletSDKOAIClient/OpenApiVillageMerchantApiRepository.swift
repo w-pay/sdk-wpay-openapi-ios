@@ -83,7 +83,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 			})
 	}
 
-	public func retrievePaymentRequestBy(
+	public func retrievePaymentRequestQRCode(
 		qrCodeId: String,
 		completion: @escaping ApiCompletion<QRCode>
 	) {

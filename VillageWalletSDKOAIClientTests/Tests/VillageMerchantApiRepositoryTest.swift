@@ -83,7 +83,7 @@ class VillageMerchantApiRepositoryTest: VillageApiRepositoryTest {
 		let promise = apiResultExpectation()
 		var value: QRCode!
 
-		api.retrievePaymentRequestBy(
+		api.retrievePaymentRequestQRCode(
 			qrCodeId: qrCodeId,
 			completion: isSuccessfulWith { result in
 				value = try! result.get()
