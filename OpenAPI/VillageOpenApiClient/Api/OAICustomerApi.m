@@ -254,13 +254,13 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 ///
 ///  @param paymentInstrumentId The ID of the specific instrument 
 ///
-///  @param xEverdayPayWallet The payment instrument to be deleted is in the everyday pay wallet (optional, default to @(NO))
+///  @param xEverydayPayWallet The payment instrument to be deleted is in the everyday pay wallet (optional, default to @(NO))
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) deletePaymentInstrumentWithXWalletID: (NSString*) xWalletID
     paymentInstrumentId: (NSString*) paymentInstrumentId
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'xWalletID' is set
     if (xWalletID == nil) {
@@ -297,9 +297,9 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     if (xWalletID != nil) {
         headerParams[@"X-Wallet-ID"] = xWalletID;
     }
-    if (xEverdayPayWallet != nil) {
+    if (xEverydayPayWallet != nil) {
         // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
-        headerParams[@"X-Everday-Pay-Wallet"] = [xEverdayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+        headerParams[@"X-Everyday-Pay-Wallet"] = [xEverydayPayWallet isEqual:@(YES)] ? @"true" : @"false";
     }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[]];
@@ -344,12 +344,12 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 /// Get the list of payment instruments currently configured for the customer.  Returns an array of instrument records that can be used to execute payments
 ///  @param xWalletID  
 ///
-///  @param xEverdayPayWallet Includes everyday pay wallet in the list of payment instruments (optional, default to @(NO))
+///  @param xEverydayPayWallet Includes everyday pay wallet in the list of payment instruments (optional, default to @(NO))
 ///
 ///  @returns OAIGetCustomerPaymentInstrumentsResults*
 ///
 -(NSURLSessionTask*) getCustomerPaymentInstrumentsWithXWalletID: (NSString*) xWalletID
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(OAIGetCustomerPaymentInstrumentsResults* output, NSError* error)) handler {
     // verify the required parameter 'xWalletID' is set
     if (xWalletID == nil) {
@@ -372,9 +372,9 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     if (xWalletID != nil) {
         headerParams[@"X-Wallet-ID"] = xWalletID;
     }
-    if (xEverdayPayWallet != nil) {
+    if (xEverydayPayWallet != nil) {
         // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
-        headerParams[@"X-Everday-Pay-Wallet"] = [xEverdayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+        headerParams[@"X-Everyday-Pay-Wallet"] = [xEverydayPayWallet isEqual:@(YES)] ? @"true" : @"false";
     }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
@@ -1012,13 +1012,13 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 ///
 ///  @param instrumentAdditionDetails  
 ///
-///  @param xEverdayPayWallet The payment instrument should be stored in the everyday pay wallet (optional, default to @(NO))
+///  @param xEverydayPayWallet The payment instrument should be stored in the everyday pay wallet (optional, default to @(NO))
 ///
 ///  @returns OAIInitiatePaymentInstrumentAdditionResults*
 ///
 -(NSURLSessionTask*) initiatePaymentInstrumentAdditionWithXWalletID: (NSString*) xWalletID
     instrumentAdditionDetails: (OAIInstrumentAdditionDetails*) instrumentAdditionDetails
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(OAIInitiatePaymentInstrumentAdditionResults* output, NSError* error)) handler {
     // verify the required parameter 'xWalletID' is set
     if (xWalletID == nil) {
@@ -1052,9 +1052,9 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     if (xWalletID != nil) {
         headerParams[@"X-Wallet-ID"] = xWalletID;
     }
-    if (xEverdayPayWallet != nil) {
+    if (xEverydayPayWallet != nil) {
         // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
-        headerParams[@"X-Everday-Pay-Wallet"] = [xEverdayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+        headerParams[@"X-Everyday-Pay-Wallet"] = [xEverydayPayWallet isEqual:@(YES)] ? @"true" : @"false";
     }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
@@ -1104,14 +1104,14 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 ///
 ///  @param customerPaymentDetails  
 ///
-///  @param xEverdayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional, default to @(NO))
+///  @param xEverydayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional, default to @(NO))
 ///
 ///  @returns OAIMakeCustomerPaymentResults*
 ///
 -(NSURLSessionTask*) makeCustomerPaymentWithXWalletID: (NSString*) xWalletID
     paymentRequestId: (NSString*) paymentRequestId
     customerPaymentDetails: (OAICustomerPaymentDetails*) customerPaymentDetails
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(OAIMakeCustomerPaymentResults* output, NSError* error)) handler {
     // verify the required parameter 'xWalletID' is set
     if (xWalletID == nil) {
@@ -1159,9 +1159,9 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     if (xWalletID != nil) {
         headerParams[@"X-Wallet-ID"] = xWalletID;
     }
-    if (xEverdayPayWallet != nil) {
+    if (xEverydayPayWallet != nil) {
         // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
-        headerParams[@"X-Everday-Pay-Wallet"] = [xEverdayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+        headerParams[@"X-Everyday-Pay-Wallet"] = [xEverydayPayWallet isEqual:@(YES)] ? @"true" : @"false";
     }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
@@ -1211,14 +1211,14 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 ///
 ///  @param customerPaymentDetails1  
 ///
-///  @param xEverdayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional, default to @(NO))
+///  @param xEverydayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional, default to @(NO))
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) preApprovePaymentSessionWithXWalletID: (NSString*) xWalletID
     paymentSessionId: (NSString*) paymentSessionId
     customerPaymentDetails1: (OAICustomerPaymentDetails1*) customerPaymentDetails1
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'xWalletID' is set
     if (xWalletID == nil) {
@@ -1266,9 +1266,9 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     if (xWalletID != nil) {
         headerParams[@"X-Wallet-ID"] = xWalletID;
     }
-    if (xEverdayPayWallet != nil) {
+    if (xEverydayPayWallet != nil) {
         // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
-        headerParams[@"X-Everday-Pay-Wallet"] = [xEverdayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+        headerParams[@"X-Everyday-Pay-Wallet"] = [xEverydayPayWallet isEqual:@(YES)] ? @"true" : @"false";
     }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[]];

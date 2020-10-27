@@ -72,14 +72,14 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 ///
 /// @param xWalletID 
 /// @param paymentInstrumentId The ID of the specific instrument
-/// @param xEverdayPayWallet The payment instrument to be deleted is in the everyday pay wallet (optional) (default to @(NO))
+/// @param xEverydayPayWallet The payment instrument to be deleted is in the everyday pay wallet (optional) (default to @(NO))
 /// 
 ///  code:204 message:"Payment Instrument successfully deleted.  No content returned"
 ///
 /// @return void
 -(NSURLSessionTask*) deletePaymentInstrumentWithXWalletID: (NSString*) xWalletID
     paymentInstrumentId: (NSString*) paymentInstrumentId
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(NSError* error)) handler;
 
 
@@ -87,13 +87,13 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 /// Get the list of payment instruments currently configured for the customer.  Returns an array of instrument records that can be used to execute payments
 ///
 /// @param xWalletID 
-/// @param xEverdayPayWallet Includes everyday pay wallet in the list of payment instruments (optional) (default to @(NO))
+/// @param xEverydayPayWallet Includes everyday pay wallet in the list of payment instruments (optional) (default to @(NO))
 /// 
 ///  code:200 message:"Successful response"
 ///
 /// @return OAIGetCustomerPaymentInstrumentsResults*
 -(NSURLSessionTask*) getCustomerPaymentInstrumentsWithXWalletID: (NSString*) xWalletID
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(OAIGetCustomerPaymentInstrumentsResults* output, NSError* error)) handler;
 
 
@@ -210,14 +210,14 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 ///
 /// @param xWalletID 
 /// @param instrumentAdditionDetails 
-/// @param xEverdayPayWallet The payment instrument should be stored in the everyday pay wallet (optional) (default to @(NO))
+/// @param xEverydayPayWallet The payment instrument should be stored in the everyday pay wallet (optional) (default to @(NO))
 /// 
 ///  code:200 message:"Successful response"
 ///
 /// @return OAIInitiatePaymentInstrumentAdditionResults*
 -(NSURLSessionTask*) initiatePaymentInstrumentAdditionWithXWalletID: (NSString*) xWalletID
     instrumentAdditionDetails: (OAIInstrumentAdditionDetails*) instrumentAdditionDetails
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(OAIInitiatePaymentInstrumentAdditionResults* output, NSError* error)) handler;
 
 
@@ -227,7 +227,7 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 /// @param xWalletID 
 /// @param paymentRequestId The ID of the specific payment request
 /// @param customerPaymentDetails 
-/// @param xEverdayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
+/// @param xEverydayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
 /// 
 ///  code:200 message:"Successful response",
 ///  code:422 message:"The specified Payment Request ID doesn't exist, has been used or is expired"
@@ -236,7 +236,7 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 -(NSURLSessionTask*) makeCustomerPaymentWithXWalletID: (NSString*) xWalletID
     paymentRequestId: (NSString*) paymentRequestId
     customerPaymentDetails: (OAICustomerPaymentDetails*) customerPaymentDetails
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(OAIMakeCustomerPaymentResults* output, NSError* error)) handler;
 
 
@@ -246,7 +246,7 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 /// @param xWalletID 
 /// @param paymentSessionId The ID of the specific payment session
 /// @param customerPaymentDetails1 
-/// @param xEverdayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
+/// @param xEverydayPayWallet The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
 /// 
 ///  code:204 message:"The pre approval has been successfully added to the payment session. No content returned."
 ///
@@ -254,7 +254,7 @@ extern NSInteger kOAICustomerApiMissingParamErrorCode;
 -(NSURLSessionTask*) preApprovePaymentSessionWithXWalletID: (NSString*) xWalletID
     paymentSessionId: (NSString*) paymentSessionId
     customerPaymentDetails1: (OAICustomerPaymentDetails1*) customerPaymentDetails1
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
     completionHandler: (void (^)(NSError* error)) handler;
 
 
