@@ -101,7 +101,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 
 		api.getCustomerPaymentInstruments(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
-			xEverdayPayWallet: (wallet == Wallet.EVERYDAY_PAY) as NSNumber,
+			xEverydayPayWallet: (wallet == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -123,7 +123,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 		api.deletePaymentInstrument(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentInstrumentId: instrument.paymentInstrumentId,
-			xEverdayPayWallet: (instrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
+			xEverydayPayWallet: (instrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -157,7 +157,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentRequestId: paymentRequestId,
 			customerPaymentDetails: body,
-			xEverdayPayWallet: (primaryInstrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
+			xEverydayPayWallet: (primaryInstrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -182,7 +182,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 		api.initiatePaymentInstrumentAddition(
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			instrumentAdditionDetails: body,
-			xEverdayPayWallet: (instrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
+			xEverydayPayWallet: (instrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -346,7 +346,7 @@ public class OpenApiVillageCustomerApiRepository: OpenApiClientFactory, VillageC
 			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			paymentSessionId: paymentSessionId,
 			customerPaymentDetails1: body,
-			xEverdayPayWallet: (primaryInstrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
+			xEverydayPayWallet: (primaryInstrument.wallet == Wallet.EVERYDAY_PAY) as NSNumber,
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

@@ -148,7 +148,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) deletePaymentInstrumentWithXWalletID: (NSString*) xWalletID
     paymentInstrumentId: (NSString*) paymentInstrumentId
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -171,14 +171,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
 NSString* paymentInstrumentId = @"paymentInstrumentId_example"; // The ID of the specific instrument
-NSNumber* xEverdayPayWallet = @(NO); // The payment instrument to be deleted is in the everyday pay wallet (optional) (default to @(NO))
+NSNumber* xEverydayPayWallet = @(NO); // The payment instrument to be deleted is in the everyday pay wallet (optional) (default to @(NO))
 
 OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 
 // Delete a payment instrument
 [apiInstance deletePaymentInstrumentWithXWalletID:xWalletID
               paymentInstrumentId:paymentInstrumentId
-              xEverdayPayWallet:xEverdayPayWallet
+              xEverydayPayWallet:xEverydayPayWallet
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAICustomerApi->deletePaymentInstrument: %@", error);
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xWalletID** | **NSString***|  | 
  **paymentInstrumentId** | **NSString***| The ID of the specific instrument | 
- **xEverdayPayWallet** | **NSNumber***| The payment instrument to be deleted is in the everyday pay wallet | [optional] [default to @(NO)]
+ **xEverydayPayWallet** | **NSNumber***| The payment instrument to be deleted is in the everyday pay wallet | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -212,7 +212,7 @@ void (empty response body)
 # **getCustomerPaymentInstruments**
 ```objc
 -(NSURLSessionTask*) getCustomerPaymentInstrumentsWithXWalletID: (NSString*) xWalletID
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
         completionHandler: (void (^)(OAIGetCustomerPaymentInstrumentsResults* output, NSError* error)) handler;
 ```
 
@@ -234,13 +234,13 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 
 NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
-NSNumber* xEverdayPayWallet = @(NO); // Includes everyday pay wallet in the list of payment instruments (optional) (default to @(NO))
+NSNumber* xEverydayPayWallet = @(NO); // Includes everyday pay wallet in the list of payment instruments (optional) (default to @(NO))
 
 OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 
 // Get Payment Instruments
 [apiInstance getCustomerPaymentInstrumentsWithXWalletID:xWalletID
-              xEverdayPayWallet:xEverdayPayWallet
+              xEverydayPayWallet:xEverydayPayWallet
           completionHandler: ^(OAIGetCustomerPaymentInstrumentsResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -256,7 +256,7 @@ OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xWalletID** | **NSString***|  | 
- **xEverdayPayWallet** | **NSNumber***| Includes everyday pay wallet in the list of payment instruments | [optional] [default to @(NO)]
+ **xEverydayPayWallet** | **NSNumber***| Includes everyday pay wallet in the list of payment instruments | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -737,7 +737,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) initiatePaymentInstrumentAdditionWithXWalletID: (NSString*) xWalletID
     instrumentAdditionDetails: (OAIInstrumentAdditionDetails*) instrumentAdditionDetails
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
         completionHandler: (void (^)(OAIInitiatePaymentInstrumentAdditionResults* output, NSError* error)) handler;
 ```
 
@@ -760,14 +760,14 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
 OAIInstrumentAdditionDetails* instrumentAdditionDetails = [[OAIInstrumentAdditionDetails alloc] init]; // 
-NSNumber* xEverdayPayWallet = @(NO); // The payment instrument should be stored in the everyday pay wallet (optional) (default to @(NO))
+NSNumber* xEverydayPayWallet = @(NO); // The payment instrument should be stored in the everyday pay wallet (optional) (default to @(NO))
 
 OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 
 // Initiate Instrument Addition
 [apiInstance initiatePaymentInstrumentAdditionWithXWalletID:xWalletID
               instrumentAdditionDetails:instrumentAdditionDetails
-              xEverdayPayWallet:xEverdayPayWallet
+              xEverydayPayWallet:xEverydayPayWallet
           completionHandler: ^(OAIInitiatePaymentInstrumentAdditionResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -784,7 +784,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xWalletID** | **NSString***|  | 
  **instrumentAdditionDetails** | [**OAIInstrumentAdditionDetails***](OAIInstrumentAdditionDetails.md)|  | 
- **xEverdayPayWallet** | **NSNumber***| The payment instrument should be stored in the everyday pay wallet | [optional] [default to @(NO)]
+ **xEverydayPayWallet** | **NSNumber***| The payment instrument should be stored in the everyday pay wallet | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -806,7 +806,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) makeCustomerPaymentWithXWalletID: (NSString*) xWalletID
     paymentRequestId: (NSString*) paymentRequestId
     customerPaymentDetails: (OAICustomerPaymentDetails*) customerPaymentDetails
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
         completionHandler: (void (^)(OAIMakeCustomerPaymentResults* output, NSError* error)) handler;
 ```
 
@@ -830,7 +830,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
 NSString* paymentRequestId = @"paymentRequestId_example"; // The ID of the specific payment request
 OAICustomerPaymentDetails* customerPaymentDetails = [[OAICustomerPaymentDetails alloc] init]; // 
-NSNumber* xEverdayPayWallet = @(NO); // The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
+NSNumber* xEverydayPayWallet = @(NO); // The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
 
 OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 
@@ -838,7 +838,7 @@ OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 [apiInstance makeCustomerPaymentWithXWalletID:xWalletID
               paymentRequestId:paymentRequestId
               customerPaymentDetails:customerPaymentDetails
-              xEverdayPayWallet:xEverdayPayWallet
+              xEverydayPayWallet:xEverydayPayWallet
           completionHandler: ^(OAIMakeCustomerPaymentResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -856,7 +856,7 @@ Name | Type | Description  | Notes
  **xWalletID** | **NSString***|  | 
  **paymentRequestId** | **NSString***| The ID of the specific payment request | 
  **customerPaymentDetails** | [**OAICustomerPaymentDetails***](OAICustomerPaymentDetails.md)|  | 
- **xEverdayPayWallet** | **NSNumber***| The makes instruments available in the everyday pay wallet available for payments | [optional] [default to @(NO)]
+ **xEverydayPayWallet** | **NSNumber***| The makes instruments available in the everyday pay wallet available for payments | [optional] [default to @(NO)]
 
 ### Return type
 
@@ -878,7 +878,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) preApprovePaymentSessionWithXWalletID: (NSString*) xWalletID
     paymentSessionId: (NSString*) paymentSessionId
     customerPaymentDetails1: (OAICustomerPaymentDetails1*) customerPaymentDetails1
-    xEverdayPayWallet: (NSNumber*) xEverdayPayWallet
+    xEverydayPayWallet: (NSNumber*) xEverydayPayWallet
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -902,7 +902,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* xWalletID = bb8f86af-9e7b-4659-85d5-346b5e99d500; // 
 NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session
 OAICustomerPaymentDetails1* customerPaymentDetails1 = [[OAICustomerPaymentDetails1 alloc] init]; // 
-NSNumber* xEverdayPayWallet = @(NO); // The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
+NSNumber* xEverydayPayWallet = @(NO); // The makes instruments available in the everyday pay wallet available for payments (optional) (default to @(NO))
 
 OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 
@@ -910,7 +910,7 @@ OAICustomerApi*apiInstance = [[OAICustomerApi alloc] init];
 [apiInstance preApprovePaymentSessionWithXWalletID:xWalletID
               paymentSessionId:paymentSessionId
               customerPaymentDetails1:customerPaymentDetails1
-              xEverdayPayWallet:xEverdayPayWallet
+              xEverydayPayWallet:xEverydayPayWallet
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAICustomerApi->preApprovePaymentSession: %@", error);
@@ -925,7 +925,7 @@ Name | Type | Description  | Notes
  **xWalletID** | **NSString***|  | 
  **paymentSessionId** | **NSString***| The ID of the specific payment session | 
  **customerPaymentDetails1** | [**OAICustomerPaymentDetails1***](OAICustomerPaymentDetails1.md)|  | 
- **xEverdayPayWallet** | **NSNumber***| The makes instruments available in the everyday pay wallet available for payments | [optional] [default to @(NO)]
+ **xEverydayPayWallet** | **NSNumber***| The makes instruments available in the everyday pay wallet available for payments | [optional] [default to @(NO)]
 
 ### Return type
 
