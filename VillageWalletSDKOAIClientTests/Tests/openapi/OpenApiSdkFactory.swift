@@ -18,7 +18,8 @@ class OpenApiSdkFactory: SdkFactory {
 class TestRequestHeadersFactory: RequestHeadersFactory {
 	func createHeaders() -> [String: String] {
 		[
-			X_WALLET_ID: "a value"
+			X_WALLET_ID: "a value",
+			X_MERCHANT_ID: "a value"
 		]
 	}
 }

@@ -16,7 +16,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantTransactions(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			startTime: startTime,
 			endTime: endTime,
 			pageSize: pageSize as NSNumber?,
@@ -39,7 +39,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantTransactionDetails(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			transactionId: transactionId,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -72,7 +72,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		}
 
 		api.createPaymentRequestQRCode(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			paymentQRCodeDetails: body,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -90,7 +90,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getPaymentRequestQRCodeContent(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			qrId: qrCodeId,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -108,7 +108,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.cancelPaymentRequestQRCode(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			qrId: qrCodeId,
 			completionHandler: { error in
 				guard error == nil else {
@@ -128,7 +128,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantPayments(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			type: type,
 			pageSize: pageSize as NSNumber?,
 			page: page as NSNumber?,
@@ -199,7 +199,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		}
 
 		api.createPaymentRequest(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			merchantPaymentRequest: body,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -217,7 +217,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantPaymentDetails(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			paymentRequestId: paymentRequestId,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -235,7 +235,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.deleteMerchantPaymentRequest(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			paymentRequestId: paymentRequestId,
 			completionHandler: { error in
 				guard error == nil else {
@@ -258,7 +258,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		body.data.reason = refundDetails.reason
 
 		api.refundMerchantTransaction(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			transactionId: transactionId,
 			refundMerchantTransactionRequest: body,
 			completionHandler: { result, error in
@@ -274,7 +274,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantPreferences(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -294,7 +294,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		body.data = preferences
 
 		api.setMerchantPreferencesWithXMerchantID(
-			self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			merchantPreferences: body,
 			completionHandler: { error in
 				guard error == nil else {
@@ -309,7 +309,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantSchemas(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -328,7 +328,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getMerchantSchemaDetails(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			schemaId: schemaId,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -352,7 +352,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		body.data._description = schema.description
 
 		api.createMerchantSchema(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			merchantSchema: body,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -378,7 +378,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		body.data.timeToLiveQR = request.timeToLiveQR as NSNumber?
 
 		api.createPaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			createPaymentSessionRequest: body,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -396,7 +396,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.getPaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			paymentSessionId: paymentSessionId,
 			completionHandler: { result, error in
 				guard error == nil else {
@@ -420,7 +420,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		body.data.merchantInfo = toDynamicPayload(payload: session.merchantInfo)
 
 		api.merchantUpdatePaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			paymentSessionId: paymentSessionId,
 			updatePaymentSessionRequest1: body,
 			completionHandler: { error in
@@ -439,7 +439,7 @@ public class OpenApiVillageMerchantApiRepository: OpenApiClientFactory, VillageM
 		let api = createMerchantApi()
 
 		api.deletePaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
 			paymentSessionId: paymentSessionId,
 			completionHandler: { error in
 				guard error == nil else {
