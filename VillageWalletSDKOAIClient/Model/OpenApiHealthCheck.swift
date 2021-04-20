@@ -9,6 +9,6 @@ class OpenApiHealthCheck: HealthCheck {
 	}
 
 	var result: HealthCheckStatus? {
-		HealthCheckStatus.valueOf(value: check.healthCheck)
+		HealthCheckStatus(rawValue: check.healthCheck.uppercased())
 	}
 }

@@ -71,7 +71,10 @@ class TestOpenApiClientFactory: OpenApiClientFactory {
 	init() {
 		super.init(
 			requestHeadersFactory: RequestHeaderChain(factories: []),
-			contextRoot: ""
+			options: VillageOptions(
+				apiKey: "",
+				baseUrl: ""
+			)
 		)
 	}
 

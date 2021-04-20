@@ -1,7 +1,7 @@
 import UIKit
 import VillageWalletSDK
 
-class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, AllPaymentInstruments {
+class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, WalletContents {
 	private let everydayPayData: OAIGetCustomerPaymentInstrumentsResultsDataEverydayPay?
 
 	init(
@@ -120,7 +120,7 @@ class OpenApiCreditCard: CreditCard {
 	}
 
 	var status: PaymentInstrumentStatus? {
-		PaymentInstrumentStatus.valueOf(value: creditCard.status)
+		PaymentInstrumentStatus(rawValue: creditCard.status.uppercased())
 	}
 
 	var wallet: Wallet {
@@ -178,7 +178,7 @@ class OpenApiGiftCard: GiftCard {
 	}
 
 	var status: PaymentInstrumentStatus? {
-		PaymentInstrumentStatus.valueOf(value: giftCard.status)
+		PaymentInstrumentStatus(rawValue: giftCard.status.uppercased())
 	}
 
 	var wallet: Wallet {

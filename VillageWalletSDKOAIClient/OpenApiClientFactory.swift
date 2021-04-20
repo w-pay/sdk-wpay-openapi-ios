@@ -1,19 +1,13 @@
 import UIKit
 import VillageWalletSDK
 
-public class OpenApiClientFactory: Configurable {
+public class OpenApiClientFactory {
 	private let requestHeadersFactory: RequestHeadersFactory
-	private var contextRoot: String
+	private let options: VillageOptions
 
-	private var host: String = "localhost:3000"
-
-	public init(requestHeadersFactory: RequestHeadersFactory, contextRoot: String) {
+	public init(requestHeadersFactory: RequestHeadersFactory, options: VillageOptions) {
 		self.requestHeadersFactory = requestHeadersFactory
-		self.contextRoot = contextRoot
-	}
-
-	public func setHost(host: String) {
-		self.host = host
+		self.options = options
 	}
 
 	internal func createAdministrationApi() -> OAIAdministrationApi {
@@ -30,6 +24,13 @@ public class OpenApiClientFactory: Configurable {
 
 	internal func getDefaultHeader(client: OAIApiClient, name: String) -> String? {
 		getDefaultHeader(config: client.configuration, name: name)
+	}
+
+	// TODO: Try to get rid of this
+	internal func getEverydayPayHeader(client: OAIApiClient) -> NSNumber? {
+		let header = getDefaultHeader(client: client, name: X_EVERYDAY_PAY_WALLET) as NSString?
+
+		return (header?.boolValue ?? false) as NSNumber
 	}
 
 	internal func authorisationHeader(name: String, value: String) -> String? {
@@ -118,7 +119,7 @@ public class OpenApiClientFactory: Configurable {
 		config.setApiKey(getDefaultHeader(config: config, name: X_API_KEY), forApiKeyIdentifier: X_API_KEY)
 
 		let apiClient = OAIApiClient(
-			baseURL: URL(string: "\(host)\(contextRoot)"),
+			baseURL: URL(string: options.baseUrl),
 			configuration: config
 		)
 
@@ -130,7 +131,10 @@ public class OpenApiClientFactory: Configurable {
 			return nil
 		}
 
-		let token = value.split(separator: " ")[1]
+		let sequences = value.split(separator: " ")
+
+		// take the last sequence as the access token
+		let token = sequences[sequences.count - 1]
 
 		return String(token)
 	}

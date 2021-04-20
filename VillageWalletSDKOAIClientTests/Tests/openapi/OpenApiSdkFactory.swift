@@ -3,15 +3,25 @@ import VillageWalletSDK
 
 @testable import VillageWalletSDKOAIClient
 
-let NO_ROOT = ""
-
 class OpenApiSdkFactory: SdkFactory {
 	func createCustomerApi() -> VillageCustomerApiRepository {
-		OpenApiVillageCustomerApiRepository(requestHeadersFactory: TestRequestHeadersFactory(), contextRoot: NO_ROOT)
+		OpenApiVillageCustomerApiRepository(
+			requestHeadersFactory: TestRequestHeadersFactory(),
+			options: VillageCustomerOptions(
+				apiKey: "abc123",
+				baseUrl: "http://localhost:8080/wow/v1/pay"
+			)
+		)
 	}
 
 	func createMerchantApi() -> VillageMerchantApiRepository {
-		OpenApiVillageMerchantApiRepository(requestHeadersFactory: TestRequestHeadersFactory(), contextRoot: NO_ROOT)
+		OpenApiVillageMerchantApiRepository(
+			requestHeadersFactory: TestRequestHeadersFactory(),
+			options: VillageMerchantOptions(
+				apiKey: "abc123",
+				baseUrl: "http://localhost:8080/wow/v1/pay"
+			)
+		)
 	}
 }
 
@@ -19,7 +29,10 @@ class TestRequestHeadersFactory: RequestHeadersFactory {
 	func createHeaders() -> [String: String] {
 		[
 			X_WALLET_ID: "a value",
-			X_MERCHANT_ID: "a value"
+			X_MERCHANT_ID: "a value",
+			X_API_KEY: "abc123",
+			X_EVERYDAY_PAY_WALLET: "true",
+			AUTHORISATION: "def456"
 		]
 	}
 }

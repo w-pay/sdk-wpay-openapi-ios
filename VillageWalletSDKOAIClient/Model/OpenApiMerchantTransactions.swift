@@ -29,7 +29,7 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 	}
 
 	var type: TransactionSummaryPaymentType? {
-		TransactionSummaryPaymentType.valueOf(value: summary.type)
+		TransactionSummaryPaymentType(rawValue: summary.type.uppercased())
 	}
 
 	var executionTime: Date {
@@ -37,11 +37,17 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 	}
 
 	var status: TransactionSummaryPaymentStatus? {
-		TransactionSummaryPaymentStatus.valueOf(value: summary.status)
+		TransactionSummaryPaymentStatus(rawValue: summary.status.uppercased())
 	}
 
-	var statusDetail: AnyObject? {
-		summary.statusDetail
+	var rollback: TransactionSummarySummaryRollback? {
+		// FIXME:
+		nil
+	}
+
+	var subTransactions: [Any]? {
+		// FIXME:
+		nil
 	}
 
 	var refundReason: String? {
@@ -62,6 +68,12 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 
 	var clientReference: String? {
 		summary.clientReference
+	}
+
+	var instruments: [TransactionSummaryUsedPaymentInstrument] {
+		// FIXME:
+		[]
+		// summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
 	}
 }
 
@@ -105,7 +117,7 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 	}
 
 	var type: TransactionSummaryPaymentType? {
-		TransactionSummaryPaymentType.valueOf(value: details.type)
+		TransactionSummaryPaymentType(rawValue: details.type.uppercased())
 	}
 
 	var executionTime: Date {
@@ -113,11 +125,17 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 	}
 
 	var status: TransactionSummaryPaymentStatus? {
-		TransactionSummaryPaymentStatus.valueOf(value: details.status)
+		TransactionSummaryPaymentStatus(rawValue: details.status.uppercased())
 	}
 
-	var statusDetail: AnyObject? {
-		details.statusDetail
+	var rollback: TransactionSummarySummaryRollback? {
+		// FIXME:
+		nil
+	}
+
+	var subTransactions: [Any]? {
+		// FIXME:
+		nil
 	}
 
 	var refundReason: String? {
@@ -138,5 +156,11 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 
 	var clientReference: String? {
 		details.clientReference
+	}
+
+	var instruments: [TransactionSummaryUsedPaymentInstrument] {
+		// FIXME:
+		[]
+		// details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
 	}
 }

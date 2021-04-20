@@ -24,7 +24,7 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 		summary.merchantId
 	}
 
-	var instruments: [CustomerTransactionUsedPaymentInstrument] {
+	var instruments: [TransactionSummaryUsedPaymentInstrument] {
 		summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
 	}
 
@@ -33,7 +33,7 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var type: TransactionSummaryPaymentType? {
-		TransactionSummaryPaymentType.valueOf(value: summary.type)
+		TransactionSummaryPaymentType(rawValue: summary.type.uppercased())
 	}
 
 	var executionTime: Date {
@@ -41,11 +41,17 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var status: TransactionSummaryPaymentStatus? {
-		TransactionSummaryPaymentStatus.valueOf(value: summary.status)
+		TransactionSummaryPaymentStatus(rawValue: summary.status.uppercased())
 	}
 
-	var statusDetail: AnyObject? {
-		summary.statusDetail
+	var rollback: TransactionSummarySummaryRollback? {
+		// FIXME:
+		nil
+	}
+
+	var subTransactions: [Any]? {
+		// FIXME:
+		nil
 	}
 
 	var refundReason: String? {
@@ -88,7 +94,7 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 		details.merchantId
 	}
 
-	var instruments: [CustomerTransactionUsedPaymentInstrument] {
+	var instruments: [TransactionSummaryUsedPaymentInstrument] {
 		details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
 	}
 
@@ -97,7 +103,7 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var type: TransactionSummaryPaymentType? {
-		TransactionSummaryPaymentType.valueOf(value: details.type)
+		TransactionSummaryPaymentType(rawValue: details.type.uppercased())
 	}
 
 	var executionTime: Date {
@@ -105,11 +111,17 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var status: TransactionSummaryPaymentStatus? {
-		TransactionSummaryPaymentStatus.valueOf(value: details.status)
+		TransactionSummaryPaymentStatus(rawValue: details.status.uppercased())
 	}
 
-	var statusDetail: AnyObject? {
-		details.statusDetail
+	var rollback: TransactionSummarySummaryRollback? {
+		// FIXME:
+		nil
+	}
+
+	var subTransactions: [Any]? {
+		// FIXME:
+		nil
 	}
 
 	var refundReason: String? {

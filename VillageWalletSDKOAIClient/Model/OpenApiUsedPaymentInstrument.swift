@@ -1,7 +1,7 @@
 import UIKit
 import VillageWalletSDK
 
-class OpenApiUsedPaymentInstrument: CustomerTransactionUsedPaymentInstrument {
+class OpenApiUsedPaymentInstrument: TransactionSummaryUsedPaymentInstrument {
 	private let instrument: OAICustomerTransactionSummaryAllOfInstruments
 
 	init(instrument: OAICustomerTransactionSummaryAllOfInstruments) {
@@ -12,11 +12,13 @@ class OpenApiUsedPaymentInstrument: CustomerTransactionUsedPaymentInstrument {
 		instrument.paymentInstrumentId
 	}
 
-	var amount: Decimal {
-		instrument.amount.decimalValue
+	var instrumentType: String {
+		// FIXME:
+		""
 	}
 
-	var paymentTransactionRef: String? {
-		instrument.paymentTransactionRef
+	var transactions: [UsedPaymentInstrumentTransaction] {
+		// FIXME:
+		[]
 	}
 }

@@ -16,17 +16,17 @@ PODS:
     - AFNetworking/NSURLSession
   - ISO8601 (0.6.0)
   - JSONModel (1.8.0)
-  - SwiftHamcrest (2.2.1)
-  - VillageWalletSDK (3.4.1)
-  - VillageWalletSDKOAIClient (3.4.1):
+  - SwiftHamcrest (2.2.2)
+  - VillageWalletSDK (4.0.0-alpha9)
+  - VillageWalletSDKOAIClient (4.0.0-alpha1):
     - AFNetworking (~> 4)
     - ISO8601 (~> 0.6)
     - JSONModel (~> 1.2)
-    - VillageWalletSDK (~> 3.4.1)
+    - VillageWalletSDK (= 4.0.0-alpha9)
 
 DEPENDENCIES:
   - SwiftHamcrest (~> 2.2.1)
-  - "VillageWalletSDK (from `git@github.com:woolworthslimited/paysdk2-ios.git`, tag `v3.4.1`)"
+  - "VillageWalletSDK (from `git@github.com:woolworthslimited/paysdk2-ios.git`, branch `master`)"
   - VillageWalletSDKOAIClient (from `../`)
 
 SPEC REPOS:
@@ -38,24 +38,24 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   VillageWalletSDK:
+    :branch: master
     :git: "git@github.com:woolworthslimited/paysdk2-ios.git"
-    :tag: v3.4.1
   VillageWalletSDKOAIClient:
     :path: "../"
 
 CHECKOUT OPTIONS:
   VillageWalletSDK:
+    :commit: 5723c23aae6490982a696cb735b60f5037960a0c
     :git: "git@github.com:woolworthslimited/paysdk2-ios.git"
-    :tag: v3.4.1
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   ISO8601: d3ea3ba9b752820cf92c6b47a9ee327e9f0e13fc
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
-  SwiftHamcrest: 67454f9c4c7fae8d7a0f82dfd42f8a54a79095b1
-  VillageWalletSDK: 9e3889463ed775d1b8c5dcfe571d828ed9fc9bb3
-  VillageWalletSDKOAIClient: be56b5cc46b3e019b4f1563002eb75e3939b539d
+  SwiftHamcrest: 940c3dae2a31f92da433f5a0b13d42103247051b
+  VillageWalletSDK: d1383f36a77950b6300bdf3484cebaefbb1a4070
+  VillageWalletSDKOAIClient: e24b2c3f39ebafa4cf67697ed3f22c2c3bd96977
 
-PODFILE CHECKSUM: ec9ee56544b9ff1e4510c2a6da59d3331c168f3a
+PODFILE CHECKSUM: 7279f60c8336e1f46dc1e0e1c7ea37f0e9da9ba9
 
 COCOAPODS: 1.9.3

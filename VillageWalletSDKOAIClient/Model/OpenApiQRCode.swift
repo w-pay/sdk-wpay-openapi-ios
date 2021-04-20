@@ -17,7 +17,7 @@ class OpenApiQRCode: QRCode {
 	}
 
 	var referenceType: QRCodePaymentReferenceType? {
-		QRCodePaymentReferenceType.valueOf(value: code.referenceType)
+		QRCodePaymentReferenceType(rawValue: code.referenceType.uppercased())
 	}
 
 	var content: String {

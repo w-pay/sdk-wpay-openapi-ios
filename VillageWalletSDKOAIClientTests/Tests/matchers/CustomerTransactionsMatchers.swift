@@ -46,10 +46,13 @@ func isCustomerTransactionDetails() -> Matcher<CustomerTransactionDetails> {
 	}
 }
 
-func withCustomerPaymentInstruments() -> Matcher<CustomerTransactionUsedPaymentInstrument> {
+func withCustomerPaymentInstruments() -> Matcher<TransactionSummaryUsedPaymentInstrument> {
 	Matcher("Customer Transaction Summary with instruments") { (item) -> Bool in
 		assertThat(item.paymentInstrumentId, not(blankOrNilString()))
-		assertThat(item.amount, not(nilValue()))
+		assertThat(item.instrumentType, not(nilValue()))
+
+		// TODO:
+		//  assertThat(item.transactions, not(nilValue()))
 
 		return true
 	}
