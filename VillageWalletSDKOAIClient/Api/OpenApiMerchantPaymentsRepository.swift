@@ -11,7 +11,12 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		let api = createMerchantApi()
 
 		api.getMerchantPayments(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			type: type,
 			pageSize: pageSize as NSNumber?,
 			page: page as NSNumber?,
@@ -33,7 +38,7 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		let api = createMerchantApi()
 
 		let body = OAIMerchantPaymentRequest()
-		body.data = OAIMerchantPaymentsData()
+		body.data = OAIInstoreMerchantPaymentsData()
 		body.data.merchantReferenceId = paymentRequest.merchantReferenceId
 		body.data.grossAmount = NSDecimalNumber(decimal: paymentRequest.grossAmount)
 		body.data.generateQR = paymentRequest.generateQR as NSNumber
@@ -82,8 +87,13 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		}
 
 		api.createPaymentRequest(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			merchantPaymentRequest: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -100,8 +110,13 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		let api = createMerchantApi()
 
 		api.getMerchantPaymentDetails(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentRequestId: paymentRequestId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -118,8 +133,13 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		let api = createMerchantApi()
 
 		api.deleteMerchantPaymentRequest(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentRequestId: paymentRequestId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -137,13 +157,18 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		let api = createMerchantApi()
 
 		let body = OAIRefundMerchantTransactionRequest()
-		body.data = OAIMerchantTransactionsTransactionIdRefundData()
+		body.data = OAIInstoreMerchantTransactionsTransactionIdRefundData()
 		body.data.reason = refundDetails.reason
 
 		api.refundMerchantTransaction(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			transactionId: transactionId,
 			refundMerchantTransactionRequest: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

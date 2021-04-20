@@ -11,7 +11,7 @@ public class OpenApiMerchantPaymentSessionsRepository
 		let api = createMerchantApi()
 
 		let body = OAICreatePaymentSessionRequest()
-		body.data = OAIMerchantPaymentSessionData()
+		body.data = OAIInstoreMerchantPaymentSessionData()
 		body.data.location = request.location
 		body.data.merchantInfo = toDynamicPayload(payload: request.merchantInfo)
 		body.data.generateQR = request.generateQR as NSNumber
@@ -19,8 +19,13 @@ public class OpenApiMerchantPaymentSessionsRepository
 		body.data.timeToLiveQR = request.timeToLiveQR as NSNumber?
 
 		api.createPaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			createPaymentSessionRequest: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -37,8 +42,13 @@ public class OpenApiMerchantPaymentSessionsRepository
 		let api = createMerchantApi()
 
 		api.getPaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -56,14 +66,19 @@ public class OpenApiMerchantPaymentSessionsRepository
 		let api = createMerchantApi()
 
 		let body = OAIUpdatePaymentSessionRequest1()
-		body.data = OAIMerchantPaymentSessionPaymentSessionIdData()
+		body.data = OAIInstoreMerchantPaymentSessionPaymentSessionIdData()
 		body.data.paymentRequestId = session.paymentRequestId
 		body.data.merchantInfo = toDynamicPayload(payload: session.merchantInfo)
 
 		api.merchantUpdatePaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
 			updatePaymentSessionRequest1: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -80,8 +95,13 @@ public class OpenApiMerchantPaymentSessionsRepository
 		let api = createMerchantApi()
 
 		api.deletePaymentSession(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

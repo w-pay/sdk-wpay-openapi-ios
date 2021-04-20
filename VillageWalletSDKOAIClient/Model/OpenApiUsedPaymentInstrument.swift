@@ -2,9 +2,9 @@ import UIKit
 import VillageWalletSDK
 
 class OpenApiUsedPaymentInstrument: TransactionSummaryUsedPaymentInstrument {
-	private let instrument: OAICustomerTransactionSummaryAllOfInstruments
+	private let instrument: OAIInstrumentAllocation
 
-	init(instrument: OAICustomerTransactionSummaryAllOfInstruments) {
+	init(instrument: OAIInstrumentAllocation) {
 		self.instrument = instrument
 	}
 

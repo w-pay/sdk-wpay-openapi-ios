@@ -28,9 +28,14 @@ class OpenApiCustomerPreferencesRepository: OpenApiClientFactory, CustomerPrefer
 		// FIXME:
 		// body.data = preferences
 
-		api.setCustomerPreferencesWithXWalletID(
-			self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+		api.setCustomerPreferencesWithXApiKey(
+			getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			customerPreferences: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

@@ -9,8 +9,13 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		api.getCustomerPaymentRequestDetailsByPaymentId(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentRequestId: paymentRequestId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -29,8 +34,13 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		api.getCustomerPaymentRequestDetailsByQRCodeId(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			qrId: qrCodeId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -55,7 +65,7 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		let body = OAICustomerPaymentDetails()
-		body.data = OAICustomerPaymentsPaymentRequestIdData()
+		body.data = OAIInstoreCustomerPaymentsPaymentRequestIdData()
 		body.data.primaryInstrumentId = primaryInstrument
 		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
 		body.data.clientReference = clientReference
@@ -64,9 +74,14 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
 
 		api.makeCustomerPayment(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentRequestId: paymentRequestId,
 			customerPaymentDetails: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			xEverydayPayWallet: getEverydayPayHeader(client: api.apiClient),
 			completionHandler: { results, error in
 				guard error == nil else {

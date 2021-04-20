@@ -6,7 +6,12 @@ public class OpenApiMerchantPreferencesRepository: OpenApiClientFactory, Merchan
 		let api = createMerchantApi()
 
 		api.getMerchantPreferences(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -22,9 +27,14 @@ public class OpenApiMerchantPreferencesRepository: OpenApiClientFactory, Merchan
 		let body = OAIMerchantPreferences()
 		body.data = preferences
 
-		api.setMerchantPreferencesWithXMerchantID(
-			self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+		api.setMerchantPreferencesWithXApiKey(
+			getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			merchantPreferences: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

@@ -16,8 +16,12 @@ public class OpenApiPaymentInstrumentsRepository: OpenApiClientFactory, PaymentI
 		let api = createCustomerApi()
 
 		api.getCustomerPaymentInstruments(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
-			xEverydayPayWallet: getEverydayPayHeader(client: api.apiClient),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -37,9 +41,13 @@ public class OpenApiPaymentInstrumentsRepository: OpenApiClientFactory, PaymentI
 		let api = createCustomerApi()
 
 		api.deletePaymentInstrument(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentInstrumentId: instrument,
-			xEverydayPayWallet: getEverydayPayHeader(client: api.apiClient),
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -57,13 +65,17 @@ public class OpenApiPaymentInstrumentsRepository: OpenApiClientFactory, PaymentI
 		let api = createCustomerApi()
 
 		let body = OAIInstrumentAdditionDetails()
-		body.data = OAICustomerInstrumentsData()
+		body.data = OAIInstoreCustomerInstrumentsData()
 		body.data.clientReference = instrument.clientReference
 
 		api.initiatePaymentInstrumentAddition(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			instrumentAdditionDetails: body,
-			xEverydayPayWallet: getEverydayPayHeader(client: api.apiClient),
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

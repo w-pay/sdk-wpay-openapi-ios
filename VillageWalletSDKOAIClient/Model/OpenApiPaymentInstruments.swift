@@ -207,9 +207,9 @@ class OpenApiCreditCardStepUp: CreditCardStepUp {
 }
 
 class OpenApiGiftCardStepUp: GiftCardStepUp {
-	private let stepUp: OAIGiftCardStepUp
+	private let stepUp: OAIGetCustomerPaymentInstrumentResultDataPaymentInstrumentDetailStepUp
 
-	init(stepUp: OAIGiftCardStepUp) {
+	init(stepUp: OAIGetCustomerPaymentInstrumentResultDataPaymentInstrumentDetailStepUp) {
 		self.stepUp = stepUp
 	}
 

@@ -12,7 +12,12 @@ public class OpenApiMerchantTransactionsRepository: OpenApiClientFactory, Mercha
 		let api = createMerchantApi()
 
 		api.getMerchantTransactions(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			startTime: startTime,
 			endTime: endTime,
 			pageSize: pageSize as NSNumber?,
@@ -35,8 +40,13 @@ public class OpenApiMerchantTransactionsRepository: OpenApiClientFactory, Mercha
 		let api = createMerchantApi()
 
 		api.getMerchantTransactionDetails(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			transactionId: transactionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

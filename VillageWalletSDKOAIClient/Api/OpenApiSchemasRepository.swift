@@ -6,7 +6,12 @@ public class OpenApiSchemasRepository: OpenApiClientFactory, SchemasRepository {
 		let api = createMerchantApi()
 
 		api.getMerchantSchemas(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -22,8 +27,13 @@ public class OpenApiSchemasRepository: OpenApiClientFactory, SchemasRepository {
 		let api = createMerchantApi()
 
 		api.getMerchantSchemaDetails(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			schemaId: schemaId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -40,14 +50,19 @@ public class OpenApiSchemasRepository: OpenApiClientFactory, SchemasRepository {
 		let api = createMerchantApi()
 
 		let body = OAIMerchantSchema()
-		body.data = OAIMerchantSchemaData()
+		body.data = OAIInstoreMerchantSchemaData()
 		body.data.schema = (schema.schema as! [String: NSObject])
 		body.data.type = schema.type
 		body.data._description = schema.description
 
 		api.createMerchantSchema(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			merchantSchema: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

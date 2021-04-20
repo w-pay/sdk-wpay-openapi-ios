@@ -9,8 +9,13 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		api.getCustomerPaymentSession(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -29,8 +34,13 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		api.getCustomerPaymentSessionByQRCodeId(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			qrId: qrCodeId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -48,13 +58,18 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		let body = OAIUpdatePaymentSessionRequest()
-		body.data = OAICustomerPaymentSessionPaymentSessionIdData()
+		body.data = OAIInstoreCustomerPaymentSessionPaymentSessionIdData()
 		body.data.customerInfo = toDynamicPayload(payload: session.customerInfo)
 
 		api.customerUpdatePaymentSession(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
 			updatePaymentSessionRequest: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -71,8 +86,13 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		api.deleteCustomerPaymentSession(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -96,7 +116,7 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		let body = OAICustomerPaymentDetails1()
-		body.data = OAICustomerPaymentsPaymentRequestIdData()
+		body.data = OAIInstoreCustomerPaymentsPaymentRequestIdData()
 		body.data.primaryInstrumentId = primaryInstrument
 		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
 		body.data.clientReference = clientReference
@@ -105,10 +125,14 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
 
 		api.preApprovePaymentSession(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
 			customerPaymentDetails1: body,
-			xEverydayPayWallet: getEverydayPayHeader(client: api.apiClient),
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

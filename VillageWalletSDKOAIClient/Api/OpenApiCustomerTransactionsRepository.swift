@@ -12,7 +12,12 @@ public class OpenApiCustomerTransactionsRepository: OpenApiClientFactory, Custom
 		let api = createCustomerApi()
 
 		api.getCustomerTransactions(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			paymentRequestId: paymentRequestId,
 			startTime: startTime,
 			endTime: endTime,
@@ -36,8 +41,13 @@ public class OpenApiCustomerTransactionsRepository: OpenApiClientFactory, Custom
 		let api = createCustomerApi()
 
 		api.getCustomerTransactionDetails(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			transactionId: transactionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))

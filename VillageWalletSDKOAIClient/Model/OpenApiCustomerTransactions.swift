@@ -25,7 +25,7 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var instruments: [TransactionSummaryUsedPaymentInstrument] {
-		summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
+		summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAIInstrumentAllocation) }
 	}
 
 	var transactionId: String {
@@ -95,7 +95,7 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var instruments: [TransactionSummaryUsedPaymentInstrument] {
-		details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
+		details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAIInstrumentAllocation) }
 	}
 
 	var transactionId: String {

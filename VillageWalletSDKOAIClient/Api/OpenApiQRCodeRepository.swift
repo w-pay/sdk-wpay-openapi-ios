@@ -9,7 +9,7 @@ public class OpenApiQRCodeRepository: OpenApiClientFactory, QRCodeRepository {
 		let api = createMerchantApi()
 
 		let body = OAIPaymentQRCodeDetails()
-		body.data = OAIMerchantQrData()
+		body.data = OAIInstoreMerchantQrData()
 		body.data.referenceId = details.referenceId
 		body.data.timeToLive = details.timeToLive as NSNumber?
 
@@ -22,8 +22,13 @@ public class OpenApiQRCodeRepository: OpenApiClientFactory, QRCodeRepository {
 		}
 
 		api.createPaymentRequestQRCode(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			paymentQRCodeDetails: body,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -40,8 +45,13 @@ public class OpenApiQRCodeRepository: OpenApiClientFactory, QRCodeRepository {
 		let api = createMerchantApi()
 
 		api.getPaymentRequestQRCodeContent(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			qrId: qrCodeId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { result, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
@@ -58,8 +68,13 @@ public class OpenApiQRCodeRepository: OpenApiClientFactory, QRCodeRepository {
 		let api = createMerchantApi()
 
 		api.cancelPaymentRequestQRCode(
-			withXMerchantID: self.getDefaultHeader(client: api.apiClient, name: X_MERCHANT_ID),
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
 			qrId: qrCodeId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
