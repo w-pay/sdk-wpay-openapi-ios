@@ -7,7 +7,26 @@ public class OpenApiPaymentInstrumentsRepository: OpenApiClientFactory, PaymentI
 		publicKey: String?,
 		completion: @escaping ApiCompletion<IndividualPaymentInstrument>
 	) {
-		// TODO: Implement me.
+		let api = createCustomerApi()
+
+		api.getCustomerPaymentInstrument(
+			withPaymentInstrumentId: paymentToken,
+			xApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
+			xEverydayPayWallet: getDefaultHeader(client: api.apiClient, name: X_EVERYDAY_PAY_WALLET),
+			publicKey: publicKey,
+			completionHandler: { results, error in
+				guard error == nil else {
+					return completion(self.extractError(error: error! as NSError))
+				}
+
+				completion(.success(OpenApiIndividualPaymentInstrument(instrument: results!)))
+			}
+		)
 	}
 
 	public func list(

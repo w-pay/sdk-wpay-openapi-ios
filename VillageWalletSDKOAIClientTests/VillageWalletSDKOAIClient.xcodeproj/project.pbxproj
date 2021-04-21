@@ -36,6 +36,7 @@
 		BC8DC96AEC26CD240EB9B148 /* MerchantTransactionMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCDB881B79A735A79D132 /* MerchantTransactionMatchers.swift */; };
 		BC8DC9A39DA9E218011698AB /* TestUpdatePaymentSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCA13B6C9978B224EFEE1 /* TestUpdatePaymentSessionRequest.swift */; };
 		BC8DC9B6C710B6D0801DBBCB /* ApiErrorMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC9D73370BDEE8D9832B0 /* ApiErrorMatchers.swift */; };
+		BC8DC9F964296694290C977E /* TestCustomerPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCBAF2C934B95565441A2 /* TestCustomerPreferences.swift */; };
 		BC8DCA6F53D5652262941CF8 /* OpenApiCustomerTransactionsRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DC5B3E29D975F534F2C2E /* OpenApiCustomerTransactionsRepositoryTest.swift */; };
 		BC8DCA7F7E9031EEF50CC133 /* OpenApiCustomerPaymentRequestsRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCEB653328F2CC21EA1DB /* OpenApiCustomerPaymentRequestsRepositoryTest.swift */; };
 		BC8DCA97AFF0794A16218D24 /* CustomerTransactionsMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8DCFE1693FD8D89E39F7FA /* CustomerTransactionsMatchers.swift */; };
@@ -86,6 +87,7 @@
 		BC8DC9D73370BDEE8D9832B0 /* ApiErrorMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiErrorMatchers.swift; sourceTree = "<group>"; };
 		BC8DCA13B6C9978B224EFEE1 /* TestUpdatePaymentSessionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUpdatePaymentSessionRequest.swift; sourceTree = "<group>"; };
 		BC8DCB3C85192BC08857A63C /* VillageApiRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillageApiRepositoryTest.swift; sourceTree = "<group>"; };
+		BC8DCBAF2C934B95565441A2 /* TestCustomerPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCustomerPreferences.swift; sourceTree = "<group>"; };
 		BC8DCC4B721C65CBEBC5F35D /* SdkFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SdkFactory.swift; sourceTree = "<group>"; };
 		BC8DCCAF8A93CAEBA4004A58 /* OpenApiSdkFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenApiSdkFactory.swift; sourceTree = "<group>"; };
 		BC8DCCBD0AC1C0FCAD91ECDF /* StringMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringMatchers.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				BC8DC4532A2CE4E30C11EE0D /* TestTransactionRefundDetails.swift */,
 				BC8DC48CA5DEF8CB35803B99 /* TestCreatePaymentSessionRequest.swift */,
 				BC8DCA13B6C9978B224EFEE1 /* TestUpdatePaymentSessionRequest.swift */,
+				BC8DCBAF2C934B95565441A2 /* TestCustomerPreferences.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				BC8DCC4287592E345880A7CC /* OpenApiMerchantPaymentSessionsRepositoryTest.swift in Sources */,
 				BC8DC3265FB0835B9CBBA767 /* OpenApiSchemasRepositoryTest.swift in Sources */,
 				BC8DC210124685E19B4EBCB1 /* OpenApiMerchantPreferencesRepositoryTest.swift in Sources */,
+				BC8DC9F964296694290C977E /* TestCustomerPreferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,7 +62,7 @@ class OpenApiCustomerPaymentRequestsRepositoryTest: VillageApiRepositoryTest {
 			primaryInstrument: "abc123",
 			secondaryInstruments: nil,
 			clientReference: nil,
-			preferences: nil,
+			preferences: TestPaymentPreferences(),
 			challengeResponses: nil,
 			completion: isSuccessfulWith { result in
 				value = try! result.get()

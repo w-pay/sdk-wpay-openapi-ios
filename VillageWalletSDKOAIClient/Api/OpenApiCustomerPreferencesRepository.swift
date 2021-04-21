@@ -5,16 +5,20 @@ class OpenApiCustomerPreferencesRepository: OpenApiClientFactory, CustomerPrefer
 	public func get(completion: @escaping ApiCompletion<CustomerPreferences>) {
 		let api = createCustomerApi()
 
-		// FIXME:
-		/*api.getCustomerPreferences(
-			withXWalletID: self.getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
+		api.getCustomerPreferences(
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
 			completionHandler: { results, error in
 				guard error == nil else {
 					return completion(self.extractError(error: error! as NSError))
 				}
 
-				completion(.success(results!.data))
-			})*/
+				completion(.success(OpenApiCustomerPreferences(prefs: results!.data)))
+			})
 	}
 
 	public func set(
@@ -24,9 +28,7 @@ class OpenApiCustomerPreferencesRepository: OpenApiClientFactory, CustomerPrefer
 		let api = createCustomerApi()
 
 		let body = OAICustomerPreferences()
-
-		// FIXME:
-		// body.data = preferences
+		body.data = fromCustomerPreferences(preferences)
 
 		api.setCustomerPreferencesWithXApiKey(
 			getDefaultHeader(client: api.apiClient, name: X_API_KEY),

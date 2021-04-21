@@ -61,7 +61,6 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		challengeResponses: [ChallengeResponse]?,
 		completion: @escaping ApiCompletion<CustomerTransactionSummary>
 	) {
-		// TODO: Update me
 		let api = createCustomerApi()
 
 		let body = OAICustomerPaymentDetails()
@@ -69,6 +68,7 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		body.data.primaryInstrumentId = primaryInstrument
 		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
 		body.data.clientReference = clientReference
+		body.data.preferences = fromPaymentPreferences(preferences)
 
 		body.meta = OAIMetaChallenge()
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []

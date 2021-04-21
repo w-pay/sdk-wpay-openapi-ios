@@ -24,24 +24,16 @@ class OpenApiCustomerPreferencesRepositoryTest: VillageApiRepositoryTest {
 
 		wait(for: [promise], timeout: 2)
 
-		// FIXME:
-		/*assertThat(value, hasEntry(equalTo("payments"),
-			hasEntry(equalTo("defaultInstrument"), not(blankOrNilString()))
-		))*/
+		assertThat(value, not(nilValue()))
 	}
 
 	func testShouldSetPreferences() {
 		let promise = apiResultExpectation()
 
-		// FIXME:
-		/*api.preferences.set(
-			preferences: [
-				"preferenceGroup": [
-					"preference": "value"
-				]
-			],
+		api.preferences.set(
+			preferences: TestCustomerPreferences(),
 			completion: isSuccessful(promise: promise)
-		)*/
+		)
 
 		wait(for: [promise], timeout: 2)
 	}
