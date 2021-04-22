@@ -45,13 +45,15 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var rollback: TransactionSummarySummaryRollback? {
-		// FIXME:
-		nil
+		guard let rollback = summary.rollback else {
+			return nil
+		}
+
+		return TransactionSummarySummaryRollback(rawValue: rollback.uppercased())
 	}
 
 	var subTransactions: [Any]? {
-		// FIXME:
-		nil
+		summary.subTransactions
 	}
 
 	var refundReason: String? {
@@ -115,13 +117,15 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var rollback: TransactionSummarySummaryRollback? {
-		// FIXME:
-		nil
+		guard let rollback = details.rollback else {
+			return nil
+		}
+
+		return TransactionSummarySummaryRollback(rawValue: rollback.uppercased())
 	}
 
 	var subTransactions: [Any]? {
-		// FIXME:
-		nil
+		details.subTransactions
 	}
 
 	var refundReason: String? {

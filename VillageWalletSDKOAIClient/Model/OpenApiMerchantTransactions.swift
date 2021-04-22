@@ -41,13 +41,15 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 	}
 
 	var rollback: TransactionSummarySummaryRollback? {
-		// FIXME:
-		nil
+		guard let rollback = summary.rollback else {
+			return nil
+		}
+
+		return TransactionSummarySummaryRollback(rawValue: rollback.uppercased())
 	}
 
 	var subTransactions: [Any]? {
-		// FIXME:
-		nil
+		summary.subTransactions
 	}
 
 	var refundReason: String? {
@@ -71,9 +73,7 @@ class OpenApiMerchantTransactionSummary: MerchantTransactionSummary {
 	}
 
 	var instruments: [TransactionSummaryUsedPaymentInstrument] {
-		// FIXME:
-		[]
-		// summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
+		summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAIInstrumentAllocation) }
 	}
 }
 
@@ -129,13 +129,15 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 	}
 
 	var rollback: TransactionSummarySummaryRollback? {
-		// FIXME:
-		nil
+		guard let rollback = details.rollback else {
+			return nil
+		}
+
+		return TransactionSummarySummaryRollback(rawValue: rollback.uppercased())
 	}
 
 	var subTransactions: [Any]? {
-		// FIXME:
-		nil
+		details.subTransactions
 	}
 
 	var refundReason: String? {
@@ -159,8 +161,6 @@ class OpenApiMerchantTransactionDetails: MerchantTransactionDetails {
 	}
 
 	var instruments: [TransactionSummaryUsedPaymentInstrument] {
-		// FIXME:
-		[]
-		// details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
+		details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAIInstrumentAllocation) }
 	}
 }
