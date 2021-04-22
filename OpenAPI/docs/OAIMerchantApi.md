@@ -1,34 +1,41 @@
 # OAIMerchantApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://dev.wpay.com.au/wow/v1/pay*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelPaymentRequestQRCode**](OAIMerchantApi.md#cancelpaymentrequestqrcode) | **DELETE** /merchant/qr/{qrId} | Invalidate QR Code
-[**createMerchantSchema**](OAIMerchantApi.md#createmerchantschema) | **POST** /merchant/schema | Add Schema
-[**createPaymentRequest**](OAIMerchantApi.md#createpaymentrequest) | **POST** /merchant/payments | Create Payment
-[**createPaymentRequestQRCode**](OAIMerchantApi.md#createpaymentrequestqrcode) | **POST** /merchant/qr | Create QR Code for a payment request
-[**createPaymentSession**](OAIMerchantApi.md#createpaymentsession) | **POST** /merchant/payment/session | Create Payment Session
-[**deleteMerchantPaymentRequest**](OAIMerchantApi.md#deletemerchantpaymentrequest) | **DELETE** /merchant/payments/{paymentRequestId} | Delete Payment Request
-[**deletePaymentSession**](OAIMerchantApi.md#deletepaymentsession) | **DELETE** /merchant/payment/session/{paymentSessionId} | Delete Payment Session
-[**getMerchantPaymentDetails**](OAIMerchantApi.md#getmerchantpaymentdetails) | **GET** /merchant/payments/{paymentRequestId} | Get Payment Details
-[**getMerchantPayments**](OAIMerchantApi.md#getmerchantpayments) | **GET** /merchant/payments | Get Payment List
-[**getMerchantPreferences**](OAIMerchantApi.md#getmerchantpreferences) | **GET** /merchant/preferences | Get Preferences
-[**getMerchantSchemaDetails**](OAIMerchantApi.md#getmerchantschemadetails) | **GET** /merchant/schema/{schemaId} | Get Schema Details
-[**getMerchantSchemas**](OAIMerchantApi.md#getmerchantschemas) | **GET** /merchant/schema | Get Schema List
-[**getMerchantTransactionDetails**](OAIMerchantApi.md#getmerchanttransactiondetails) | **GET** /merchant/transactions/{transactionId} | Get Transaction Details
-[**getMerchantTransactions**](OAIMerchantApi.md#getmerchanttransactions) | **GET** /merchant/transactions | Get Transaction List
-[**getPaymentRequestQRCodeContent**](OAIMerchantApi.md#getpaymentrequestqrcodecontent) | **GET** /merchant/qr/{qrId} | Get QR Code Content
-[**getPaymentSession**](OAIMerchantApi.md#getpaymentsession) | **GET** /merchant/payment/session/{paymentSessionId} | Get Payment Session
-[**merchantUpdatePaymentSession**](OAIMerchantApi.md#merchantupdatepaymentsession) | **POST** /merchant/payment/session/{paymentSessionId} | Update Payment Session
-[**refundMerchantTransaction**](OAIMerchantApi.md#refundmerchanttransaction) | **POST** /merchant/transactions/{transactionId}/refund | Refund Transaction
-[**setMerchantPreferences**](OAIMerchantApi.md#setmerchantpreferences) | **POST** /merchant/preferences | Set Preferences
+[**cancelPaymentRequestQRCode**](OAIMerchantApi.md#cancelpaymentrequestqrcode) | **DELETE** /instore/merchant/qr/{qrId} | Invalidate QR Code
+[**chargeMerchantPaymentAgreement**](OAIMerchantApi.md#chargemerchantpaymentagreement) | **PUT** /instore/merchant/payments/agreements/{paymentToken} | Charge Payment Agreement
+[**createMerchantSchema**](OAIMerchantApi.md#createmerchantschema) | **POST** /instore/merchant/schema | Add Schema
+[**createPaymentRequest**](OAIMerchantApi.md#createpaymentrequest) | **POST** /instore/merchant/payments | Create Payment
+[**createPaymentRequestQRCode**](OAIMerchantApi.md#createpaymentrequestqrcode) | **POST** /instore/merchant/qr | Create QR Code for a payment request
+[**createPaymentSession**](OAIMerchantApi.md#createpaymentsession) | **POST** /instore/merchant/payment/session | Create Payment Session
+[**deleteMerchantPaymentAgreement**](OAIMerchantApi.md#deletemerchantpaymentagreement) | **DELETE** /instore/merchant/payments/agreements/{paymentToken} | Delete Payment Agreement
+[**deleteMerchantPaymentRequest**](OAIMerchantApi.md#deletemerchantpaymentrequest) | **DELETE** /instore/merchant/payments/{paymentRequestId} | Delete Payment Request
+[**deletePaymentSession**](OAIMerchantApi.md#deletepaymentsession) | **DELETE** /instore/merchant/payment/session/{paymentSessionId} | Delete Payment Session
+[**getMerchantPaymentDetails**](OAIMerchantApi.md#getmerchantpaymentdetails) | **GET** /instore/merchant/payments/{paymentRequestId} | Get Payment Details
+[**getMerchantPayments**](OAIMerchantApi.md#getmerchantpayments) | **GET** /instore/merchant/payments | Get Payment List
+[**getMerchantPreferences**](OAIMerchantApi.md#getmerchantpreferences) | **GET** /instore/merchant/preferences | Get Preferences
+[**getMerchantSchemaDetails**](OAIMerchantApi.md#getmerchantschemadetails) | **GET** /instore/merchant/schema/{schemaId} | Get Schema Details
+[**getMerchantSchemas**](OAIMerchantApi.md#getmerchantschemas) | **GET** /instore/merchant/schema | Get Schema List
+[**getMerchantTransactionDetails**](OAIMerchantApi.md#getmerchanttransactiondetails) | **GET** /instore/merchant/transactions/{transactionId} | Get Transaction Details
+[**getMerchantTransactions**](OAIMerchantApi.md#getmerchanttransactions) | **GET** /instore/merchant/transactions | Get Transaction List
+[**getPaymentRequestQRCodeContent**](OAIMerchantApi.md#getpaymentrequestqrcodecontent) | **GET** /instore/merchant/qr/{qrId} | Get QR Code Content
+[**getPaymentSession**](OAIMerchantApi.md#getpaymentsession) | **GET** /instore/merchant/payment/session/{paymentSessionId} | Get Payment Session
+[**merchantUpdatePaymentSession**](OAIMerchantApi.md#merchantupdatepaymentsession) | **POST** /instore/merchant/payment/session/{paymentSessionId} | Update Payment Session
+[**refundMerchantTransaction**](OAIMerchantApi.md#refundmerchanttransaction) | **POST** /instore/merchant/transactions/{transactionId}/refund | Refund Transaction
+[**setMerchantPreferences**](OAIMerchantApi.md#setmerchantpreferences) | **POST** /instore/merchant/preferences | Set Preferences
 
 
 # **cancelPaymentRequestQRCode**
 ```objc
--(NSURLSessionTask*) cancelPaymentRequestQRCodeWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) cancelPaymentRequestQRCodeWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     qrId: (NSString*) qrId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -46,14 +53,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* qrId = dca8edc5-bbb7-44c0-8056-a5daf4327601; // The ID of the specific QR Code
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Invalidate QR Code
-[apiInstance cancelPaymentRequestQRCodeWithXMerchantID:xMerchantID
+[apiInstance cancelPaymentRequestQRCodeWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               qrId:qrId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIMerchantApi->cancelPaymentRequestQRCode: %@", error);
@@ -65,8 +82,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **qrId** | **NSString***| The ID of the specific QR Code | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -83,10 +105,80 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **chargeMerchantPaymentAgreement**
+```objc
+-(NSURLSessionTask*) chargeMerchantPaymentAgreementWithXMerchantID: (NSString*) xMerchantID
+    paymentToken: (NSString*) paymentToken
+    merchantChargePaymentAgreementRequest: (OAIMerchantChargePaymentAgreementRequest*) merchantChargePaymentAgreementRequest
+        completionHandler: (void (^)(OAIChargePaymentAgreementResponse* output, NSError* error)) handler;
+```
+
+Charge Payment Agreement
+
+Charge a payment agreement
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xMerchantID = 10001; // 
+NSString* paymentToken = @"paymentToken_example"; // The ID of the specific payment agreement
+OAIMerchantChargePaymentAgreementRequest* merchantChargePaymentAgreementRequest = [[OAIMerchantChargePaymentAgreementRequest alloc] init]; // 
+
+OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
+
+// Charge Payment Agreement
+[apiInstance chargeMerchantPaymentAgreementWithXMerchantID:xMerchantID
+              paymentToken:paymentToken
+              merchantChargePaymentAgreementRequest:merchantChargePaymentAgreementRequest
+          completionHandler: ^(OAIChargePaymentAgreementResponse* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling OAIMerchantApi->chargeMerchantPaymentAgreement: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xMerchantID** | **NSString***|  | 
+ **paymentToken** | **NSString***| The ID of the specific payment agreement | 
+ **merchantChargePaymentAgreementRequest** | [**OAIMerchantChargePaymentAgreementRequest***](OAIMerchantChargePaymentAgreementRequest.md)|  | 
+
+### Return type
+
+[**OAIChargePaymentAgreementResponse***](OAIChargePaymentAgreementResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **createMerchantSchema**
 ```objc
--(NSURLSessionTask*) createMerchantSchemaWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) createMerchantSchemaWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     merchantSchema: (OAIMerchantSchema*) merchantSchema
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAICreateMerchantSchemaResults* output, NSError* error)) handler;
 ```
 
@@ -104,14 +196,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 OAIMerchantSchema* merchantSchema = [[OAIMerchantSchema alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Add Schema
-[apiInstance createMerchantSchemaWithXMerchantID:xMerchantID
+[apiInstance createMerchantSchemaWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               merchantSchema:merchantSchema
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAICreateMerchantSchemaResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -126,8 +228,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **merchantSchema** | [**OAIMerchantSchema***](OAIMerchantSchema.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -146,8 +253,13 @@ Name | Type | Description  | Notes
 
 # **createPaymentRequest**
 ```objc
--(NSURLSessionTask*) createPaymentRequestWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) createPaymentRequestWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     merchantPaymentRequest: (OAIMerchantPaymentRequest*) merchantPaymentRequest
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAICreatePaymentRequestResults* output, NSError* error)) handler;
 ```
 
@@ -165,14 +277,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 OAIMerchantPaymentRequest* merchantPaymentRequest = [[OAIMerchantPaymentRequest alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Create Payment
-[apiInstance createPaymentRequestWithXMerchantID:xMerchantID
+[apiInstance createPaymentRequestWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               merchantPaymentRequest:merchantPaymentRequest
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAICreatePaymentRequestResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -187,8 +309,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **merchantPaymentRequest** | [**OAIMerchantPaymentRequest***](OAIMerchantPaymentRequest.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -207,8 +334,13 @@ Name | Type | Description  | Notes
 
 # **createPaymentRequestQRCode**
 ```objc
--(NSURLSessionTask*) createPaymentRequestQRCodeWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) createPaymentRequestQRCodeWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     paymentQRCodeDetails: (OAIPaymentQRCodeDetails*) paymentQRCodeDetails
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAICreatePaymentRequestQRCodeResults* output, NSError* error)) handler;
 ```
 
@@ -226,14 +358,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 OAIPaymentQRCodeDetails* paymentQRCodeDetails = [[OAIPaymentQRCodeDetails alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Create QR Code for a payment request
-[apiInstance createPaymentRequestQRCodeWithXMerchantID:xMerchantID
+[apiInstance createPaymentRequestQRCodeWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               paymentQRCodeDetails:paymentQRCodeDetails
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAICreatePaymentRequestQRCodeResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -248,8 +390,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **paymentQRCodeDetails** | [**OAIPaymentQRCodeDetails***](OAIPaymentQRCodeDetails.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -268,8 +415,13 @@ Name | Type | Description  | Notes
 
 # **createPaymentSession**
 ```objc
--(NSURLSessionTask*) createPaymentSessionWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) createPaymentSessionWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     createPaymentSessionRequest: (OAICreatePaymentSessionRequest*) createPaymentSessionRequest
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAICreateMerchantPaymentSessionResponse* output, NSError* error)) handler;
 ```
 
@@ -287,14 +439,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 OAICreatePaymentSessionRequest* createPaymentSessionRequest = [[OAICreatePaymentSessionRequest alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Create Payment Session
-[apiInstance createPaymentSessionWithXMerchantID:xMerchantID
+[apiInstance createPaymentSessionWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               createPaymentSessionRequest:createPaymentSessionRequest
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAICreateMerchantPaymentSessionResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -309,8 +471,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **createPaymentSessionRequest** | [**OAICreatePaymentSessionRequest***](OAICreatePaymentSessionRequest.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -327,10 +494,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteMerchantPaymentAgreement**
+```objc
+-(NSURLSessionTask*) deleteMerchantPaymentAgreementWithXMerchantID: (NSString*) xMerchantID
+    paymentToken: (NSString*) paymentToken
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Delete Payment Agreement
+
+Delete an existing payment agreement.
+
+### Example 
+```objc
+OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: ApiKeyAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"X-Api-Key"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
+
+
+NSString* xMerchantID = 10001; // 
+NSString* paymentToken = @"paymentToken_example"; // The ID of the specific payment agreement
+
+OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
+
+// Delete Payment Agreement
+[apiInstance deleteMerchantPaymentAgreementWithXMerchantID:xMerchantID
+              paymentToken:paymentToken
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling OAIMerchantApi->deleteMerchantPaymentAgreement: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xMerchantID** | **NSString***|  | 
+ **paymentToken** | **NSString***| The ID of the specific payment agreement | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteMerchantPaymentRequest**
 ```objc
--(NSURLSessionTask*) deleteMerchantPaymentRequestWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) deleteMerchantPaymentRequestWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     paymentRequestId: (NSString*) paymentRequestId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -348,14 +578,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* paymentRequestId = @"paymentRequestId_example"; // The ID of the specific payment request
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Delete Payment Request
-[apiInstance deleteMerchantPaymentRequestWithXMerchantID:xMerchantID
+[apiInstance deleteMerchantPaymentRequestWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               paymentRequestId:paymentRequestId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIMerchantApi->deleteMerchantPaymentRequest: %@", error);
@@ -367,8 +607,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **paymentRequestId** | **NSString***| The ID of the specific payment request | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -387,8 +632,13 @@ void (empty response body)
 
 # **deletePaymentSession**
 ```objc
--(NSURLSessionTask*) deletePaymentSessionWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) deletePaymentSessionWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     paymentSessionId: (NSString*) paymentSessionId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -406,14 +656,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to delete
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Delete Payment Session
-[apiInstance deletePaymentSessionWithXMerchantID:xMerchantID
+[apiInstance deletePaymentSessionWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               paymentSessionId:paymentSessionId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIMerchantApi->deletePaymentSession: %@", error);
@@ -425,8 +685,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **paymentSessionId** | **NSString***| The ID of the specific payment session to delete | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -445,8 +710,13 @@ void (empty response body)
 
 # **getMerchantPaymentDetails**
 ```objc
--(NSURLSessionTask*) getMerchantPaymentDetailsWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getMerchantPaymentDetailsWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     paymentRequestId: (NSString*) paymentRequestId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAIGetMerchantPaymentDetailsResults* output, NSError* error)) handler;
 ```
 
@@ -464,14 +734,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* paymentRequestId = @"paymentRequestId_example"; // The ID of the specific payment request
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Payment Details
-[apiInstance getMerchantPaymentDetailsWithXMerchantID:xMerchantID
+[apiInstance getMerchantPaymentDetailsWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               paymentRequestId:paymentRequestId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAIGetMerchantPaymentDetailsResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -486,8 +766,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **paymentRequestId** | **NSString***| The ID of the specific payment request | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -506,7 +791,12 @@ Name | Type | Description  | Notes
 
 # **getMerchantPayments**
 ```objc
--(NSURLSessionTask*) getMerchantPaymentsWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getMerchantPaymentsWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
     type: (NSString*) type
     pageSize: (NSNumber*) pageSize
     page: (NSNumber*) page
@@ -527,7 +817,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 NSString* type = ACTIVE; // The type of payment requests to return: active, inactive or both (optional) (default to @"ACTIVE")
 NSNumber* pageSize = @25; // The number of records to return for this page.  Defaults to 25 if absent (optional) (default to @25)
 NSNumber* page = @1; // The page of results to return with 1 indicating the first page.  Defaults to 1 if absent (optional) (default to @1)
@@ -535,7 +830,12 @@ NSNumber* page = @1; // The page of results to return with 1 indicating the firs
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Payment List
-[apiInstance getMerchantPaymentsWithXMerchantID:xMerchantID
+[apiInstance getMerchantPaymentsWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
               type:type
               pageSize:pageSize
               page:page
@@ -553,7 +853,12 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
  **type** | **NSString***| The type of payment requests to return: active, inactive or both | [optional] [default to @&quot;ACTIVE&quot;]
  **pageSize** | **NSNumber***| The number of records to return for this page.  Defaults to 25 if absent | [optional] [default to @25]
  **page** | **NSNumber***| The page of results to return with 1 indicating the first page.  Defaults to 1 if absent | [optional] [default to @1]
@@ -575,8 +880,13 @@ Name | Type | Description  | Notes
 
 # **getMerchantPreferences**
 ```objc
--(NSURLSessionTask*) getMerchantPreferencesWithXMerchantID: (NSString*) xMerchantID
-        completionHandler: (void (^)(OAICustomerPreferencesResult* output, NSError* error)) handler;
+-(NSURLSessionTask*) getMerchantPreferencesWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
+        completionHandler: (void (^)(OAIMerchantPreferencesResult* output, NSError* error)) handler;
 ```
 
 Get Preferences
@@ -593,13 +903,23 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Preferences
-[apiInstance getMerchantPreferencesWithXMerchantID:xMerchantID
-          completionHandler: ^(OAICustomerPreferencesResult* output, NSError* error) {
+[apiInstance getMerchantPreferencesWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
+          completionHandler: ^(OAIMerchantPreferencesResult* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -613,11 +933,16 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
-[**OAICustomerPreferencesResult***](OAICustomerPreferencesResult.md)
+[**OAIMerchantPreferencesResult***](OAIMerchantPreferencesResult.md)
 
 ### Authorization
 
@@ -632,8 +957,13 @@ Name | Type | Description  | Notes
 
 # **getMerchantSchemaDetails**
 ```objc
--(NSURLSessionTask*) getMerchantSchemaDetailsWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getMerchantSchemaDetailsWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     schemaId: (NSString*) schemaId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAIMerchantSchemaDetailsResult* output, NSError* error)) handler;
 ```
 
@@ -651,14 +981,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* schemaId = @"schemaId_example"; // The ID of the specific schema to get details for
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Schema Details
-[apiInstance getMerchantSchemaDetailsWithXMerchantID:xMerchantID
+[apiInstance getMerchantSchemaDetailsWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               schemaId:schemaId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAIMerchantSchemaDetailsResult* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -673,8 +1013,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **schemaId** | **NSString***| The ID of the specific schema to get details for | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -693,7 +1038,12 @@ Name | Type | Description  | Notes
 
 # **getMerchantSchemas**
 ```objc
--(NSURLSessionTask*) getMerchantSchemasWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getMerchantSchemasWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAIMerchantSchemaResult* output, NSError* error)) handler;
 ```
 
@@ -711,12 +1061,22 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Schema List
-[apiInstance getMerchantSchemasWithXMerchantID:xMerchantID
+[apiInstance getMerchantSchemasWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAIMerchantSchemaResult* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -731,7 +1091,12 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -750,8 +1115,13 @@ Name | Type | Description  | Notes
 
 # **getMerchantTransactionDetails**
 ```objc
--(NSURLSessionTask*) getMerchantTransactionDetailsWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getMerchantTransactionDetailsWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     transactionId: (NSString*) transactionId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAIGetMerchantTransactionDetailsResults* output, NSError* error)) handler;
 ```
 
@@ -769,14 +1139,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* transactionId = @"transactionId_example"; // The ID of the specific transaction
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Transaction Details
-[apiInstance getMerchantTransactionDetailsWithXMerchantID:xMerchantID
+[apiInstance getMerchantTransactionDetailsWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               transactionId:transactionId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAIGetMerchantTransactionDetailsResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -791,8 +1171,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **transactionId** | **NSString***| The ID of the specific transaction | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -811,7 +1196,12 @@ Name | Type | Description  | Notes
 
 # **getMerchantTransactions**
 ```objc
--(NSURLSessionTask*) getMerchantTransactionsWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getMerchantTransactionsWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
     startTime: (NSDate*) startTime
     endTime: (NSDate*) endTime
     pageSize: (NSNumber*) pageSize
@@ -833,7 +1223,12 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 NSDate* startTime = 2017-11-06T19:38:09.890+11:00; // If present, the date/time to limit transactions returned.  Transactions older than this time will not be returned (optional)
 NSDate* endTime = 2017-11-06T19:38:09.890+11:00; // If present, the date/time to limit transactions returned.  Transactions newer than this time will not be returned (optional)
 NSNumber* pageSize = @25; // The number of records to return for this page.  Defaults to 25 if absent (optional) (default to @25)
@@ -842,7 +1237,12 @@ NSNumber* page = @1; // The page of results to return with 1 indicating the firs
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Transaction List
-[apiInstance getMerchantTransactionsWithXMerchantID:xMerchantID
+[apiInstance getMerchantTransactionsWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
               startTime:startTime
               endTime:endTime
               pageSize:pageSize
@@ -861,7 +1261,12 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
  **startTime** | **NSDate***| If present, the date/time to limit transactions returned.  Transactions older than this time will not be returned | [optional] 
  **endTime** | **NSDate***| If present, the date/time to limit transactions returned.  Transactions newer than this time will not be returned | [optional] 
  **pageSize** | **NSNumber***| The number of records to return for this page.  Defaults to 25 if absent | [optional] [default to @25]
@@ -884,8 +1289,13 @@ Name | Type | Description  | Notes
 
 # **getPaymentRequestQRCodeContent**
 ```objc
--(NSURLSessionTask*) getPaymentRequestQRCodeContentWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getPaymentRequestQRCodeContentWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     qrId: (NSString*) qrId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAICreatePaymentRequestQRCodeResults* output, NSError* error)) handler;
 ```
 
@@ -903,14 +1313,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* qrId = @"qrId_example"; // The ID of the specific QR Code
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get QR Code Content
-[apiInstance getPaymentRequestQRCodeContentWithXMerchantID:xMerchantID
+[apiInstance getPaymentRequestQRCodeContentWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               qrId:qrId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAICreatePaymentRequestQRCodeResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -925,8 +1345,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **qrId** | **NSString***| The ID of the specific QR Code | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -945,8 +1370,13 @@ Name | Type | Description  | Notes
 
 # **getPaymentSession**
 ```objc
--(NSURLSessionTask*) getPaymentSessionWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) getPaymentSessionWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     paymentSessionId: (NSString*) paymentSessionId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAICustomerPaymentSessionResult* output, NSError* error)) handler;
 ```
 
@@ -964,14 +1394,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Get Payment Session
-[apiInstance getPaymentSessionWithXMerchantID:xMerchantID
+[apiInstance getPaymentSessionWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               paymentSessionId:paymentSessionId
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAICustomerPaymentSessionResult* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -986,8 +1426,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -1006,9 +1451,14 @@ Name | Type | Description  | Notes
 
 # **merchantUpdatePaymentSession**
 ```objc
--(NSURLSessionTask*) merchantUpdatePaymentSessionWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) merchantUpdatePaymentSessionWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     paymentSessionId: (NSString*) paymentSessionId
     updatePaymentSessionRequest1: (OAIUpdatePaymentSessionRequest1*) updatePaymentSessionRequest1
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -1026,16 +1476,26 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* paymentSessionId = @"paymentSessionId_example"; // The ID of the specific payment session to retrieve
 OAIUpdatePaymentSessionRequest1* updatePaymentSessionRequest1 = [[OAIUpdatePaymentSessionRequest1 alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Update Payment Session
-[apiInstance merchantUpdatePaymentSessionWithXMerchantID:xMerchantID
+[apiInstance merchantUpdatePaymentSessionWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               paymentSessionId:paymentSessionId
               updatePaymentSessionRequest1:updatePaymentSessionRequest1
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIMerchantApi->merchantUpdatePaymentSession: %@", error);
@@ -1047,9 +1507,14 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **paymentSessionId** | **NSString***| The ID of the specific payment session to retrieve | 
  **updatePaymentSessionRequest1** | [**OAIUpdatePaymentSessionRequest1***](OAIUpdatePaymentSessionRequest1.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -1068,9 +1533,14 @@ void (empty response body)
 
 # **refundMerchantTransaction**
 ```objc
--(NSURLSessionTask*) refundMerchantTransactionWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) refundMerchantTransactionWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     transactionId: (NSString*) transactionId
     refundMerchantTransactionRequest: (OAIRefundMerchantTransactionRequest*) refundMerchantTransactionRequest
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(OAIRefundMerchantTransactionResults* output, NSError* error)) handler;
 ```
 
@@ -1088,16 +1558,26 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 NSString* transactionId = @"transactionId_example"; // The ID of the specific transaction to reverse
 OAIRefundMerchantTransactionRequest* refundMerchantTransactionRequest = [[OAIRefundMerchantTransactionRequest alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Refund Transaction
-[apiInstance refundMerchantTransactionWithXMerchantID:xMerchantID
+[apiInstance refundMerchantTransactionWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               transactionId:transactionId
               refundMerchantTransactionRequest:refundMerchantTransactionRequest
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(OAIRefundMerchantTransactionResults* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -1112,9 +1592,14 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **transactionId** | **NSString***| The ID of the specific transaction to reverse | 
  **refundMerchantTransactionRequest** | [**OAIRefundMerchantTransactionRequest***](OAIRefundMerchantTransactionRequest.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 
@@ -1133,8 +1618,13 @@ Name | Type | Description  | Notes
 
 # **setMerchantPreferences**
 ```objc
--(NSURLSessionTask*) setMerchantPreferencesWithXMerchantID: (NSString*) xMerchantID
+-(NSURLSessionTask*) setMerchantPreferencesWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
     merchantPreferences: (OAIMerchantPreferences*) merchantPreferences
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -1152,14 +1642,24 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"X-Api-Key"];
 
 
-NSString* xMerchantID = 10001; // 
+NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
+NSString* authorization = Bearer 7M8hv8tqpdfSnsEZIDBzJNo91MHF; // The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present.
+NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present.
 OAIMerchantPreferences* merchantPreferences = [[OAIMerchantPreferences alloc] init]; // 
+NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 
 OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 // Set Preferences
-[apiInstance setMerchantPreferencesWithXMerchantID:xMerchantID
+[apiInstance setMerchantPreferencesWithXApiKey:xApiKey
+              authorization:authorization
+              xJWSSignature:xJWSSignature
               merchantPreferences:merchantPreferences
+              xAuthKey:xAuthKey
+              xAuthDigest:xAuthDigest
+              xMessageId:xMessageId
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling OAIMerchantApi->setMerchantPreferences: %@", error);
@@ -1171,8 +1671,13 @@ OAIMerchantApi*apiInstance = [[OAIMerchantApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xMerchantID** | **NSString***|  | 
+ **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
+ **authorization** | **NSString***| The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. | 
+ **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. | 
  **merchantPreferences** | [**OAIMerchantPreferences***](OAIMerchantPreferences.md)|  | 
+ **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
+ **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
+ **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
 
 ### Return type
 

@@ -9,7 +9,7 @@ class OpenApiBasket: Basket {
 	}
 
 	var items: [BasketItem] {
-		self.basket.items.map({ item in OpenApiBasketItem(item: item as! OAIBasketItems) })
+		basket.items.map({ item in OpenApiBasketItem(item: item as! OAIBasketItems) })
 	}
 }
 
@@ -21,30 +21,30 @@ class OpenApiBasketItem: BasketItem {
 	}
 
 	var label: String {
-		self.item.label
+		item.label
 	}
 
 	var description: String? {
-		self.item.description
+		item.description
 	}
 
 	var quantity: Int? {
-		self.item.quantity.intValue
+		item.quantity.intValue
 	}
 
 	var unitPrice: Decimal? {
-		self.item.unitPrice.decimalValue
+		item.unitPrice.decimalValue
 	}
 
 	var unitMeasure: String? {
-		self.item.unitMeasure
+		item.unitMeasure
 	}
 
 	var totalPrice: Decimal? {
-		self.item.totalPrice.decimalValue
+		item.totalPrice.decimalValue
 	}
 
 	var tags: [String: String] {
-		self.item.tags
+		item.tags
 	}
 }

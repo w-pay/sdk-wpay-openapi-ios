@@ -5,7 +5,7 @@ class OpenApiDynamicPayload: DynamicPayload {
 	private let aPayload: OAIDynamicPayload
 
 	init(payload: OAIDynamicPayload) {
-		self.aPayload = payload
+		aPayload = payload
 	}
 
 	var schemaId: String? {

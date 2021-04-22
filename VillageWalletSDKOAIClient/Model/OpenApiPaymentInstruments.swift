@@ -1,7 +1,7 @@
 import UIKit
 import VillageWalletSDK
 
-class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, AllPaymentInstruments {
+class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, WalletContents {
 	private let everydayPayData: OAIGetCustomerPaymentInstrumentsResultsDataEverydayPay?
 
 	init(
@@ -9,7 +9,7 @@ class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, AllPaymentInstrum
 		giftCards: [OAIGiftCard],
 		everydayPay: OAIGetCustomerPaymentInstrumentsResultsDataEverydayPay?
 	) {
-		self.everydayPayData = everydayPay
+		everydayPayData = everydayPay
 
 		super.init(creditCards: creditCards, giftCards: giftCards, wallet: Wallet.MERCHANT)
 	}
@@ -32,8 +32,8 @@ class OpenApiPaymentInstruments: PaymentInstruments {
 	private let wallet: Wallet
 
 	init(creditCards: [OAICreditCard], giftCards: [OAIGiftCard], wallet: Wallet) {
-		self.theCreditCards = creditCards
-		self.theGiftCards = giftCards
+		theCreditCards = creditCards
+		theGiftCards = giftCards
 		self.wallet = wallet
 	}
 
@@ -52,7 +52,7 @@ class OpenApiCreditCard: CreditCard {
 
 	init(creditCard: OAICreditCard, wallet: Wallet) {
 		self.creditCard = creditCard
-		self.theWallet = wallet
+		theWallet = wallet
 	}
 
 	var paymentInstrumentId: String {
@@ -120,7 +120,7 @@ class OpenApiCreditCard: CreditCard {
 	}
 
 	var status: PaymentInstrumentStatus? {
-		PaymentInstrumentStatus.valueOf(value: creditCard.status)
+		PaymentInstrumentStatus(rawValue: creditCard.status.uppercased())
 	}
 
 	var wallet: Wallet {
@@ -134,7 +134,7 @@ class OpenApiGiftCard: GiftCard {
 
 	init(giftCard: OAIGiftCard, wallet: Wallet) {
 		self.giftCard = giftCard
-		self.theWallet = wallet
+		theWallet = wallet
 	}
 
 	var paymentInstrumentId: String {
@@ -178,7 +178,7 @@ class OpenApiGiftCard: GiftCard {
 	}
 
 	var status: PaymentInstrumentStatus? {
-		PaymentInstrumentStatus.valueOf(value: giftCard.status)
+		PaymentInstrumentStatus(rawValue: giftCard.status.uppercased())
 	}
 
 	var wallet: Wallet {
@@ -207,9 +207,9 @@ class OpenApiCreditCardStepUp: CreditCardStepUp {
 }
 
 class OpenApiGiftCardStepUp: GiftCardStepUp {
-	private let stepUp: OAIGiftCardStepUp
+	private let stepUp: OAIGetCustomerPaymentInstrumentResultDataPaymentInstrumentDetailStepUp
 
-	init(stepUp: OAIGiftCardStepUp) {
+	init(stepUp: OAIGetCustomerPaymentInstrumentResultDataPaymentInstrumentDetailStepUp) {
 		self.stepUp = stepUp
 	}
 
@@ -219,5 +219,73 @@ class OpenApiGiftCardStepUp: GiftCardStepUp {
 
 	var mandatory: Bool {
 		stepUp.mandatory.boolValue
+	}
+}
+
+class OpenApiIndividualPaymentInstrument: IndividualPaymentInstrument {
+	private let instrument: OAIGetCustomerPaymentInstrumentResult
+
+	init(instrument: OAIGetCustomerPaymentInstrumentResult) {
+		self.instrument = instrument
+	}
+
+	var paymentInstrumentType: String {
+		instrument.data.paymentInstrumentType
+	}
+
+	var paymentInstrumentDetail: IndividualPaymentInstrumentDetail {
+		OpenApiIndividualPaymentInstrumentDetail(detail: instrument.data.paymentInstrumentDetail)
+	}
+
+	var cipherText: String? {
+		instrument.meta.cipherText
+	}
+
+	var paymentInstrumentId: String {
+		instrument.data.paymentInstrumentId
+	}
+
+	var allowed: Bool {
+		instrument.data.allowed.boolValue
+	}
+
+	var lastUpdated: Date {
+		instrument.data.lastUpdated
+	}
+
+	var lastUsed: Date? {
+		instrument.data.lastUsed
+	}
+
+	var paymentToken: String {
+		instrument.data.paymentToken
+	}
+
+	var primary: Bool {
+		instrument.data.primary.boolValue
+	}
+
+	var status: PaymentInstrumentStatus? {
+		guard let status = instrument.data.status else {
+			return nil
+		}
+
+		return PaymentInstrumentStatus(rawValue: status)
+	}
+}
+
+class OpenApiIndividualPaymentInstrumentDetail: IndividualPaymentInstrumentDetail {
+	private let detail: OAIGetCustomerPaymentInstrumentResultDataPaymentInstrumentDetail
+
+	init(detail: OAIGetCustomerPaymentInstrumentResultDataPaymentInstrumentDetail) {
+		self.detail = detail
+	}
+
+	var programName: String {
+		detail.programName
+	}
+
+	var stepUp: GiftCardStepUp {
+		OpenApiGiftCardStepUp(stepUp: detail.stepUp)
 	}
 }

@@ -4,7 +4,7 @@ import VillageWalletSDK
 
 @testable import VillageWalletSDKOAIClient
 
-func isAllPaymentInstruments() -> Matcher<AllPaymentInstruments> {
+func isAllPaymentInstruments() -> Matcher<WalletContents> {
 	Matcher("A list of all payments instruments") { (item) -> Bool in
 		assertThat(item.creditCards, hasCards(creditCard()))
 		assertThat(item.giftCards, hasCards(giftCard()))

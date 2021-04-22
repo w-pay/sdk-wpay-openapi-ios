@@ -5,11 +5,11 @@ class OpenApiCustomerTransactionSummaries: CustomerTransactionSummaries {
 	private let theTransactions: [OAICustomerTransactionSummary]
 
 	init(transactions: [OAICustomerTransactionSummary]) {
-		self.theTransactions = transactions
+		theTransactions = transactions
 	}
 
 	var transactions: [CustomerTransactionSummary] {
-		theTransactions.map { it in OpenApiCustomerTransactionSummary(summary: it) }
+		theTransactions.map(OpenApiCustomerTransactionSummary.init)
 	}
 }
 
@@ -24,8 +24,8 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 		summary.merchantId
 	}
 
-	var instruments: [CustomerTransactionUsedPaymentInstrument] {
-		summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
+	var instruments: [TransactionSummaryUsedPaymentInstrument] {
+		summary.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAIInstrumentAllocation) }
 	}
 
 	var transactionId: String {
@@ -33,7 +33,7 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var type: TransactionSummaryPaymentType? {
-		TransactionSummaryPaymentType.valueOf(value: summary.type)
+		TransactionSummaryPaymentType(rawValue: summary.type.uppercased())
 	}
 
 	var executionTime: Date {
@@ -41,11 +41,19 @@ class OpenApiCustomerTransactionSummary: CustomerTransactionSummary {
 	}
 
 	var status: TransactionSummaryPaymentStatus? {
-		TransactionSummaryPaymentStatus.valueOf(value: summary.status)
+		TransactionSummaryPaymentStatus(rawValue: summary.status.uppercased())
 	}
 
-	var statusDetail: AnyObject? {
-		summary.statusDetail
+	var rollback: TransactionSummarySummaryRollback? {
+		guard let rollback = summary.rollback else {
+			return nil
+		}
+
+		return TransactionSummarySummaryRollback(rawValue: rollback.uppercased())
+	}
+
+	var subTransactions: [Any]? {
+		summary.subTransactions
 	}
 
 	var refundReason: String? {
@@ -88,8 +96,8 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 		details.merchantId
 	}
 
-	var instruments: [CustomerTransactionUsedPaymentInstrument] {
-		details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAICustomerTransactionSummaryAllOfInstruments) }
+	var instruments: [TransactionSummaryUsedPaymentInstrument] {
+		details.instruments.map { it in OpenApiUsedPaymentInstrument(instrument: it as! OAIInstrumentAllocation) }
 	}
 
 	var transactionId: String {
@@ -97,7 +105,7 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var type: TransactionSummaryPaymentType? {
-		TransactionSummaryPaymentType.valueOf(value: details.type)
+		TransactionSummaryPaymentType(rawValue: details.type.uppercased())
 	}
 
 	var executionTime: Date {
@@ -105,11 +113,19 @@ class OpenApiCustomerTransactionDetails: CustomerTransactionDetails {
 	}
 
 	var status: TransactionSummaryPaymentStatus? {
-		TransactionSummaryPaymentStatus.valueOf(value: details.status)
+		TransactionSummaryPaymentStatus(rawValue: details.status.uppercased())
 	}
 
-	var statusDetail: AnyObject? {
-		details.statusDetail
+	var rollback: TransactionSummarySummaryRollback? {
+		guard let rollback = details.rollback else {
+			return nil
+		}
+
+		return TransactionSummarySummaryRollback(rawValue: rollback.uppercased())
+	}
+
+	var subTransactions: [Any]? {
+		details.subTransactions
 	}
 
 	var refundReason: String? {

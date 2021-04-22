@@ -3,10 +3,6 @@ import VillageWalletSDK
 
 @testable import VillageWalletSDKOAIClient
 
-func aSelectedPaymentInstrument() -> PaymentInstrument {
-	TestPaymentInstrument()
-}
-
 func aNewPaymentInstrument() -> PaymentInstrumentAddition {
 	TestPaymentInstrumentAddition()
 }

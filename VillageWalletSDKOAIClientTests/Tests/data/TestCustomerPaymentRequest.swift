@@ -28,3 +28,19 @@ class TestCustomerPaymentRequest: CustomerPaymentRequest {
 		Decimal(10)
 	}
 }
+
+class TestPaymentPreferences : PaymentPreferences {
+	var primaryInstrumentId: String = "90271"
+
+	var secondaryInstruments: SecondaryInstrumentPreferences? = TestSecondaryInstrumentPreferences()
+}
+
+class TestSecondaryInstrumentPreferences: SecondaryInstrumentPreferences {
+	var enableSecondaryInstruments: Bool? = true
+
+	var order: SecondaryInstrumentOrder? = nil
+
+	var exclude: [String]? = nil
+
+	var include: [String]? = nil
+}

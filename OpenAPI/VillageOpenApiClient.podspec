@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
     s.name             = "VillageOpenApiClient"
     s.version          = "0.0.6.0"
 
-    s.summary          = "Village Wallet"
+    s.summary          = "Wpay APIs"
     s.description      = <<-DESC
-                         APIs for Village Wallet
+                         Wpay APIs for payments and gifting
                          DESC
 
     s.platform     = :ios, '7.0'
