@@ -1,19 +1,19 @@
 import UIKit
 import VillageWalletSDK
 
-public let OpenApiMerchantApiRepositoryFactory: MerchantApiRepositoryFactory = ({
-	(
-		options: VillageMerchantOptions,
-		headers: RequestHeadersFactory,
-		authenticator: AnyApiAuthenticator<HasAccessToken>
-	) -> VillageMerchantApiRepository in
-	OpenApiVillageMerchantApiRepository(
-		requestHeadersFactory: headers,
-		options: options
-	)
-})
-
 public class OpenApiVillageMerchantApiRepository: VillageMerchantApiRepository {
+	public static let factory: MerchantApiRepositoryFactory = ({
+		(
+			options: VillageMerchantOptions,
+			headers: RequestHeadersFactory,
+			authenticator: AnyApiAuthenticator<HasAccessToken>
+		) -> VillageMerchantApiRepository in
+		OpenApiVillageMerchantApiRepository(
+			requestHeadersFactory: headers,
+			options: options
+		)
+	})
+
 	public let admin: AdministrationApiRepository
 	public let dp: DigitalPayRepository
 	public let payments: MerchantPaymentsRepository
