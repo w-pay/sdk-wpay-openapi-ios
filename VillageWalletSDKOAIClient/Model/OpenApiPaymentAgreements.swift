@@ -137,50 +137,54 @@ class OpenApiPaymentAgreements: PaymentAgreements {
 	}
 }
 
-func fromPaymentAgreement(_ agreement: PaymentAgreement?) -> OAIPaymentAgreement? {
-	guard let theAgreement = agreement else {
-		return nil
+extension OAIPaymentAgreement {
+	static func fromPaymentAgreement(_ agreement: PaymentAgreement?) -> OAIPaymentAgreement? {
+		guard let theAgreement = agreement else {
+			return nil
+		}
+
+		let paymentAgreement = OAIPaymentAgreement()
+
+		paymentAgreement.paymentToken = theAgreement.paymentToken
+		paymentAgreement.status = theAgreement.status.rawValue
+		paymentAgreement.lastUpdated = dateToString(theAgreement.lastUpdated)
+		paymentAgreement.lastUsed = dateToString(theAgreement.lastUsed)
+		paymentAgreement.createdOn = theAgreement.createdOn
+		paymentAgreement.primary = theAgreement.primary as NSNumber?
+		paymentAgreement.allowed = theAgreement.allowed as NSNumber?
+		paymentAgreement.type = theAgreement.type.rawValue
+		paymentAgreement.paymentInstrumentId = theAgreement.paymentInstrumentId
+		paymentAgreement.scheme = theAgreement.scheme
+		paymentAgreement.cardSuffix = theAgreement.cardSuffix
+		paymentAgreement.expiryMonth = theAgreement.expiryMonth
+		paymentAgreement.expiryYear = theAgreement.expiryYear
+		paymentAgreement.startDate = dateToString(theAgreement.startDate)
+		paymentAgreement.endDate = dateToString(theAgreement.endDate)
+		paymentAgreement.chargeFrequency = theAgreement.chargeFrequency.rawValue
+		paymentAgreement.chargeAmount = theAgreement.chargeAmount as NSNumber
+		paymentAgreement.chargeCycle = theAgreement.chargeCycle as NSNumber
+		paymentAgreement.expired = theAgreement.expired?.description
+		paymentAgreement.updateURL = theAgreement.updateURL
+		paymentAgreement.stepUp = OAIListPaymentInstrumentsResponseStepUp1.fromPaymentAgreementStepUp(theAgreement.stepUp)
+		paymentAgreement._description = theAgreement.description
+
+		return paymentAgreement
 	}
-
-	let paymentAgreement = OAIPaymentAgreement()
-
-	paymentAgreement.paymentToken = theAgreement.paymentToken
-	paymentAgreement.status = theAgreement.status.rawValue
-	paymentAgreement.lastUpdated = dateToString(theAgreement.lastUpdated)
-	paymentAgreement.lastUsed = dateToString(theAgreement.lastUsed)
-	paymentAgreement.createdOn = theAgreement.createdOn
-	paymentAgreement.primary = theAgreement.primary as NSNumber?
-	paymentAgreement.allowed = theAgreement.allowed as NSNumber?
-	paymentAgreement.type = theAgreement.type.rawValue
-	paymentAgreement.paymentInstrumentId = theAgreement.paymentInstrumentId
-	paymentAgreement.scheme = theAgreement.scheme
-	paymentAgreement.cardSuffix = theAgreement.cardSuffix
-	paymentAgreement.expiryMonth = theAgreement.expiryMonth
-	paymentAgreement.expiryYear = theAgreement.expiryYear
-	paymentAgreement.startDate = dateToString(theAgreement.startDate)
-	paymentAgreement.endDate = dateToString(theAgreement.endDate)
-	paymentAgreement.chargeFrequency = theAgreement.chargeFrequency.rawValue
-	paymentAgreement.chargeAmount = theAgreement.chargeAmount as NSNumber
-	paymentAgreement.chargeCycle = theAgreement.chargeCycle as NSNumber
-	paymentAgreement.expired = theAgreement.expired?.description
-	paymentAgreement.updateURL = theAgreement.updateURL
-	paymentAgreement.stepUp = fromPaymentAgreementStepUp(theAgreement.stepUp)
-	paymentAgreement._description = theAgreement.description
-
-	return paymentAgreement
 }
 
-func fromPaymentAgreementStepUp(
-	_ stepUp: PaymentAgreementStepUp?
-) -> OAIListPaymentInstrumentsResponseStepUp1? {
-	guard let theStepUp = stepUp else {
-		return nil
+extension OAIListPaymentInstrumentsResponseStepUp1 {
+	static func fromPaymentAgreementStepUp(
+		_ stepUp: PaymentAgreementStepUp?
+	) -> OAIListPaymentInstrumentsResponseStepUp1? {
+		guard let theStepUp = stepUp else {
+			return nil
+		}
+
+		let stepUp = OAIListPaymentInstrumentsResponseStepUp1()
+		stepUp.type = theStepUp.type
+		stepUp.mandatory = theStepUp.mandatory as NSNumber?
+		stepUp.url = theStepUp.url
+
+		return stepUp
 	}
-
-	let stepUp = OAIListPaymentInstrumentsResponseStepUp1()
-	stepUp.type = theStepUp.type
-	stepUp.mandatory = theStepUp.mandatory as NSNumber?
-	stepUp.url = theStepUp.url
-
-	return stepUp
 }

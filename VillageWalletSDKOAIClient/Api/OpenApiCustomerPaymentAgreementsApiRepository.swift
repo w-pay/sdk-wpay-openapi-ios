@@ -49,8 +49,8 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 		body.data.clientReference = paymentAgreement.clientReference
 		body.data.customerRef = paymentAgreement.customerRef
 		body.data.orderNumber = paymentAgreement.orderNumber
-		body.data.billingAddress = fromBillingAddress(paymentAgreement.billingAddress)
-		body.data.paymentAgreement = fromPaymentAgreement(paymentAgreement.paymentAgreement)
+		body.data.billingAddress = OAIBillingAddress.fromBillingAddress(paymentAgreement.billingAddress)
+		body.data.paymentAgreement = OAIPaymentAgreement.fromPaymentAgreement(paymentAgreement.paymentAgreement)
 
 		api.createCustomerPaymentAgreement(
 			withXWalletID: getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
@@ -75,8 +75,8 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 		body.data = OAIInstoreCustomerPaymentsAgreementsPaymentTokenData()
 		body.data.clientReference = paymentAgreement.clientReference
 		body.data.customerRef = paymentAgreement.customerRef
-		body.data.billingAddress = fromBillingAddress(paymentAgreement.billingAddress)
-		body.data.paymentAgreement = fromPaymentAgreement(paymentAgreement.paymentAgreement)
+		body.data.billingAddress = OAIBillingAddress.fromBillingAddress(paymentAgreement.billingAddress)
+		body.data.paymentAgreement = OAIPaymentAgreement.fromPaymentAgreement(paymentAgreement.paymentAgreement)
 
 		api.updateCustomerPaymentAgreement(
 			withXWalletID: getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
@@ -93,23 +93,25 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 	}
 }
 
-func fromBillingAddress(_ address: PaymentAgreementBillingAddress?) -> OAIBillingAddress? {
-	guard let theAddress = address else {
-		return nil
+extension OAIBillingAddress {
+	static func fromBillingAddress(_ address: PaymentAgreementBillingAddress?) -> OAIBillingAddress? {
+		guard let theAddress = address else {
+			return nil
+		}
+
+		let billingAddress = OAIBillingAddress()
+
+		billingAddress.firstName = theAddress.firstName
+		billingAddress.lastName = theAddress.lastName
+		billingAddress.email = theAddress.email
+		billingAddress.company = theAddress.company
+		billingAddress.extendedAddress = theAddress.extendedAddress
+		billingAddress.streetAddress = theAddress.streetAddress
+		billingAddress.suburb = theAddress.suburb
+		billingAddress.stateOrTerritory = theAddress.stateOrTerritory
+		billingAddress.postalCode = theAddress.postalCode
+		billingAddress.countryCode = theAddress.countryCode
+
+		return billingAddress
 	}
-
-	let billingAddress = OAIBillingAddress()
-
-	billingAddress.firstName = theAddress.firstName
-	billingAddress.lastName = theAddress.lastName
-	billingAddress.email = theAddress.email
-	billingAddress.company = theAddress.company
-	billingAddress.extendedAddress = theAddress.extendedAddress
-	billingAddress.streetAddress = theAddress.streetAddress
-	billingAddress.suburb = theAddress.suburb
-	billingAddress.stateOrTerritory = theAddress.stateOrTerritory
-	billingAddress.postalCode = theAddress.postalCode
-	billingAddress.countryCode = theAddress.countryCode
-
-	return billingAddress
 }

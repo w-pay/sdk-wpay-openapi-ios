@@ -49,21 +49,23 @@ class OpenApiSecondaryInstrumentPreferences: SecondaryInstrumentPreferences {
 	}
 }
 
-func fromPaymentPreferences(_ prefs: PaymentPreferences?) -> OAIPreferencePayments? {
-	guard let thePrefs = prefs else {
-		return nil
+extension OAIPreferencePayments {
+	static func fromPaymentPreferences(_ prefs: PaymentPreferences?) -> OAIPreferencePayments? {
+		guard let thePrefs = prefs else {
+			return nil
+		}
+
+		let preferences = OAIPreferencePayments()
+		preferences.primaryInstrumentId = thePrefs.primaryInstrumentId
+
+		if let secondaryInstruments = thePrefs.secondaryInstruments {
+			preferences.secondaryInstruments = OAIPreferencePaymentsSecondaryInstruments()
+			preferences.secondaryInstruments.enableSecondaryInstruments = secondaryInstruments.enableSecondaryInstruments as NSNumber?
+			preferences.secondaryInstruments.order = secondaryInstruments.order?.rawValue
+			preferences.secondaryInstruments.exclude = secondaryInstruments.exclude
+			preferences.secondaryInstruments.include = secondaryInstruments.include
+		}
+
+		return preferences
 	}
-
-	let preferences = OAIPreferencePayments()
-	preferences.primaryInstrumentId = thePrefs.primaryInstrumentId
-
-	if let secondaryInstruments = thePrefs.secondaryInstruments {
-		preferences.secondaryInstruments = OAIPreferencePaymentsSecondaryInstruments()
-		preferences.secondaryInstruments.enableSecondaryInstruments = secondaryInstruments.enableSecondaryInstruments as NSNumber?
-		preferences.secondaryInstruments.order = secondaryInstruments.order?.rawValue
-		preferences.secondaryInstruments.exclude = secondaryInstruments.exclude
-		preferences.secondaryInstruments.include = secondaryInstruments.include
-	}
-
-	return preferences
 }

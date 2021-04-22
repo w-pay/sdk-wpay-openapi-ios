@@ -21,14 +21,16 @@ class OpenApiCustomerPreferences: CustomerPreferences {
 	}
 }
 
-func fromCustomerPreferences(_ prefs: CustomerPreferences?) -> OAIPreferencesCustomer? {
-	guard let thePrefs = prefs else {
-		return nil
+extension OAIPreferencesCustomer {
+	static func fromCustomerPreferences(_ prefs: CustomerPreferences?) -> OAIPreferencesCustomer? {
+		guard let thePrefs = prefs else {
+			return nil
+		}
+
+		let preferences = OAIPreferencesCustomer()
+		preferences.general = thePrefs.general
+		preferences.payments = OAIPreferencePayments.fromPaymentPreferences(thePrefs.payments)
+
+		return preferences
 	}
-
-	let preferences = OAIPreferencesCustomer()
-	preferences.general = thePrefs.general
-	preferences.payments = fromPaymentPreferences(thePrefs.payments)
-
-	return preferences
 }

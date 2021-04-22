@@ -68,7 +68,7 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		body.data.primaryInstrumentId = primaryInstrument
 		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
 		body.data.clientReference = clientReference
-		body.data.preferences = fromPaymentPreferences(preferences)
+		body.data.preferences = OAIPreferencePayments.fromPaymentPreferences(preferences)
 
 		body.meta = OAIMetaChallenge()
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
