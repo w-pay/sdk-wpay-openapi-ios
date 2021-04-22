@@ -17,11 +17,11 @@ class OpenApiPaymentAgreement: PaymentAgreement {
 	}
 
 	var lastUpdated: Date? {
-		dateFromString(agreement.lastUpdated)
+		DateUtils.dateFromString(agreement.lastUpdated)
 	}
 
 	var lastUsed: Date? {
-		dateFromString(agreement.lastUsed)
+		DateUtils.dateFromString(agreement.lastUsed)
 	}
 
 	var createdOn: Date? {
@@ -61,11 +61,11 @@ class OpenApiPaymentAgreement: PaymentAgreement {
 	}
 
 	var startDate: Date? {
-		dateFromString(agreement.startDate)
+		DateUtils.dateFromString(agreement.startDate)
 	}
 
 	var endDate: Date? {
-		dateFromString(agreement.endDate)
+		DateUtils.dateFromString(agreement.endDate)
 	}
 
 	var chargeFrequency: PaymentAgreementChargeFrequency {
@@ -147,8 +147,8 @@ extension OAIPaymentAgreement {
 
 		paymentAgreement.paymentToken = theAgreement.paymentToken
 		paymentAgreement.status = theAgreement.status.rawValue
-		paymentAgreement.lastUpdated = dateToString(theAgreement.lastUpdated)
-		paymentAgreement.lastUsed = dateToString(theAgreement.lastUsed)
+		paymentAgreement.lastUpdated = DateUtils.dateToString(theAgreement.lastUpdated)
+		paymentAgreement.lastUsed = DateUtils.dateToString(theAgreement.lastUsed)
 		paymentAgreement.createdOn = theAgreement.createdOn
 		paymentAgreement.primary = theAgreement.primary as NSNumber?
 		paymentAgreement.allowed = theAgreement.allowed as NSNumber?
@@ -158,8 +158,8 @@ extension OAIPaymentAgreement {
 		paymentAgreement.cardSuffix = theAgreement.cardSuffix
 		paymentAgreement.expiryMonth = theAgreement.expiryMonth
 		paymentAgreement.expiryYear = theAgreement.expiryYear
-		paymentAgreement.startDate = dateToString(theAgreement.startDate)
-		paymentAgreement.endDate = dateToString(theAgreement.endDate)
+		paymentAgreement.startDate = DateUtils.dateToString(theAgreement.startDate)
+		paymentAgreement.endDate = DateUtils.dateToString(theAgreement.endDate)
 		paymentAgreement.chargeFrequency = theAgreement.chargeFrequency.rawValue
 		paymentAgreement.chargeAmount = theAgreement.chargeAmount as NSNumber
 		paymentAgreement.chargeCycle = theAgreement.chargeCycle as NSNumber
