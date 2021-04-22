@@ -57,12 +57,12 @@ func fromPaymentPreferences(_ prefs: PaymentPreferences?) -> OAIPreferencePaymen
 	let preferences = OAIPreferencePayments()
 	preferences.primaryInstrumentId = thePrefs.primaryInstrumentId
 
-	if (preferences.secondaryInstruments != nil) {
+	if let secondaryInstruments = thePrefs.secondaryInstruments {
 		preferences.secondaryInstruments = OAIPreferencePaymentsSecondaryInstruments()
-		preferences.secondaryInstruments.enableSecondaryInstruments = thePrefs.secondaryInstruments!.enableSecondaryInstruments as NSNumber?
-		preferences.secondaryInstruments.order = thePrefs.secondaryInstruments!.order?.rawValue
-		preferences.secondaryInstruments.exclude = thePrefs.secondaryInstruments!.exclude
-		preferences.secondaryInstruments.include = thePrefs.secondaryInstruments!.include
+		preferences.secondaryInstruments.enableSecondaryInstruments = secondaryInstruments.enableSecondaryInstruments as NSNumber?
+		preferences.secondaryInstruments.order = secondaryInstruments.order?.rawValue
+		preferences.secondaryInstruments.exclude = secondaryInstruments.exclude
+		preferences.secondaryInstruments.include = secondaryInstruments.include
 	}
 
 	return preferences
