@@ -9,7 +9,7 @@ class OpenApiCustomerTransactionSummaries: CustomerTransactionSummaries {
 	}
 
 	var transactions: [CustomerTransactionSummary] {
-		theTransactions.map { it in OpenApiCustomerTransactionSummary(summary: it) }
+		theTransactions.map(OpenApiCustomerTransactionSummary.init)
 	}
 }
 

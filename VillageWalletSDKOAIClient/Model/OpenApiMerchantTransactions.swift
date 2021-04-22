@@ -9,7 +9,7 @@ class OpenApiMerchantTransactionSummaries: MerchantTransactionSummaries {
 	}
 
 	var transactions: [MerchantTransactionSummary] {
-		theTransactions.map { it in OpenApiMerchantTransactionSummary(summary: it) }
+		theTransactions.map(OpenApiMerchantTransactionSummary.init)
 	}
 }
 

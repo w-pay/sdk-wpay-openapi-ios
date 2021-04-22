@@ -9,7 +9,7 @@ class OpenApiTermsAndConditionsAcceptances: TermsAndConditionsAcceptances {
 	}
 
 	var termsAndConditionsAcceptances: [TermsAndConditionsAcceptance] {
-		acceptances.map { it in OpenApiTermsAndConditionsAcceptance(acceptance: it) }
+		acceptances.map(OpenApiTermsAndConditionsAcceptance.init)
 	}
 }
 

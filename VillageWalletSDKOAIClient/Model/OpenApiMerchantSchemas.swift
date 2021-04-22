@@ -9,7 +9,7 @@ class OpenApiMerchantSchemaSummaries: MerchantSchemaSummaries {
 	}
 
 	var schemas: [MerchantSchemaSummary] {
-		theSchemas.map { it in OpenApiMerchantSchemaSummary(summary: it) }
+		theSchemas.map(OpenApiMerchantSchemaSummary.init)
 	}
 }
 

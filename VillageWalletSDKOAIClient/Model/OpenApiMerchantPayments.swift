@@ -9,7 +9,7 @@ class OpenApiMerchantPaymentSummaries: MerchantPaymentSummaries {
 	}
 
 	var payments: [MerchantPaymentSummary] {
-		thePayments.map { it in OpenApiMerchantPaymentSummary(payment: it) }
+		thePayments.map(OpenApiMerchantPaymentSummary.init)
 	}
 }
 

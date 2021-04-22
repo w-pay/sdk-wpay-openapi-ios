@@ -133,7 +133,7 @@ class OpenApiPaymentAgreements: PaymentAgreements {
 	}
 
 	var paymentAgreements: [PaymentAgreement] {
-		agreements.map { it in OpenApiPaymentAgreement(agreement: it) }
+		agreements.map(OpenApiPaymentAgreement.init)
 	}
 }
 
