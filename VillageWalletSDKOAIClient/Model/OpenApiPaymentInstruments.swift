@@ -9,7 +9,7 @@ class OpenApiAllPaymentInstruments: OpenApiPaymentInstruments, WalletContents {
 		giftCards: [OAIGiftCard],
 		everydayPay: OAIGetCustomerPaymentInstrumentsResultsDataEverydayPay?
 	) {
-		self.everydayPayData = everydayPay
+		everydayPayData = everydayPay
 
 		super.init(creditCards: creditCards, giftCards: giftCards, wallet: Wallet.MERCHANT)
 	}
@@ -32,8 +32,8 @@ class OpenApiPaymentInstruments: PaymentInstruments {
 	private let wallet: Wallet
 
 	init(creditCards: [OAICreditCard], giftCards: [OAIGiftCard], wallet: Wallet) {
-		self.theCreditCards = creditCards
-		self.theGiftCards = giftCards
+		theCreditCards = creditCards
+		theGiftCards = giftCards
 		self.wallet = wallet
 	}
 
@@ -52,7 +52,7 @@ class OpenApiCreditCard: CreditCard {
 
 	init(creditCard: OAICreditCard, wallet: Wallet) {
 		self.creditCard = creditCard
-		self.theWallet = wallet
+		theWallet = wallet
 	}
 
 	var paymentInstrumentId: String {
@@ -134,7 +134,7 @@ class OpenApiGiftCard: GiftCard {
 
 	init(giftCard: OAIGiftCard, wallet: Wallet) {
 		self.giftCard = giftCard
-		self.theWallet = wallet
+		theWallet = wallet
 	}
 
 	var paymentInstrumentId: String {

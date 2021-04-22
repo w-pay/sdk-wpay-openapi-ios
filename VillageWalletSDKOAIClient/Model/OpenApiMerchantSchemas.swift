@@ -5,7 +5,7 @@ class OpenApiMerchantSchemaSummaries: MerchantSchemaSummaries {
 	private let theSchemas: [OAIMerchantSchemaSummary]
 
 	init(schemas: [OAIMerchantSchemaSummary]) {
-		self.theSchemas = schemas
+		theSchemas = schemas
 	}
 
 	var schemas: [MerchantSchemaSummary] {
@@ -37,7 +37,7 @@ class OpenApiMerchantSchema: MerchantSchema {
 	private let aSchema: OAIMerchantSchemaDetailsResultData
 
 	init(schema: OAIMerchantSchemaDetailsResultData) {
-		self.aSchema = schema
+		aSchema = schema
 	}
 
 	var schema: [String: AnyObject] {

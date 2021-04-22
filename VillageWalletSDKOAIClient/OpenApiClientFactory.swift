@@ -45,8 +45,8 @@ public class OpenApiClientFactory {
 
 	internal func extractError<T>(error: NSError) -> Result<T, ApiError> {
 		do {
-			try self.extractHttpError(error: error)
-			try self.extractJsonDecodingError(error: error)
+			try extractHttpError(error: error)
+			try extractJsonDecodingError(error: error)
 		}
 		catch {
 			return .failure(error as! ApiError)

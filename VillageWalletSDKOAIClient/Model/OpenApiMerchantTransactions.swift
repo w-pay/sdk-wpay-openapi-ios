@@ -5,7 +5,7 @@ class OpenApiMerchantTransactionSummaries: MerchantTransactionSummaries {
 	private let theTransactions: [OAIMerchantTransactionSummary]
 
 	init(transactions: [OAIMerchantTransactionSummary]) {
-		self.theTransactions = transactions
+		theTransactions = transactions
 	}
 
 	var transactions: [MerchantTransactionSummary] {
