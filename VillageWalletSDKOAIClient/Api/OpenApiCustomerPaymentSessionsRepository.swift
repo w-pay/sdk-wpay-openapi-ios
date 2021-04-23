@@ -117,7 +117,7 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let body = OAICustomerPaymentDetails1()
 		body.data = OAIInstoreCustomerPaymentsPaymentRequestIdData()
 		body.data.primaryInstrumentId = primaryInstrument
-		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument) ?? []
+		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument)
 		body.data.clientReference = clientReference
 		body.data.preferences = OAIPreferencePayments.fromPaymentPreferences(preferences)
 
