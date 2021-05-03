@@ -22,6 +22,10 @@ public class OpenApiClientFactory {
 		OAIMerchantApi(apiClient: createApiClient())
 	}
 
+	internal func createOpenpayApi() -> OAIOpenpayApi {
+		OAIOpenpayApi(apiClient: createApiClient())
+	}
+
 	internal func getDefaultHeader(client: OAIApiClient, name: String) -> String? {
 		getDefaultHeader(config: client.configuration, name: name)
 	}
