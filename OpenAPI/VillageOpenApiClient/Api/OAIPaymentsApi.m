@@ -414,8 +414,7 @@ NSInteger kOAIPaymentsApiMissingParamErrorCode = 234513;
         headerParams[@"X-JWS-Signature"] = xJWSSignature;
     }
     if (xEverydayPayWallet != nil) {
-        // TODO: Manually fixed. See https://github.com/OpenAPITools/openapi-generator/issues/7009
-        headerParams[@"X-Everyday-Pay-Wallet"] = [xEverydayPayWallet isEqual:@(YES)] ? @"true" : @"false";
+        headerParams[@"X-Everyday-Pay-Wallet"] = xEverydayPayWallet;
     }
     // HTTP header `Accept`
     NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
