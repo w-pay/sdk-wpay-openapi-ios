@@ -36,7 +36,7 @@ Pod::Spec.new do |spec|
                     Open API implementation of Village API Repositories
                    DESC
 
-  spec.homepage = "https://github.com/woolworthslimited/paysdk2-openapi-ios"
+  spec.homepage = "https://github.com/w-pay/sdk-wpay-openapi-ios"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -89,7 +89,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source = { :git => "https://github.com/woolworthslimited/paysdk2-openapi-ios.git", :branch => "master" }
+  spec.source = { :git => "https://github.com/w-pay/sdk-wpay-openapi-ios.git", :branch => "master" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

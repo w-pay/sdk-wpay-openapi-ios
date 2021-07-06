@@ -1,6 +1,6 @@
 # Woolworths Village Wallet SDK Open API Client
 
-As detailed in the [Woolworths Village iOS SDK](https://github.com/woolworthslimited/paysdk2-ios), 
+As detailed in the [Woolworths Village iOS SDK](https://github.com/w-pay/sdk-wpay-ios), 
 access to the APIs is facaded through an interface to allow different 
 implementations to be used according to applications needs and 
 technology choices.
@@ -21,7 +21,7 @@ If using [CocoaPods](https://cocoapods.org/) add the following to your Podfile
 
 ```
 # substitute the tag for the version desired.
-pod "VillageWalletSDKOAIClient", :git => "git@github.com:woolworthslimited/paysdk2-openapi-ios.git", :tag => "v1.0.0"
+pod "VillageWalletSDKOAIClient", :git => "git@github.com:w-pay/sdk-wpay-openapi-ios.git", :tag => "v1.0.0"
 
 # don't forget to include the SDK framework
 ```
@@ -52,7 +52,7 @@ that it's easy to swap variants if required.
  
 The Open API implementation lives in this framework so that the framework
 can be consumable via CocoaPods which clones the entire Git repo. Therefore
-to colocate this framework with the [generator](https://github.com/woolworthslimited/paysdk2-openapi)
+to colocate this framework with the [generator](https://github.com/w-pay/sdk-wpay-openapi-android)
 potentially cause problems. If the Open API implementation needs be updated,
 use the generator and merge the changes in.
  
@@ -65,7 +65,7 @@ to need.
  
 ### Generating an Open API implementation
 
-The generator is a [Gradle](https://gradle.org/) project. See the notes in the [generator](https://github.com/woolworthslimited/paysdk2-openapi)
+The generator is a [Gradle](https://gradle.org/) project. See the notes in the [generator](https://github.com/w-pay/sdk-wpay-openapi-android)
 project on how to generate the code.
 
 ### Building an Open API implementation with XCode
@@ -92,7 +92,7 @@ care that an ID is a guid or not, it cares that a string is sent or received.
 Therefore the tests are not reliant on particular data values.
 
 Any server can be used for the API tests, however a default `api-stubs`
-is available in the [generator](https://github.com/woolworthslimited/paysdk2-openapi) repo that
+is available in the [generator](https://github.com/w-pay/sdk-wpay-openapi-android) repo that
 uses Docker to stand up an imposter. For more details see the generator's README.
 
 #### Running tests
