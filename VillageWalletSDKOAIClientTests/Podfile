@@ -5,7 +5,7 @@ target "VillageWalletSDKOAIClient_Tests" do
 
   pod "VillageWalletSDKOAIClient", :path => "../"
 
-  pod "VillageWalletSDK", :git => "git@github.com:woolworthslimited/paysdk2-ios.git", :branch => "master"
+  pod "VillageWalletSDK", :git => "git@github.com:w-pay/sdk-wpay-ios.git", :tag => "v4.0.0"
 
   pod "SwiftHamcrest", "~> 2.2.1"
 end

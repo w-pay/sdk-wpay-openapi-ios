@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name = "VillageWalletSDKOAIClient"
-  spec.version = "4.0.0-alpha3"
+  spec.version = "4.0.0"
   spec.summary = "Open API implementation of Village API Repositories"
 
   # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ Pod::Spec.new do |spec|
                     Open API implementation of Village API Repositories
                    DESC
 
-  spec.homepage = "https://github.com/woolworthslimited/paysdk2-openapi-ios"
+  spec.homepage = "https://github.com/w-pay/sdk-wpay-openapi-ios"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -89,7 +89,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source = { :git => "https://github.com/woolworthslimited/paysdk2-openapi-ios.git", :branch => "master" }
+  spec.source = { :git => "https://github.com/w-pay/sdk-wpay-openapi-ios.git", :branch => "master" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -149,5 +149,5 @@ Pod::Spec.new do |spec|
   spec.dependency "AFNetworking", "~> 4"
   spec.dependency "JSONModel", "~> 1.2"
   spec.dependency "ISO8601", "~> 0.6"
-  spec.dependency "VillageWalletSDK", "= 4.0.0-alpha14"
+  spec.dependency "VillageWalletSDK", "~> 4.0.0"
 end
