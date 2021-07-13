@@ -152,23 +152,33 @@ class OpenApiAllowedPaymentMethods: AllowedPaymentMethods {
 		self.methods = methods
 	}
 
-	var giftCard: AllowedPaymentMethodsGiftCard {
-		OpenApiAllowedPaymentMethodsGiftCard(card: methods.giftCard)
+	var giftCard: AllowedPaymentMethodsGiftCard? {
+		guard let giftCard = methods.giftCard else { return nil }
+
+		return OpenApiAllowedPaymentMethodsGiftCard(card: giftCard)
 	}
 
-	var creditCard: AllowedPaymentMethodsCreditCard {
-		OpenApiAllowedPaymentMethodsCreditCard(card: methods.creditCard)
+	var creditCard: AllowedPaymentMethodsCreditCard? {
+		guard let creditCard = methods.creditCard else { return nil }
+
+		return OpenApiAllowedPaymentMethodsCreditCard(card: creditCard)
 	}
 
-	var paypal: AllowedPaymentMethodsPaypal {
-		OpenApiAllowedPaymentMethodsPaypal(method: methods.payPal)
+	var paypal: AllowedPaymentMethodsPaypal? {
+		guard let payPal = methods.payPal else { return nil }
+
+		return OpenApiAllowedPaymentMethodsPaypal(method: payPal)
 	}
 
-	var googlePay: AllowedPaymentMethodsGooglePay {
-		OpenApiAllowedPaymentMethodsGooglePay(method: methods.googlePay)
+	var googlePay: AllowedPaymentMethodsGooglePay? {
+		guard let googlePay = methods.googlePay else { return nil }
+
+		return OpenApiAllowedPaymentMethodsGooglePay(method: googlePay)
 	}
 
-	var applePay: AllowedPaymentMethodsApplePay {
-		OpenApiAllowedPaymentMethodsApplePay(method: methods.applePay)
+	var applePay: AllowedPaymentMethodsApplePay? {
+		guard let applePay = methods.applePay else { return nil }
+
+		return OpenApiAllowedPaymentMethodsApplePay(method: applePay)
 	}
 }
