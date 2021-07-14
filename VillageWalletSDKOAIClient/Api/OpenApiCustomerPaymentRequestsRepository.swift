@@ -64,13 +64,13 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		let api = createCustomerApi()
 
 		let body = OAICustomerPaymentDetails()
-		body.data = OAIInstoreCustomerPaymentsPaymentRequestIdData()
+		body.data = OAICustomerPaymentDetailsData()
 		body.data.primaryInstrumentId = primaryInstrument
 		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument)
 		body.data.clientReference = clientReference
 		body.data.preferences = OAIPreferencePayments.fromPaymentPreferences(preferences)
 
-		body.meta = OAIMetaChallenge()
+		body.meta = OAIMeta()
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
 
 		api.makeCustomerPayment(

@@ -1,6 +1,6 @@
-#import "OAIInstoreCustomerPaymentsPaymentRequestIdDataSecondaryInstruments.h"
+#import "OAIPaymentsRPVSErrorResponseBasketData.h"
 
-@implementation OAIInstoreCustomerPaymentsPaymentRequestIdDataSecondaryInstruments
+@implementation OAIPaymentsRPVSErrorResponseBasketData
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"instrumentId": @"instrumentId", @"amount": @"amount" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"itemId": @"itemId", @"category": @"category", @"subcategory": @"subcategory", @"validationErrors": @"validationErrors" }];
 }
 
 /**

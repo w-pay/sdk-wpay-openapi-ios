@@ -114,14 +114,14 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 	) {
 		let api = createCustomerApi()
 
-		let body = OAICustomerPaymentDetails1()
-		body.data = OAIInstoreCustomerPaymentsPaymentRequestIdData()
+		let body = OAICustomerPaymentDetails()
+		body.data = OAICustomerPaymentDetailsData()
 		body.data.primaryInstrumentId = primaryInstrument
 		body.data.secondaryInstruments = secondaryInstruments?.map(toSecondaryInstrument)
 		body.data.clientReference = clientReference
 		body.data.preferences = OAIPreferencePayments.fromPaymentPreferences(preferences)
 
-		body.meta = OAIMetaChallenge()
+		body.meta = OAIMeta()
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
 
 		api.preApprovePaymentSession(
@@ -129,7 +129,7 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
 			xJWSSignature: "",
 			paymentSessionId: paymentSessionId,
-			customerPaymentDetails1: body,
+			customerPaymentDetails: body,
 			xAuthKey: "",
 			xAuthDigest: "",
 			xMessageId: "",

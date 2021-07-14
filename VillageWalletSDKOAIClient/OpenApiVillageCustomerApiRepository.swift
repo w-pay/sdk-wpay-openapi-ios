@@ -80,8 +80,8 @@ public class OpenApiVillageCustomerApiRepository: VillageCustomerApiRepository {
 
 func toSecondaryInstrument(
 	instrument: SecondaryPaymentInstrument
-) -> OAIInstoreCustomerPaymentsPaymentRequestIdDataSecondaryInstruments {
-	let oaiInstrument = OAIInstoreCustomerPaymentsPaymentRequestIdDataSecondaryInstruments()
+) -> OAICustomerPaymentDetailsDataSecondaryInstruments {
+	let oaiInstrument = OAICustomerPaymentDetailsDataSecondaryInstruments()
 	oaiInstrument.instrumentId = instrument.paymentInstrumentId
 	oaiInstrument.amount = NSDecimalNumber(decimal: instrument.amount)
 

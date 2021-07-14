@@ -6,6 +6,7 @@
 #import "OAICompletionsRequest.h"
 #import "OAICompletionsSuccessResponse.h"
 #import "OAIPaymentsErrorResponse.h"
+#import "OAIPaymentsRPVSErrorResponse.h"
 #import "OAIPaymentsRequest.h"
 #import "OAIPaymentsSuccessResponse.h"
 #import "OAIRefundsErrorResponse.h"

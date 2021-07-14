@@ -1,6 +1,6 @@
-#import "OAIInstoreCustomerPaymentsPaymentRequestIdData.h"
+#import "OAIPaymentsRequestBasketData.h"
 
-@implementation OAIInstoreCustomerPaymentsPaymentRequestIdData
+@implementation OAIPaymentsRequestBasketData
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"primaryInstrumentId": @"primaryInstrumentId", @"secondaryInstruments": @"secondaryInstruments", @"skipRollback": @"skipRollback", @"clientReference": @"clientReference", @"preferences": @"preferences" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"itemId": @"itemId", @"category": @"category", @"subcategory": @"subcategory", @"_description": @"description", @"quantity": @"quantity", @"price": @"price", @"currency": @"currency" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"primaryInstrumentId", @"secondaryInstruments", @"skipRollback", @"clientReference", @"preferences"];
+  NSArray *optionalProperties = @[@"_description", @"quantity", @"price", @"currency"];
   return [optionalProperties containsObject:propertyName];
 }
 

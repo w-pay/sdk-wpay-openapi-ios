@@ -4,7 +4,6 @@
 #import "OAICustomerCreatePaymentAgreementRequest.h"
 #import "OAICustomerPaymentAgreementResponse.h"
 #import "OAICustomerPaymentDetails.h"
-#import "OAICustomerPaymentDetails1.h"
 #import "OAICustomerPaymentSessionResult.h"
 #import "OAICustomerPreferences.h"
 #import "OAICustomerPreferencesResult.h"
@@ -2265,7 +2264,7 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 ///
 ///  @param paymentRequestId The ID of the specific payment request 
 ///
-///  @param customerPaymentDetails  
+///  @param customerPaymentDetails Request payload containing instruments to use for the payment 
 ///
 ///  @param xAuthKey (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
 ///
@@ -2424,7 +2423,7 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
 ///
 ///  @param paymentSessionId The ID of the specific payment session 
 ///
-///  @param customerPaymentDetails1  
+///  @param customerPaymentDetails Request payload containing instruments to use for the payment 
 ///
 ///  @param xAuthKey (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
 ///
@@ -2438,7 +2437,7 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     authorization: (NSString*) authorization
     xJWSSignature: (NSString*) xJWSSignature
     paymentSessionId: (NSString*) paymentSessionId
-    customerPaymentDetails1: (OAICustomerPaymentDetails1*) customerPaymentDetails1
+    customerPaymentDetails: (OAICustomerPaymentDetails*) customerPaymentDetails
     xAuthKey: (NSString*) xAuthKey
     xAuthDigest: (NSString*) xAuthDigest
     xMessageId: (NSString*) xMessageId
@@ -2487,11 +2486,11 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'customerPaymentDetails1' is set
-    if (customerPaymentDetails1 == nil) {
-        NSParameterAssert(customerPaymentDetails1);
+    // verify the required parameter 'customerPaymentDetails' is set
+    if (customerPaymentDetails == nil) {
+        NSParameterAssert(customerPaymentDetails);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"customerPaymentDetails1"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"customerPaymentDetails"] };
             NSError* error = [NSError errorWithDomain:kOAICustomerApiErrorDomain code:kOAICustomerApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
@@ -2544,7 +2543,7 @@ NSInteger kOAICustomerApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = customerPaymentDetails1;
+    bodyParam = customerPaymentDetails;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"PUT"
