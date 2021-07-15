@@ -60,6 +60,7 @@ public class OpenApiCustomerPaymentSessionsRepository: OpenApiClientFactory, Cus
 		let body = OAIUpdatePaymentSessionRequest()
 		body.data = OAIInstoreCustomerPaymentSessionPaymentSessionIdData()
 		body.data.customerInfo = toDynamicPayload(payload: session.customerInfo)
+		body.meta = [:]
 
 		api.customerUpdatePaymentSession(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
