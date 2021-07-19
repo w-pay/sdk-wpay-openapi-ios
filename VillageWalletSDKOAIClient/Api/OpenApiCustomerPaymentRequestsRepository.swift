@@ -59,6 +59,7 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 		clientReference: String?,
 		preferences: PaymentPreferences?,
 		challengeResponses: [ChallengeResponse]?,
+		fraudPayload: FraudPayload?,
 		completion: @escaping ApiCompletion<CustomerTransactionSummary>
 	) {
 		let api = createCustomerApi()
@@ -72,6 +73,7 @@ public class OpenApiCustomerPaymentRequestsRepository: OpenApiClientFactory, Cus
 
 		body.meta = OAIMeta()
 		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
+		body.meta.fraud = OAIMetaFraudPayload.fromFraudPayload(fraudPayload)
 
 		api.makeCustomerPayment(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
