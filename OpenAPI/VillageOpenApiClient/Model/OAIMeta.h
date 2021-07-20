@@ -23,6 +23,7 @@
 @protocol OAIMeta
 @end
 
+// TODO: Manual fix
 @interface OAIMeta : OAIObject
 
 
