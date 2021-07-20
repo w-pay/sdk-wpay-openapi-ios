@@ -7,6 +7,7 @@ public class OpenApiMerchantPaymentAgreementsRepository
 	public func charge(
 		paymentToken: String,
 		chargePaymentAgreementRequest: ChargePaymentAgreementRequest,
+		fraudPayload: FraudPayload?,
 		completion: @escaping ApiCompletion<DigitalPayPaymentAgreementResponse>
 	) {
 		let api = createMerchantApi()
@@ -19,6 +20,9 @@ public class OpenApiMerchantPaymentAgreementsRepository
 		body.data.orderNumber = chargePaymentAgreementRequest.orderNumber
 		body.data.transactionType = OAITransactionType(string: chargePaymentAgreementRequest.transactionType.rawValue, error: nil)
 		body.data.customerRef = chargePaymentAgreementRequest.customerRef
+
+		body.meta = OAIMeta()
+		body.meta.fraud = OAIMetaFraudPayload.fromFraudPayload(fraudPayload)
 
 		api.chargeMerchantPaymentAgreement(
 			withXMerchantID: getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),

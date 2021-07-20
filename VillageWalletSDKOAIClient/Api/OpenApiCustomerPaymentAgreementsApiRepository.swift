@@ -40,6 +40,8 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 
 	public func create(
 		paymentAgreement: CreatePaymentAgreementRequest,
+		challengeResponses: [ChallengeResponse]?,
+		fraudPayload: FraudPayload?,
 		completion: @escaping ApiCompletion<PaymentAgreement>
 	) {
 		let api = createCustomerApi()
@@ -51,6 +53,10 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 		body.data.orderNumber = paymentAgreement.orderNumber
 		body.data.billingAddress = OAIBillingAddress.fromBillingAddress(paymentAgreement.billingAddress)
 		body.data.paymentAgreement = OAIPaymentAgreement.fromPaymentAgreement(paymentAgreement.paymentAgreement)
+
+		body.meta = OAIMeta()
+		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
+		body.meta.fraud = OAIMetaFraudPayload.fromFraudPayload(fraudPayload)
 
 		api.createCustomerPaymentAgreement(
 			withXWalletID: getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
@@ -67,6 +73,8 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 	public func update(
 		paymentToken: String,
 		paymentAgreement: UpdatePaymentAgreementRequest,
+		challengeResponses: [ChallengeResponse]?,
+		fraudPayload: FraudPayload?,
 		completion: @escaping ApiCompletion<PaymentAgreement>
 	) {
 		let api = createCustomerApi()
@@ -77,6 +85,10 @@ public class OpenApiCustomerPaymentAgreementsApiRepository
 		body.data.customerRef = paymentAgreement.customerRef
 		body.data.billingAddress = OAIBillingAddress.fromBillingAddress(paymentAgreement.billingAddress)
 		body.data.paymentAgreement = OAIPaymentAgreement.fromPaymentAgreement(paymentAgreement.paymentAgreement)
+
+		body.meta = OAIMeta()
+		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
+		body.meta.fraud = OAIMetaFraudPayload.fromFraudPayload(fraudPayload)
 
 		api.updateCustomerPaymentAgreement(
 			withXWalletID: getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
@@ -113,5 +125,23 @@ extension OAIBillingAddress {
 		billingAddress.countryCode = theAddress.countryCode
 
 		return billingAddress
+	}
+}
+
+extension OAIMetaFraudPayload {
+	static func fromFraudPayload(_ payload: FraudPayload?) -> OAIMetaFraudPayload? {
+		guard let thePayload = payload else {
+			return nil
+		}
+
+		let fraud = OAIMetaFraudPayload()
+
+		fraud.message = thePayload.message
+		fraud.provider = thePayload.provider
+		fraud.format = thePayload.format.rawValue
+		fraud.responseFormat = thePayload.responseFormat.rawValue
+		fraud.version = thePayload.version
+
+		return fraud
 	}
 }

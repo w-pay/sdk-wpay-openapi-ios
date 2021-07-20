@@ -1,6 +1,6 @@
-#import "OAIMetaChallenge.h"
+#import "OAIMetaFraudPayload.h"
 
-@implementation OAIMetaChallenge
+@implementation OAIMetaFraudPayload
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"challengeResponses": @"challengeResponses" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"message": @"message", @"provider": @"provider", @"version": @"version", @"format": @"format", @"responseFormat": @"responseFormat" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"challengeResponses"];
+  NSArray *optionalProperties = @[];
   return [optionalProperties containsObject:propertyName];
 }
 
