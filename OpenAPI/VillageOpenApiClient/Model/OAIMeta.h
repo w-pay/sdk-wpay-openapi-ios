@@ -23,7 +23,7 @@
 @protocol OAIMeta
 @end
 
-@interface OAIMeta : NSMutableDictionary
+@interface OAIMeta : OAIObject
 
 
 @property(nonatomic) OAIMetaFraudPayload* fraud;
