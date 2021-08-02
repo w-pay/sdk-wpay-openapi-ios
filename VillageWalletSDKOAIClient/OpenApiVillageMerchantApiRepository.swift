@@ -10,7 +10,8 @@ public class OpenApiVillageMerchantApiRepository: VillageMerchantApiRepository {
 		) -> VillageMerchantApiRepository in
 		OpenApiVillageMerchantApiRepository(
 			requestHeadersFactory: headers,
-			options: options
+			options: options,
+			authenticator: authenticator
 		)
 	})
 
@@ -24,12 +25,15 @@ public class OpenApiVillageMerchantApiRepository: VillageMerchantApiRepository {
 	public let schemas: SchemasRepository
 	public let transactions: MerchantTransactionsRepository
 	public let options: VillageMerchantOptions
+	public let authenticator: AnyApiAuthenticator<HasAccessToken>
 	
 	public init(
 		requestHeadersFactory: RequestHeadersFactory,
-		options: VillageMerchantOptions
+		options: VillageMerchantOptions,
+		authenticator: AnyApiAuthenticator<HasAccessToken>
 	) {
 		self.options = options
+		self.authenticator = authenticator
 
 		admin = OpenApiAdministrationApiRepository(
 			requestHeadersFactory: requestHeadersFactory,

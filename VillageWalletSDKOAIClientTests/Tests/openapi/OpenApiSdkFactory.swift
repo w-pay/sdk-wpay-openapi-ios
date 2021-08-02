@@ -10,7 +10,8 @@ class OpenApiSdkFactory: SdkFactory {
 			options: VillageCustomerOptions(
 				apiKey: "abc123",
 				baseUrl: "http://localhost:8080/wow/v1/pay"
-			)
+			),
+			authenticator: AnyApiAuthenticator<HasAccessToken>()
 		)
 	}
 
@@ -20,7 +21,8 @@ class OpenApiSdkFactory: SdkFactory {
 			options: VillageMerchantOptions(
 				apiKey: "abc123",
 				baseUrl: "http://localhost:8080/wow/v1/pay"
-			)
+			),
+			authenticator: AnyApiAuthenticator<HasAccessToken>()
 		)
 	}
 }
