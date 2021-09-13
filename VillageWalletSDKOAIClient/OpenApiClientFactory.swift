@@ -38,6 +38,10 @@ public class OpenApiClientFactory {
 		OAIWalletManagementApi(apiClient: createApiClient())
 	}
 
+	internal func createGiftingApi() -> OAIGiftingApi {
+		OAIGiftingApi(apiClient: createApiClient())
+	}
+
 	internal func getDefaultHeader(client: OAIApiClient, name: String) -> String? {
 		getDefaultHeader(config: client.configuration, name: name)
 	}
