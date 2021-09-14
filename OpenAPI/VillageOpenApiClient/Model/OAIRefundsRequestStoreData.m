@@ -1,6 +1,6 @@
-#import "OAIVoidsRequestVoids.h"
+#import "OAIRefundsRequestStoreData.h"
 
-@implementation OAIVoidsRequestVoids
+@implementation OAIRefundsRequestStoreData
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentTransactionRef": @"paymentTransactionRef" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"groupId": @"groupId", @"terminalId": @"terminalId", @"storeId": @"storeId", @"laneId": @"laneId", @"stan": @"stan", @"rrn": @"rrn", @"transactionTimestamp": @"transactionTimestamp" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[];
+  NSArray *optionalProperties = @[@"groupId", @"laneId", ];
   return [optionalProperties containsObject:propertyName];
 }
 

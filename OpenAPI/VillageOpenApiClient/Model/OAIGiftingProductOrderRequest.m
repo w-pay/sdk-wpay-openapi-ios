@@ -1,6 +1,6 @@
-#import "OAIPaymentsRequestTransactionType.h"
+#import "OAIGiftingProductOrderRequest.h"
 
-@implementation OAIPaymentsRequestTransactionType
+@implementation OAIGiftingProductOrderRequest
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"creditCard": @"creditCard", @"giftCard": @"giftCard", @"payPal": @"payPal", @"googlePay": @"googlePay", @"applePay": @"applePay" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"data": @"data", @"meta": @"meta" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"creditCard", @"giftCard", @"payPal", @"googlePay", @"applePay"];
+  NSArray *optionalProperties = @[];
   return [optionalProperties containsObject:propertyName];
 }
 

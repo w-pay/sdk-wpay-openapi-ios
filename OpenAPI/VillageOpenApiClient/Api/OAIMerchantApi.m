@@ -13,6 +13,8 @@
 #import "OAIGetMerchantPaymentsResults.h"
 #import "OAIGetMerchantTransactionDetailsResults.h"
 #import "OAIGetMerchantTransactionsResults.h"
+#import "OAIInlineObject.h"
+#import "OAIInlineObject1.h"
 #import "OAIMerchantChargePaymentAgreementRequest.h"
 #import "OAIMerchantPaymentRequest.h"
 #import "OAIMerchantPreferences.h"
@@ -20,9 +22,9 @@
 #import "OAIMerchantSchema.h"
 #import "OAIMerchantSchemaDetailsResult.h"
 #import "OAIMerchantSchemaResult.h"
+#import "OAIMerchantTransactionResults.h"
 #import "OAIPaymentQRCodeDetails.h"
 #import "OAIRefundMerchantTransactionRequest.h"
-#import "OAIRefundMerchantTransactionResults.h"
 #import "OAIUpdatePaymentSessionRequest1.h"
 
 
@@ -2415,6 +2417,288 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 }
 
 ///
+/// Completions
+/// Complete pre-authed payments. This API is IP restricted to allow unauthenticated server side calls.
+///  @param xApiKey The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. 
+///
+///  @param authorization The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. 
+///
+///  @param xJWSSignature The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. 
+///
+///  @param transactionId The ID of the transaction to operate on 
+///
+///  @param xAuthKey (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+///
+///  @param xAuthDigest (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+///
+///  @param xMessageId This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
+///
+///  @param inlineObject  (optional)
+///
+///  @returns OAIMerchantTransactionResults*
+///
+-(NSURLSessionTask*) instoreMerchantTransactionsTransactionIdCompletionPostWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
+    transactionId: (NSString*) transactionId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
+    inlineObject: (OAIInlineObject*) inlineObject
+    completionHandler: (void (^)(OAIMerchantTransactionResults* output, NSError* error)) handler {
+    // verify the required parameter 'xApiKey' is set
+    if (xApiKey == nil) {
+        NSParameterAssert(xApiKey);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xApiKey"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'authorization' is set
+    if (authorization == nil) {
+        NSParameterAssert(authorization);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"authorization"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'xJWSSignature' is set
+    if (xJWSSignature == nil) {
+        NSParameterAssert(xJWSSignature);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xJWSSignature"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'transactionId' is set
+    if (transactionId == nil) {
+        NSParameterAssert(transactionId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"transactionId"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/instore/merchant/transactions/{transactionId}/completion"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (transactionId != nil) {
+        pathParams[@"transactionId"] = transactionId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    if (xApiKey != nil) {
+        headerParams[@"X-Api-Key"] = xApiKey;
+    }
+    if (xAuthKey != nil) {
+        headerParams[@"X-Auth-Key"] = xAuthKey;
+    }
+    if (xAuthDigest != nil) {
+        headerParams[@"X-Auth-Digest"] = xAuthDigest;
+    }
+    if (xMessageId != nil) {
+        headerParams[@"X-Message-Id"] = xMessageId;
+    }
+    if (authorization != nil) {
+        headerParams[@"Authorization"] = authorization;
+    }
+    if (xJWSSignature != nil) {
+        headerParams[@"X-JWS-Signature"] = xJWSSignature;
+    }
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"ApiKeyAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = inlineObject;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIMerchantTransactionResults*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIMerchantTransactionResults*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Voids
+/// Void (cancel) pre-authed payments. This API is IP restricted to allow unauthenticated server side calls.
+///  @param xApiKey The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. 
+///
+///  @param authorization The Bearer token for the request. The Bearer token authentication approach can be used by API consumers that implement a client-to-server architecture (mobile app, browser site/page) or server-to-server architecture (BFF, microservice, web server, etc.) for calling Digital Pay APIs. However the Bearer token for a shopper/customer must be obtained from the IDM Server Token API which can only be accessed from a server-to-server architecture (BFF, microservice, web server, etc.). The Authorization header is only required if the X-JWS-Signature header is not present. 
+///
+///  @param xJWSSignature The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. The X-JWS-Signature header is only required if the Authorization header is not present. 
+///
+///  @param transactionId The ID of the transaction to operate on 
+///
+///  @param xAuthKey (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
+///
+///  @param xAuthDigest (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
+///
+///  @param xMessageId This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
+///
+///  @param inlineObject1  (optional)
+///
+///  @returns OAIMerchantTransactionResults*
+///
+-(NSURLSessionTask*) instoreMerchantTransactionsTransactionIdVoidPostWithXApiKey: (NSString*) xApiKey
+    authorization: (NSString*) authorization
+    xJWSSignature: (NSString*) xJWSSignature
+    transactionId: (NSString*) transactionId
+    xAuthKey: (NSString*) xAuthKey
+    xAuthDigest: (NSString*) xAuthDigest
+    xMessageId: (NSString*) xMessageId
+    inlineObject1: (OAIInlineObject1*) inlineObject1
+    completionHandler: (void (^)(OAIMerchantTransactionResults* output, NSError* error)) handler {
+    // verify the required parameter 'xApiKey' is set
+    if (xApiKey == nil) {
+        NSParameterAssert(xApiKey);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xApiKey"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'authorization' is set
+    if (authorization == nil) {
+        NSParameterAssert(authorization);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"authorization"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'xJWSSignature' is set
+    if (xJWSSignature == nil) {
+        NSParameterAssert(xJWSSignature);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"xJWSSignature"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'transactionId' is set
+    if (transactionId == nil) {
+        NSParameterAssert(transactionId);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"transactionId"] };
+            NSError* error = [NSError errorWithDomain:kOAIMerchantApiErrorDomain code:kOAIMerchantApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/instore/merchant/transactions/{transactionId}/void"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (transactionId != nil) {
+        pathParams[@"transactionId"] = transactionId;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    if (xApiKey != nil) {
+        headerParams[@"X-Api-Key"] = xApiKey;
+    }
+    if (xAuthKey != nil) {
+        headerParams[@"X-Auth-Key"] = xAuthKey;
+    }
+    if (xAuthDigest != nil) {
+        headerParams[@"X-Auth-Digest"] = xAuthDigest;
+    }
+    if (xMessageId != nil) {
+        headerParams[@"X-Message-Id"] = xMessageId;
+    }
+    if (authorization != nil) {
+        headerParams[@"Authorization"] = authorization;
+    }
+    if (xJWSSignature != nil) {
+        headerParams[@"X-JWS-Signature"] = xJWSSignature;
+    }
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[@"application/json"]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"ApiKeyAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = inlineObject1;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"OAIMerchantTransactionResults*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((OAIMerchantTransactionResults*)data, error);
+                                }
+                            }];
+}
+
+///
 /// Update Payment Session
 /// Update the payment session details
 ///  @param xApiKey The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. 
@@ -2585,7 +2869,7 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
 ///
 ///  @param xMessageId This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
 ///
-///  @returns OAIRefundMerchantTransactionResults*
+///  @returns OAIMerchantTransactionResults*
 ///
 -(NSURLSessionTask*) refundMerchantTransactionWithXApiKey: (NSString*) xApiKey
     authorization: (NSString*) authorization
@@ -2595,7 +2879,7 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
     xAuthKey: (NSString*) xAuthKey
     xAuthDigest: (NSString*) xAuthDigest
     xMessageId: (NSString*) xMessageId
-    completionHandler: (void (^)(OAIRefundMerchantTransactionResults* output, NSError* error)) handler {
+    completionHandler: (void (^)(OAIMerchantTransactionResults* output, NSError* error)) handler {
     // verify the required parameter 'xApiKey' is set
     if (xApiKey == nil) {
         NSParameterAssert(xApiKey);
@@ -2710,10 +2994,10 @@ NSInteger kOAIMerchantApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"OAIRefundMerchantTransactionResults*"
+                              responseType: @"OAIMerchantTransactionResults*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((OAIRefundMerchantTransactionResults*)data, error);
+                                    handler((OAIMerchantTransactionResults*)data, error);
                                 }
                             }];
 }

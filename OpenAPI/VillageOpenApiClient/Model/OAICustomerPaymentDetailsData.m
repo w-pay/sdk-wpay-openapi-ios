@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"primaryInstrumentId": @"primaryInstrumentId", @"secondaryInstruments": @"secondaryInstruments", @"skipRollback": @"skipRollback", @"clientReference": @"clientReference", @"preferences": @"preferences" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"primaryInstrumentId": @"primaryInstrumentId", @"secondaryInstruments": @"secondaryInstruments", @"skipRollback": @"skipRollback", @"allowPartialSuccess": @"allowPartialSuccess", @"clientReference": @"clientReference", @"preferences": @"preferences", @"transactionType": @"transactionType" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"primaryInstrumentId", @"secondaryInstruments", @"skipRollback", @"clientReference", @"preferences"];
+  NSArray *optionalProperties = @[@"primaryInstrumentId", @"secondaryInstruments", @"skipRollback", @"allowPartialSuccess", @"clientReference", @"preferences", @"transactionType"];
   return [optionalProperties containsObject:propertyName];
 }
 

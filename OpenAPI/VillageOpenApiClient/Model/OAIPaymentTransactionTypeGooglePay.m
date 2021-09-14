@@ -1,6 +1,6 @@
-#import "OAIRefundMerchantTransactionResults.h"
+#import "OAIPaymentTransactionTypeGooglePay.h"
 
-@implementation OAIRefundMerchantTransactionResults
+@implementation OAIPaymentTransactionTypeGooglePay
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"data": @"data", @"meta": @"meta" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"creditCard": @"creditCard", @"debitCard": @"debitCard" }];
 }
 
 /**

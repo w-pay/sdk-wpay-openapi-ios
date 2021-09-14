@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) giftingProductsOrderPostWithXApiKey: (NSString*) xApiKey
     xJWSSignature: (NSString*) xJWSSignature
-    inlineObject1: (OAIInlineObject1*) inlineObject1
+    giftingProductOrderRequest: (OAIGiftingProductOrderRequest*) giftingProductOrderRequest
     xAuthKey: (NSString*) xAuthKey
     xAuthDigest: (NSString*) xAuthDigest
     xMessageId: (NSString*) xMessageId
@@ -122,7 +122,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
 NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible.
-OAIInlineObject1* inlineObject1 = [[OAIInlineObject1 alloc] init]; // 
+OAIGiftingProductOrderRequest* giftingProductOrderRequest = [[OAIGiftingProductOrderRequest alloc] init]; // Request payload containing instruments to use for the payment
 NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
 NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
 NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
@@ -132,7 +132,7 @@ OAIGiftingApi*apiInstance = [[OAIGiftingApi alloc] init];
 // Order Gift Card
 [apiInstance giftingProductsOrderPostWithXApiKey:xApiKey
               xJWSSignature:xJWSSignature
-              inlineObject1:inlineObject1
+              giftingProductOrderRequest:giftingProductOrderRequest
               xAuthKey:xAuthKey
               xAuthDigest:xAuthDigest
               xMessageId:xMessageId
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
  **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. | 
- **inlineObject1** | [**OAIInlineObject1***](OAIInlineObject1.md)|  | 
+ **giftingProductOrderRequest** | [**OAIGiftingProductOrderRequest***](OAIGiftingProductOrderRequest.md)| Request payload containing instruments to use for the payment | 
  **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
  **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
  **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) giftingProductsQuotePostWithXApiKey: (NSString*) xApiKey
     xJWSSignature: (NSString*) xJWSSignature
-    inlineObject: (OAIInlineObject*) inlineObject
+    giftingProductQuoteRequest: (OAIGiftingProductQuoteRequest*) giftingProductQuoteRequest
     xAuthKey: (NSString*) xAuthKey
     xAuthDigest: (NSString*) xAuthDigest
     xMessageId: (NSString*) xMessageId
@@ -276,7 +276,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSString* xApiKey = haTdoUWVhnXm5n75u6d0VG67vCCvKjQC; // The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team.
 NSString* xJWSSignature = eyJhbGciOiJSUzI1NiIsImtpZCI6ImRldiIsInZlcmIiOiJQT1NUIiwidXJsIjoiaHR0cHM6Ly9kZXYubW9iaWxlLWFwaS53b29sd29ydGhzLmNvbS5hdS93b3cvdjEvandzZGVtby92YWxpZGF0ZSIsInRpbWVzdGFtcCI6MTU5NTIwNjcxNDQzOH0..muEr0b3GNORrP0FW1ohUh2XITRNaOO7uBz; // The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible.
-OAIInlineObject* inlineObject = [[OAIInlineObject alloc] init]; // 
+OAIGiftingProductQuoteRequest* giftingProductQuoteRequest = [[OAIGiftingProductQuoteRequest alloc] init]; // Request payload containing details of the order to quote on
 NSString* xAuthKey = OHR1Ull5TVk53NjI5Ng==; // (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
 NSString* xAuthDigest = c51e0ee540cd3893982d3539d81fddec0bcd832d; // (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. (optional)
 NSString* xMessageId = f23c096b2e816da158fdf1ad839298e2; // This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. (optional)
@@ -286,7 +286,7 @@ OAIGiftingApi*apiInstance = [[OAIGiftingApi alloc] init];
 // Obtain Gift Card Quote
 [apiInstance giftingProductsQuotePostWithXApiKey:xApiKey
               xJWSSignature:xJWSSignature
-              inlineObject:inlineObject
+              giftingProductQuoteRequest:giftingProductQuoteRequest
               xAuthKey:xAuthKey
               xAuthDigest:xAuthDigest
               xMessageId:xMessageId
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xApiKey** | **NSString***| The API key for the request. The API keys (non-prod/prod) will be supplied by the Digital Pay team. | 
  **xJWSSignature** | **NSString***| The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. | 
- **inlineObject** | [**OAIInlineObject***](OAIInlineObject.md)|  | 
+ **giftingProductQuoteRequest** | [**OAIGiftingProductQuoteRequest***](OAIGiftingProductQuoteRequest.md)| Request payload containing details of the order to quote on | 
  **xAuthKey** | **NSString***| (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. | [optional] 
  **xAuthDigest** | **NSString***| (Deprecated) You are required to use this header to provide the encrypted API key. The value is the API key encrypted with the client secret key. Requires the X-Auth-Key header to be present. | [optional] 
  **xMessageId** | **NSString***| This id is used to keep track of the request and its response in the Digital Pay platform. If no value is provided for the request header, Apigee will auto generate an id to use for the request. This header will also be returned in the response and will have the value passed in (or auto generated) from the request. | [optional] 

@@ -69,7 +69,7 @@ public class OpenApiPaymentApiRepository: OpenApiClientFactory, PaymentApiReposi
 		body.clientReference = completionRequest.clientReference
 		body.orderNumber = completionRequest.orderNumber
 		body.completions = completionRequest.completions.map { it in
-			let completion = OAICompletionsRequestCompletions()
+			let completion = OAIInstoreMerchantTransactionsTransactionIdCompletionDataCompletions()
 
 			completion.paymentTransactionRef = it.paymentTransactionRef
 			completion.amount = it.amount as NSNumber
@@ -106,7 +106,7 @@ public class OpenApiPaymentApiRepository: OpenApiClientFactory, PaymentApiReposi
 		body.clientReference = voidRequest.clientReference
 		body.orderNumber = voidRequest.orderNumber
 		body.voids = voidRequest.voids.map { it in
-			let void = OAIVoidsRequestVoids()
+			let void = OAIInstoreMerchantTransactionsTransactionIdVoidDataVoids()
 
 			void.paymentTransactionRef = it.paymentTransactionRef
 
@@ -179,16 +179,16 @@ extension OAIPaymentsRequest {
 		}
 
 		let body = OAIPaymentsRequest()
-		body.transactionType = OAIPaymentsRequestTransactionType()
+		body.transactionType = OAIPaymentTransactionType()
 
 		if let type = paymentRequest.transactionType.applePay {
-			body.transactionType.applePay = OAIPaymentsRequestTransactionTypeApplePay()
+			body.transactionType.applePay = OAIPaymentTransactionTypeApplePay()
 			body.transactionType.applePay.creditCard = type.creditCard.rawValue
 			body.transactionType.applePay.debitCard = type.debitCard.rawValue
 		}
 
 		if let type = paymentRequest.transactionType.googlePay {
-			body.transactionType.googlePay = OAIPaymentsRequestTransactionTypeGooglePay()
+			body.transactionType.googlePay = OAIPaymentTransactionTypeGooglePay()
 			body.transactionType.googlePay.creditCard = type.creditCard.rawValue
 			body.transactionType.googlePay.debitCard = type.debitCard.rawValue
 		}

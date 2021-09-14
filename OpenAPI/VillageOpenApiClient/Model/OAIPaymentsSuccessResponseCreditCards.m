@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentInstrumentId": @"paymentInstrumentId", @"paymentToken": @"paymentToken", @"paymentTransactionRef": @"paymentTransactionRef", @"errorCode": @"errorCode", @"errorMessage": @"errorMessage", @"errorDetail": @"errorDetail", @"stepUp": @"stepUp", @"receiptData": @"receiptData", @"extendedTransactionData": @"extendedTransactionData", @"externalServiceCode": @"externalServiceCode", @"externalServiceMessage": @"externalServiceMessage", @"handlingInstructions": @"handlingInstructions" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentInstrumentId": @"paymentInstrumentId", @"paymentToken": @"paymentToken", @"paymentTransactionRef": @"paymentTransactionRef", @"errorCode": @"errorCode", @"errorMessage": @"errorMessage", @"errorDetail": @"errorDetail", @"stepUp": @"stepUp", @"receiptData": @"receiptData", @"extendedTransactionData": @"extendedTransactionData", @"externalServiceCode": @"externalServiceCode", @"externalServiceMessage": @"externalServiceMessage", @"handlingInstructions": @"handlingInstructions", @"threeDS": @"threeDS" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"stepUp", @"receiptData", @"extendedTransactionData", @"externalServiceCode", @"externalServiceMessage", @"handlingInstructions"];
+  NSArray *optionalProperties = @[@"stepUp", @"receiptData", @"extendedTransactionData", @"externalServiceCode", @"externalServiceMessage", @"handlingInstructions", @"threeDS"];
   return [optionalProperties containsObject:propertyName];
 }
 

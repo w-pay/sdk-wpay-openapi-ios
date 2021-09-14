@@ -1,11 +1,12 @@
-#import "OAIPaymentsRequestTransactionTypeGooglePay.h"
+#import "OAIPaymentsRequestControlData.h"
 
-@implementation OAIPaymentsRequestTransactionTypeGooglePay
+@implementation OAIPaymentsRequestControlData
 
 - (instancetype)init {
   self = [super init];
   if (self) {
     // initialize property's default value, if any
+    self.tokenType = @"PAN";
     
   }
   return self;
@@ -17,7 +18,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"creditCard": @"creditCard", @"debitCard": @"debitCard" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"tokenType": @"tokenType" }];
 }
 
 /**
@@ -27,7 +28,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[];
+  NSArray *optionalProperties = @[@"tokenType"];
   return [optionalProperties containsObject:propertyName];
 }
 
