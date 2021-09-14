@@ -1,6 +1,6 @@
 # OAIWalletManagementApi
 
-All URIs are relative to *https://dev.wpay.com.au/wow/v1/pay*
+All URIs are relative to *https://dev-api.wpay.com.au/wow/v1/pay*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

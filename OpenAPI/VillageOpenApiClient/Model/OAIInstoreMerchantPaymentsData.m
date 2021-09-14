@@ -21,7 +21,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"merchantReferenceId": @"merchantReferenceId", @"grossAmount": @"grossAmount", @"generateQR": @"generateQR", @"maxUses": @"maxUses", @"timeToLivePayment": @"timeToLivePayment", @"timeToLiveQR": @"timeToLiveQR", @"specificWalletId": @"specificWalletId", @"basket": @"basket", @"posPayload": @"posPayload", @"merchantPayload": @"merchantPayload" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"merchantReferenceId": @"merchantReferenceId", @"grossAmount": @"grossAmount", @"generateQR": @"generateQR", @"maxUses": @"maxUses", @"timeToLivePayment": @"timeToLivePayment", @"timeToLiveQR": @"timeToLiveQR", @"specificWalletId": @"specificWalletId", @"idempotencyKey": @"idempotencyKey", @"basket": @"basket", @"posPayload": @"posPayload", @"merchantPayload": @"merchantPayload" }];
 }
 
 /**
@@ -31,7 +31,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"generateQR", @"maxUses", @"timeToLivePayment", @"timeToLiveQR", @"specificWalletId", @"basket", @"posPayload", @"merchantPayload"];
+  NSArray *optionalProperties = @[@"generateQR", @"maxUses", @"timeToLivePayment", @"timeToLiveQR", @"specificWalletId", @"idempotencyKey", @"basket", @"posPayload", @"merchantPayload"];
   return [optionalProperties containsObject:propertyName];
 }
 
