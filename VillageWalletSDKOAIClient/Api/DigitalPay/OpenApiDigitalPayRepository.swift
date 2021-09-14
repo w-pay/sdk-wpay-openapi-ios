@@ -6,6 +6,7 @@ public class OpenApiDigitalPayRepository: DigitalPayRepository {
 	public let applePay: ApplePayApiRepository
 	public let cards: CardsApiRepository
 	public let giftcards: GiftcardsApiRepository
+	public let gifting: GiftingRepository
 	public let googlePay: GooglePayApiRepository
 	public let instruments: InstrumentsApiRepository
 	public let merchants: MerchantsApiRepository
@@ -33,6 +34,11 @@ public class OpenApiDigitalPayRepository: DigitalPayRepository {
 		)
 
 		giftcards = OpenApiGiftcardsApiRepository(
+			requestHeadersFactory: requestHeadersFactory,
+			options: options
+		)
+
+		gifting = OpenApiGiftingRepository(
 			requestHeadersFactory: requestHeadersFactory,
 			options: options
 		)

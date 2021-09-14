@@ -28,7 +28,7 @@
 - (instancetype) init {
     self = [super init];
     if (self) {
-        _host = @"https://dev.wpay.com.au/wow/v1/pay";
+        _host = @"https://dev-api.wpay.com.au/wow/v1/pay";
         _username = @"";
         _password = @"";
         _accessToken= @"";
