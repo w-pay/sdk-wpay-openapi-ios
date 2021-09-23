@@ -179,32 +179,9 @@ extension OAIPaymentsRequest {
 		}
 
 		let body = OAIPaymentsRequest()
-		body.transactionType = OAIPaymentTransactionType()
-
-		if let type = paymentRequest.transactionType.applePay {
-			body.transactionType.applePay = OAIPaymentTransactionTypeApplePay()
-			body.transactionType.applePay.creditCard = type.creditCard.rawValue
-			body.transactionType.applePay.debitCard = type.debitCard.rawValue
-		}
-
-		if let type = paymentRequest.transactionType.googlePay {
-			body.transactionType.googlePay = OAIPaymentTransactionTypeGooglePay()
-			body.transactionType.googlePay.creditCard = type.creditCard.rawValue
-			body.transactionType.googlePay.debitCard = type.debitCard.rawValue
-		}
-
-		if let type = paymentRequest.transactionType.creditCard {
-			body.transactionType.creditCard = type.rawValue
-		}
-
-		if let type = paymentRequest.transactionType.giftCard {
-			body.transactionType.giftCard = type.rawValue
-		}
-
-		if let type = paymentRequest.transactionType.payPal {
-			body.transactionType.payPal = type.rawValue
-		}
-
+		body.transactionType = OAIPaymentTransactionType.fromPaymentTransactionType(
+			paymentRequest.transactionType
+		)
 		body.clientReference = paymentRequest.clientReference
 		body.orderNumber = paymentRequest.orderNumber
 		body.shippingAddress = OAIPaymentsRequestShippingAddress.fromDigitalPayAddress(
@@ -225,7 +202,7 @@ extension OAIPaymentsRequest {
 		if let extendedMetadata = paymentRequest.extendedMerchantData {
 			body.extendedMerchantData = extendedMetadata.map({ it in
 				let data = OAIPaymentsRequestExtendedMerchantData()
-				data.field = it.field
+				data.field = it.field.rawValue
 				data.value = it.value
 
 				return data
@@ -241,6 +218,42 @@ extension OAIPaymentsRequest {
 		)
 
 		return body
+	}
+}
+
+extension OAIPaymentTransactionType {
+	static func fromPaymentTransactionType(
+		_ transactionType: PaymentTransactionType?
+	) -> OAIPaymentTransactionType? {
+		guard let theType = transactionType else { return nil }
+
+		let type = OAIPaymentTransactionType()
+
+		if let applePay = theType.applePay {
+			type.applePay = OAIPaymentTransactionTypeApplePay()
+			type.applePay.creditCard = applePay.creditCard.rawValue
+			type.applePay.debitCard = applePay.debitCard.rawValue
+		}
+
+		if let googlePay = theType.googlePay {
+			type.googlePay = OAIPaymentTransactionTypeGooglePay()
+			type.googlePay.creditCard = googlePay.creditCard.rawValue
+			type.googlePay.debitCard = googlePay.debitCard.rawValue
+		}
+
+		if let creditCard = theType.creditCard {
+			type.creditCard = creditCard.rawValue
+		}
+
+		if let giftCard = theType.giftCard {
+			type.giftCard = giftCard.rawValue
+		}
+
+		if let payPal = theType.payPal {
+			type.payPal = payPal.rawValue
+		}
+
+		return type
 	}
 }
 

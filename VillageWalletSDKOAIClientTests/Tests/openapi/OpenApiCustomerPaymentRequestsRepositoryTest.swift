@@ -65,6 +65,8 @@ class OpenApiCustomerPaymentRequestsRepositoryTest: VillageApiRepositoryTest {
 			preferences: TestPaymentPreferences(),
 			challengeResponses: nil,
 			fraudPayload: nil,
+			transactionType: nil,
+			allowPartialSuccess: nil,
 			completion: isSuccessfulWith { result in
 				value = try! result.get()
 

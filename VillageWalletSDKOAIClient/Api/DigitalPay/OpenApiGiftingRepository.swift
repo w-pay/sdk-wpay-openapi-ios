@@ -87,6 +87,8 @@ public class OpenApiGiftingRepository: OpenApiClientFactory, GiftingRepository {
 
 	public func order(
 		orderRequest: DigitalPayGiftingOrderRequest,
+		challengeResponses: [ChallengeResponse]?,
+		fraudPayload: FraudPayload?,
 		completion: @escaping ApiCompletion<DigitalPayGiftingOrderResponse>
 	) {
 		let api = createGiftingApi()
@@ -103,6 +105,10 @@ public class OpenApiGiftingRepository: OpenApiClientFactory, GiftingRepository {
 		body.data.orderItems = orderRequest.orderItems.map({ it in
 			OAIGiftingProductOrderItem.fromGiftingProductOrderItem(it)!
 		})
+
+		body.meta = OAIMeta()
+		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
+		body.meta.fraud = OAIMetaFraudPayload.fromFraudPayload(fraudPayload)
 
 		api.giftingProductsOrderPost(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
