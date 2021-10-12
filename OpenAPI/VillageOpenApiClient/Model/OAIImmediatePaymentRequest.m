@@ -1,6 +1,6 @@
-#import "OAICompletionsRequestCompletions.h"
+#import "OAIImmediatePaymentRequest.h"
 
-@implementation OAICompletionsRequestCompletions
+@implementation OAIImmediatePaymentRequest
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentTransactionRef": @"paymentTransactionRef", @"amount": @"amount" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"data": @"data", @"meta": @"meta" }];
 }
 
 /**

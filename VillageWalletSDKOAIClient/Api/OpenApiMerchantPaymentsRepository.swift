@@ -46,18 +46,8 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		body.data.timeToLivePayment = paymentRequest.timeToLivePayment as NSNumber?
 		body.data.timeToLiveQR = paymentRequest.timeToLiveQR as NSNumber?
 		body.data.specificWalletId = paymentRequest.specificWalletId
-
-		if let posPayload = paymentRequest.posPayload {
-			body.data.posPayload = OAIPosPayload()
-			body.data.posPayload.schemaId = posPayload.schemaId
-			body.data.posPayload.payload = posPayload.payload as? [String: NSObject]
-		}
-
-		if let merchantPayload = paymentRequest.merchantPayload {
-			body.data.merchantPayload = OAIMerchantPayload()
-			body.data.merchantPayload.schemaId = merchantPayload.schemaId
-			body.data.merchantPayload.payload = merchantPayload.payload as? [String: NSObject]
-		}
+		body.data.posPayload = OAIPosPayload.fromPosPayload(paymentRequest.posPayload)
+		body.data.merchantPayload = OAIMerchantPayload.fromMerchantPayload(paymentRequest.merchantPayload)
 
 		if let basket = paymentRequest.basket {
 			body.data.basket = OAIBasket()
@@ -176,5 +166,106 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 
 				completion(.success(OpenApiMerchantTransactionSummary(summary: result!.data)))
 			})
+	}
+
+	public func completeTransaction(
+		transactionId: String,
+		completionDetails: TransactionCompletionDetails,
+		completion: @escaping ApiCompletion<MerchantTransactionSummary>
+	) {
+		let api = createMerchantApi()
+
+		let body = OAIInlineObject()
+		body.data = OAIInstoreMerchantTransactionsTransactionIdCompletionData()
+		body.data.clientReference = completionDetails.clientReference
+		body.data.orderNumber = completionDetails.orderNumber
+		body.data.completions = completionDetails.completions?.map { item in
+			let dto = OAIInstoreMerchantTransactionsTransactionIdCompletionDataCompletions()
+			dto.paymentTransactionRef = item.paymentTransactionRef
+			dto.amount = item.amount as NSNumber
+
+			return dto
+		}
+
+		api.instoreMerchantTransactionsTransactionIdCompletionPost(
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			transactionId: transactionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
+			inlineObject: body,
+			completionHandler: { result, error in
+				guard error == nil else {
+					return completion(self.extractError(error: error! as NSError))
+				}
+
+				completion(.success(OpenApiMerchantTransactionSummary(summary: result!.data)))
+			})
+	}
+
+	public func voidTransaction(
+		transactionId: String,
+		voidDetails: TransactionVoidDetails,
+		completion: @escaping ApiCompletion<MerchantTransactionSummary>
+	) {
+		let api = createMerchantApi()
+
+		let body = OAIInlineObject1()
+		body.data = OAIInstoreMerchantTransactionsTransactionIdVoidData()
+		body.data.clientReference = voidDetails.clientReference
+		body.data.orderNumber = voidDetails.orderNumber
+		body.data.voids = voidDetails.voids?.map { item in
+			let dto = OAIInstoreMerchantTransactionsTransactionIdVoidDataVoids()
+			dto.paymentTransactionRef = item.paymentTransactionRef
+
+			return dto
+		}
+
+		api.instoreMerchantTransactionsTransactionIdVoidPost(
+			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
+			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
+			xJWSSignature: "",
+			transactionId: transactionId,
+			xAuthKey: "",
+			xAuthDigest: "",
+			xMessageId: "",
+			inlineObject1: body,
+			completionHandler: { result, error in
+				guard error == nil else {
+					return completion(self.extractError(error: error! as NSError))
+				}
+
+				completion(.success(OpenApiMerchantTransactionSummary(summary: result!.data)))
+			})
+	}
+}
+
+extension OAIPosPayload {
+	static func fromPosPayload(
+		_ posPayload: PosPayload?
+	) -> OAIPosPayload? {
+		guard let thePayload = posPayload else { return nil }
+
+		let payload = OAIPosPayload()
+		payload.schemaId = thePayload.schemaId
+		payload.payload = thePayload.payload as? [String: NSObject]
+
+		return payload
+	}
+}
+
+extension OAIMerchantPayload {
+	static func fromMerchantPayload(
+		_ merchantPayload: MerchantPayload?
+	) -> OAIMerchantPayload? {
+		guard let thePayload = merchantPayload else { return nil }
+
+		let payload = OAIMerchantPayload()
+		payload.schemaId = thePayload.schemaId
+		payload.payload = thePayload.payload as? [String: NSObject]
+
+		return payload
 	}
 }

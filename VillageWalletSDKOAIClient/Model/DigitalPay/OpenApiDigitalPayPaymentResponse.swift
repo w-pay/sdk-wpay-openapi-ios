@@ -112,8 +112,6 @@ class OpenApiDigitalPayPaymentInstrument: DigitalPayPaymentInstrument {
 	var errorDetail: String? {
 		instrument.errorDetail
 	}
-
-
 }
 
 class OpenApiDigitalPayCreditCard: DigitalPayCreditCard {
@@ -131,12 +129,12 @@ class OpenApiDigitalPayCreditCard: DigitalPayCreditCard {
 		return OpenApiDigitalCreditCardStepUp(stepUp: stepUp)
 	}
 
-	var receiptData: DigitalPayRecieptData? {
+	var receiptData: DigitalPayCreditCardReceiptData? {
 		guard let receiptData = card.receiptData else {
 			return nil
 		}
 
-		return OpenApiDigitalPayRecieptData(data: receiptData)
+		return OpenApiDigitalPayCreditCardReceiptData(data: receiptData)
 	}
 
 	var extendedTransactionData: [DigitalPayExtendedTransactionData]? {
@@ -188,6 +186,12 @@ class OpenApiDigitalPayCreditCard: DigitalPayCreditCard {
 	var errorDetail: String? {
 		card.errorDetail
 	}
+
+	var threeDS: DigitalPayThreeDSResponse? {
+		guard let threeDS = card.threeDS else { return nil }
+
+		return OpenApiDigitalPayThreeDSResponse(data: threeDS)
+	}
 }
 
 class OpenApiDigitalPayHandlingInstructions: DigitalPayHandlingInstructions {
@@ -221,12 +225,12 @@ class OpenApiDigitalPayGiftCard: DigitalPayGiftCard {
 		return OpenApiDigitalCreditCardStepUp(stepUp: stepUp)
 	}
 
-	var receiptData: DigitalPayRecieptData? {
+	var receiptData: DigitalPayGiftCardReceiptData? {
 		guard let receiptData = card.receiptData else {
 			return nil
 		}
 
-		return OpenApiDigitalPayRecieptData(data: receiptData)
+		return OpenApiDigitalPayGiftCardReceiptData(data: receiptData)
 	}
 
 	var externalServiceCode: String? {
@@ -269,12 +273,12 @@ class OpenApiDigitalPayPayPal: DigitalPayPayPal {
 		self.response = response
 	}
 
-	var receiptData: DigitalPayRecieptData? {
+	var receiptData: DigitalPayPayPalReceiptData? {
 		guard let receiptData = response.receiptData else {
 			return nil
 		}
 
-		return OpenApiDigitalPayRecieptData(data: receiptData)
+		return OpenApiDigitalPayPayPalReceiptData(data: receiptData)
 	}
 
 	var externalServiceCode: String? {
@@ -428,10 +432,10 @@ class OpenApiDigitalCreditCardStepUp: CreditCardStepUp {
 	}
 }
 
-class OpenApiDigitalPayRecieptData: DigitalPayRecieptData {
-	private let data: AnyObject
+class OpenApiDigitalPayCreditCardReceiptData: DigitalPayCreditCardReceiptData {
+	private let data: OAIPaymentsSuccessResponseReceiptData
 
-	init(data: AnyObject) {
+	init(data: OAIPaymentsSuccessResponseReceiptData) {
 		self.data = data
 	}
 
@@ -452,6 +456,34 @@ class OpenApiDigitalPayRecieptData: DigitalPayRecieptData {
 	}
 }
 
+class OpenApiDigitalPayGiftCardReceiptData: DigitalPayGiftCardReceiptData {
+	private let data: OAIPaymentsSuccessResponseReceiptData1
+
+	init(data: OAIPaymentsSuccessResponseReceiptData1) {
+		self.data = data
+	}
+
+	var cardSuffix: String {
+		data.cardSuffix
+	}
+}
+
+class OpenApiDigitalPayPayPalReceiptData: DigitalPayPayPalReceiptData {
+	private let data: OAIPaymentsSuccessResponseReceiptData2
+
+	init(data: OAIPaymentsSuccessResponseReceiptData2) {
+		self.data = data
+	}
+
+	var payPalId: String {
+		data.payPalId
+	}
+
+	var customerId: String {
+		data.customerId
+	}
+}
+
 class OpenApiDigitalPayExtendedTransactionData: DigitalPayExtendedTransactionData {
 	private let data: OAIPaymentsSuccessResponseExtendedTransactionData
 
@@ -465,5 +497,25 @@ class OpenApiDigitalPayExtendedTransactionData: DigitalPayExtendedTransactionDat
 
 	var value: String {
 		data.value
+	}
+}
+
+class OpenApiDigitalPayThreeDSResponse: DigitalPayThreeDSResponse {
+	private let data: OAIPaymentsSuccessResponseThreeDS
+
+	init(data: OAIPaymentsSuccessResponseThreeDS) {
+		self.data = data
+	}
+
+	var car: String? {
+		data.car
+	}
+
+	var dsTransID: String {
+		data.dsTransID
+	}
+
+	var sli: String {
+		data.sli
 	}
 }

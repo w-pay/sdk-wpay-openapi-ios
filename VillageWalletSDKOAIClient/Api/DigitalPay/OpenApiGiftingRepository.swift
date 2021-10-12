@@ -62,7 +62,7 @@ public class OpenApiGiftingRepository: OpenApiClientFactory, GiftingRepository {
 	) {
 		let api = createGiftingApi()
 
-		let body = OAIInlineObject()
+		let body = OAIGiftingProductQuoteRequest()
 		body.orderItems = quoteRequest.orderItems.map({ item in
 			OAIGiftingProductOrderItem.fromGiftingProductOrderItem(item)!
 		})
@@ -70,7 +70,7 @@ public class OpenApiGiftingRepository: OpenApiClientFactory, GiftingRepository {
 		api.giftingProductsQuotePost(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			xJWSSignature: "",
-			inlineObject: body,
+			giftingProductQuoteRequest: body,
 			xAuthKey: "",
 			xAuthDigest: "",
 			xMessageId: "",
@@ -87,26 +87,33 @@ public class OpenApiGiftingRepository: OpenApiClientFactory, GiftingRepository {
 
 	public func order(
 		orderRequest: DigitalPayGiftingOrderRequest,
+		challengeResponses: [ChallengeResponse]?,
+		fraudPayload: FraudPayload?,
 		completion: @escaping ApiCompletion<DigitalPayGiftingOrderResponse>
 	) {
 		let api = createGiftingApi()
 
-		let body = OAIInlineObject1()
-		body.billingContact =
-			OAIGiftingProductsOrderBillingContact.fromGiftingBillingContact(orderRequest.billingContact)
-		body.discountAmount = orderRequest.discountAmount as NSNumber
-		body.instrumentId = orderRequest.instrumentId
-		body.referenceId = orderRequest.referenceId
-		body.subTotalAmount = orderRequest.subTotalAmount as NSNumber
-		body.totalOrderAmount = orderRequest.totalOrderAmount as NSNumber
-		body.orderItems = orderRequest.orderItems.map({ it in
+		let body = OAIGiftingProductOrderRequest()
+		body.data = OAIGiftingProductOrderRequestData()
+		body.data.billingContact =
+			OAIGiftingProductOrderRequestDataBillingContact.fromGiftingBillingContact(orderRequest.billingContact)
+		body.data.discountAmount = orderRequest.discountAmount as NSNumber
+		body.data.instrumentId = orderRequest.instrumentId
+		body.data.referenceId = orderRequest.referenceId
+		body.data.subTotalAmount = orderRequest.subTotalAmount as NSNumber
+		body.data.totalOrderAmount = orderRequest.totalOrderAmount as NSNumber
+		body.data.orderItems = orderRequest.orderItems.map({ it in
 			OAIGiftingProductOrderItem.fromGiftingProductOrderItem(it)!
 		})
+
+		body.meta = OAIMeta()
+		body.meta.challengeResponses = challengeResponses?.map(toChallengeResponse) ?? []
+		body.meta.fraud = OAIMetaFraudPayload.fromFraudPayload(fraudPayload)
 
 		api.giftingProductsOrderPost(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			xJWSSignature: "",
-			inlineObject1: body,
+			giftingProductOrderRequest: body,
 			xAuthKey: "",
 			xAuthDigest: "",
 			xMessageId: "",
@@ -122,13 +129,13 @@ public class OpenApiGiftingRepository: OpenApiClientFactory, GiftingRepository {
 	}
 }
 
-extension OAIGiftingProductsOrderBillingContact {
+extension OAIGiftingProductOrderRequestDataBillingContact {
 	static func fromGiftingBillingContact(
 		_ contact: GiftingBillingContact?
-	) -> OAIGiftingProductsOrderBillingContact? {
+	) -> OAIGiftingProductOrderRequestDataBillingContact? {
 		guard let theContact = contact else { return nil }
 
-		let billingContact = OAIGiftingProductsOrderBillingContact()
+		let billingContact = OAIGiftingProductOrderRequestDataBillingContact()
 		billingContact.countryCode = theContact.countryCode
 		billingContact.email = theContact.email
 		billingContact.extendedAddress = theContact.extendedAddress

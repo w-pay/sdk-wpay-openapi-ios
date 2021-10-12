@@ -2,8 +2,8 @@
 #import "OAIQueryParamCollection.h"
 #import "OAIApiClient.h"
 #import "OAIBaseErrorResponse.h"
-#import "OAIInlineObject.h"
-#import "OAIInlineObject1.h"
+#import "OAIGiftingProductOrderRequest.h"
+#import "OAIGiftingProductQuoteRequest.h"
 #import "OAIInlineResponse200.h"
 #import "OAIInlineResponse2001.h"
 #import "OAIInlineResponse2002.h"
@@ -184,7 +184,7 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
 ///
 ///  @param xJWSSignature The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. 
 ///
-///  @param inlineObject1  
+///  @param giftingProductOrderRequest Request payload containing instruments to use for the payment 
 ///
 ///  @param xAuthKey (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
 ///
@@ -196,7 +196,7 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) giftingProductsOrderPostWithXApiKey: (NSString*) xApiKey
     xJWSSignature: (NSString*) xJWSSignature
-    inlineObject1: (OAIInlineObject1*) inlineObject1
+    giftingProductOrderRequest: (OAIGiftingProductOrderRequest*) giftingProductOrderRequest
     xAuthKey: (NSString*) xAuthKey
     xAuthDigest: (NSString*) xAuthDigest
     xMessageId: (NSString*) xMessageId
@@ -223,11 +223,11 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'inlineObject1' is set
-    if (inlineObject1 == nil) {
-        NSParameterAssert(inlineObject1);
+    // verify the required parameter 'giftingProductOrderRequest' is set
+    if (giftingProductOrderRequest == nil) {
+        NSParameterAssert(giftingProductOrderRequest);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"inlineObject1"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"giftingProductOrderRequest"] };
             NSError* error = [NSError errorWithDomain:kOAIGiftingApiErrorDomain code:kOAIGiftingApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -274,7 +274,7 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = inlineObject1;
+    bodyParam = giftingProductOrderRequest;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -422,7 +422,7 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
 ///
 ///  @param xJWSSignature The JWS signature used to sign the request. The JWS signature authentication approach can only be used by API consumers that implement a server-to-server architecture (BFF, microservice, web server, etc.) for calling the Digital Pay APIs. The RSA private key, required to generate the signiture, has to be stored securely and should not be publicly accessible. 
 ///
-///  @param inlineObject  
+///  @param giftingProductQuoteRequest Request payload containing details of the order to quote on 
 ///
 ///  @param xAuthKey (Deprecated) You are required to use this header to provide the base64 encoded API key. Requires the X-Auth-Digest header to be present. (optional)
 ///
@@ -434,7 +434,7 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) giftingProductsQuotePostWithXApiKey: (NSString*) xApiKey
     xJWSSignature: (NSString*) xJWSSignature
-    inlineObject: (OAIInlineObject*) inlineObject
+    giftingProductQuoteRequest: (OAIGiftingProductQuoteRequest*) giftingProductQuoteRequest
     xAuthKey: (NSString*) xAuthKey
     xAuthDigest: (NSString*) xAuthDigest
     xMessageId: (NSString*) xMessageId
@@ -461,11 +461,11 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
         return nil;
     }
 
-    // verify the required parameter 'inlineObject' is set
-    if (inlineObject == nil) {
-        NSParameterAssert(inlineObject);
+    // verify the required parameter 'giftingProductQuoteRequest' is set
+    if (giftingProductQuoteRequest == nil) {
+        NSParameterAssert(giftingProductQuoteRequest);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"inlineObject"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"giftingProductQuoteRequest"] };
             NSError* error = [NSError errorWithDomain:kOAIGiftingApiErrorDomain code:kOAIGiftingApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -512,7 +512,7 @@ NSInteger kOAIGiftingApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = inlineObject;
+    bodyParam = giftingProductQuoteRequest;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"

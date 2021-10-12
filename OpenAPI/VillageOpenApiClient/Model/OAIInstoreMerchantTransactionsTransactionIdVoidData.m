@@ -1,6 +1,6 @@
-#import "OAIGiftingProductsOrderBillingContact.h"
+#import "OAIInstoreMerchantTransactionsTransactionIdVoidData.h"
 
-@implementation OAIGiftingProductsOrderBillingContact
+@implementation OAIInstoreMerchantTransactionsTransactionIdVoidData
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"firstName": @"firstName", @"lastName": @"lastName", @"email": @"email", @"mobileNumber": @"mobileNumber", @"streetAddress": @"streetAddress", @"extendedAddress": @"extendedAddress", @"suburb": @"suburb", @"stateOrTerritory": @"stateOrTerritory", @"postalCode": @"postalCode", @"countryCode": @"countryCode" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"clientReference": @"clientReference", @"orderNumber": @"orderNumber", @"voids": @"voids" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"extendedAddress", ];
+  NSArray *optionalProperties = @[@"voids"];
   return [optionalProperties containsObject:propertyName];
 }
 

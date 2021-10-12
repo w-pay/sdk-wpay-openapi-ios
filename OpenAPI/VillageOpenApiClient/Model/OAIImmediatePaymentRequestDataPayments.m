@@ -1,6 +1,6 @@
-#import "OAIPaymentsRequestTransactionTypeApplePay.h"
+#import "OAIImmediatePaymentRequestDataPayments.h"
 
-@implementation OAIPaymentsRequestTransactionTypeApplePay
+@implementation OAIImmediatePaymentRequestDataPayments
 
 - (instancetype)init {
   self = [super init];
@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"creditCard": @"creditCard", @"debitCard": @"debitCard" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentInstrumentId": @"paymentInstrumentId", @"amount": @"amount" }];
 }
 
 /**

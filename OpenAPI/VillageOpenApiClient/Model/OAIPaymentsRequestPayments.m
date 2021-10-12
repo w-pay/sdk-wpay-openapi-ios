@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentInstrumentId": @"paymentInstrumentId", @"paymentToken": @"paymentToken", @"amount": @"amount", @"stepUpToken": @"stepUpToken", @"passcode": @"passcode" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"paymentInstrumentId": @"paymentInstrumentId", @"paymentToken": @"paymentToken", @"amount": @"amount", @"stepUpToken": @"stepUpToken", @"passcode": @"passcode", @"controlData": @"controlData", @"threeDS": @"threeDS" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"stepUpToken", @"passcode"];
+  NSArray *optionalProperties = @[@"stepUpToken", @"passcode", @"controlData", @"threeDS"];
   return [optionalProperties containsObject:propertyName];
 }
 
