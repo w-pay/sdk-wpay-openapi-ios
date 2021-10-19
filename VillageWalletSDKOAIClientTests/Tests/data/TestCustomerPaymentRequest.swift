@@ -30,7 +30,7 @@ class TestCustomerPaymentRequest: CustomerPaymentRequest {
 }
 
 class TestPaymentPreferences : PaymentPreferences {
-	var primaryInstrumentId: String = "90271"
+	var primaryInstrumentId: String? = "90271"
 
 	var secondaryInstruments: SecondaryInstrumentPreferences? = TestSecondaryInstrumentPreferences()
 }

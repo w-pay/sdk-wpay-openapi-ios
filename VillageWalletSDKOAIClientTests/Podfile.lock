@@ -17,16 +17,16 @@ PODS:
   - ISO8601 (0.6.0)
   - JSONModel (1.8.0)
   - SwiftHamcrest (2.2.2)
-  - VillageWalletSDK (4.4.4)
+  - VillageWalletSDK (4.4.5)
   - VillageWalletSDKOAIClient (4.4.0):
     - AFNetworking (~> 4)
     - ISO8601 (~> 0.6)
     - JSONModel (~> 1.2)
-    - VillageWalletSDK (~> 4.4.4)
+    - VillageWalletSDK (~> 4.4.5)
 
 DEPENDENCIES:
   - SwiftHamcrest (~> 2.2.1)
-  - "VillageWalletSDK (from `git@github.com:w-pay/sdk-wpay-ios.git`, tag `v4.4.4`)"
+  - "VillageWalletSDK (from `git@github.com:w-pay/sdk-wpay-ios.git`, tag `v4.4.5`)"
   - VillageWalletSDKOAIClient (from `../`)
 
 SPEC REPOS:
@@ -39,23 +39,23 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   VillageWalletSDK:
     :git: "git@github.com:w-pay/sdk-wpay-ios.git"
-    :tag: v4.4.4
+    :tag: v4.4.5
   VillageWalletSDKOAIClient:
     :path: "../"
 
 CHECKOUT OPTIONS:
   VillageWalletSDK:
     :git: "git@github.com:w-pay/sdk-wpay-ios.git"
-    :tag: v4.4.4
+    :tag: v4.4.5
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   ISO8601: d3ea3ba9b752820cf92c6b47a9ee327e9f0e13fc
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   SwiftHamcrest: 940c3dae2a31f92da433f5a0b13d42103247051b
-  VillageWalletSDK: 3c11c7fdd2665366848d7f660daee6bdb02bc9b3
-  VillageWalletSDKOAIClient: 926752984072800cae784b13c77f0ac99282afcd
+  VillageWalletSDK: d47cfba2ca0f5a7a85229672439155945abbd7c8
+  VillageWalletSDKOAIClient: 2c6c3f6bbbde97d00a77b546db49539e2244aa91
 
-PODFILE CHECKSUM: 6e8a20916c88f237dec61ebefb79f2126742cf1e
+PODFILE CHECKSUM: 2687e6e7564f7a82b3439587382a240710d6fe67
 
 COCOAPODS: 1.10.2

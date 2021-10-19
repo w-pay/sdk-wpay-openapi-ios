@@ -8,7 +8,7 @@ class OpenApiPaymentPreferences: PaymentPreferences {
 		self.prefs = prefs
 	}
 
-	var primaryInstrumentId: String {
+	var primaryInstrumentId: String? {
 		prefs.primaryInstrumentId
 	}
 
