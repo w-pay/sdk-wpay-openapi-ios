@@ -87,6 +87,8 @@ public class OpenApiPaymentInstrumentsRepository: OpenApiClientFactory, PaymentI
 		body.data = OAIInstoreCustomerInstrumentsData()
 		body.data.clientReference = instrument.clientReference
 
+		body.meta = OAIMeta()
+
 		api.initiatePaymentInstrumentAddition(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),

@@ -38,6 +38,8 @@ public class OpenApiCustomerTermsAndConditionsApiRepository
 		body.data.type = acceptTermsAndConditionsRequest.type
 		body.data.version = acceptTermsAndConditionsRequest.version
 
+		body.meta = OAIMeta()
+
 		api.acceptCustomerTermsAndConditions(
 			withXWalletID: getDefaultHeader(client: api.apiClient, name: X_WALLET_ID),
 			customerTermsAndConditions: body,

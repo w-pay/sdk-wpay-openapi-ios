@@ -14,12 +14,14 @@ public class OpenApiQRCodeRepository: OpenApiClientFactory, QRCodeRepository {
 		body.data.timeToLive = details.timeToLive as NSNumber?
 
 		switch(details.referenceType) {
-		case QRCodePaymentReferenceType.PAYMENT_SESSION:
-			body.data.referenceType = "SESSION"
+			case QRCodePaymentReferenceType.PAYMENT_SESSION:
+				body.data.referenceType = "SESSION"
 
-		case QRCodePaymentReferenceType.PAYMENT_REQUEST:
-			body.data.referenceType = "REQUEST"
+			case QRCodePaymentReferenceType.PAYMENT_REQUEST:
+				body.data.referenceType = "REQUEST"
 		}
+
+		body.meta = OAIMeta()
 
 		api.createPaymentRequestQRCode(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),

@@ -29,6 +29,7 @@ class OpenApiCustomerPreferencesRepository: OpenApiClientFactory, CustomerPrefer
 
 		let body = OAICustomerPreferences()
 		body.data = OAIPreferencesCustomer.fromCustomerPreferences(preferences)
+		body.meta = OAIMeta()
 
 		api.setCustomerPreferencesWithXApiKey(
 			getDefaultHeader(client: api.apiClient, name: X_API_KEY),
