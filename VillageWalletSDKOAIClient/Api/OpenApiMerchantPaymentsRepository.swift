@@ -49,6 +49,8 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		body.data.posPayload = OAIPosPayload.fromPosPayload(paymentRequest.posPayload)
 		body.data.merchantPayload = OAIMerchantPayload.fromMerchantPayload(paymentRequest.merchantPayload)
 
+		body.meta = OAIMeta()
+
 		if let basket = paymentRequest.basket {
 			body.data.basket = OAIBasket()
 			body.data.basket.items = basket.items.map { it in
@@ -150,6 +152,8 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 		body.data = OAIInstoreMerchantTransactionsTransactionIdRefundData()
 		body.data.reason = refundDetails.reason
 
+		body.meta = OAIMeta()
+
 		api.refundMerchantTransaction(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
@@ -187,6 +191,8 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 			return dto
 		}
 
+		body.meta = OAIMeta()
+
 		api.instoreMerchantTransactionsTransactionIdCompletionPost(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
@@ -222,6 +228,8 @@ public class OpenApiMerchantPaymentsRepository: OpenApiClientFactory, MerchantPa
 
 			return dto
 		}
+
+		body.meta = OAIMeta()
 
 		api.instoreMerchantTransactionsTransactionIdVoidPost(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),

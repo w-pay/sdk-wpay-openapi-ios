@@ -18,6 +18,8 @@ public class OpenApiMerchantPaymentSessionsRepository
 		body.data.timeToLivePaymentSession = request.timeToLivePaymentSession as NSNumber?
 		body.data.timeToLiveQR = request.timeToLiveQR as NSNumber?
 
+		body.meta = OAIMeta()
+
 		api.createPaymentSession(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
@@ -69,6 +71,8 @@ public class OpenApiMerchantPaymentSessionsRepository
 		body.data = OAIInstoreMerchantPaymentSessionPaymentSessionIdData()
 		body.data.paymentRequestId = session.paymentRequestId
 		body.data.merchantInfo = toDynamicPayload(payload: session.merchantInfo)
+
+		body.meta = OAIMeta()
 
 		api.merchantUpdatePaymentSession(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),

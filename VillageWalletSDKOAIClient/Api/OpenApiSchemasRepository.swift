@@ -55,6 +55,8 @@ public class OpenApiSchemasRepository: OpenApiClientFactory, SchemasRepository {
 		body.data.type = schema.type
 		body.data._description = schema.description
 
+		body.meta = OAIMeta()
+
 		api.createMerchantSchema(
 			withXApiKey: getDefaultHeader(client: api.apiClient, name: X_API_KEY),
 			authorization: getDefaultHeader(client: api.apiClient, name: AUTHORISATION),
