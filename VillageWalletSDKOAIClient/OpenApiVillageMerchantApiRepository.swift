@@ -30,54 +30,64 @@ public class OpenApiVillageMerchantApiRepository: VillageMerchantApiRepository {
 	public init(
 		requestHeadersFactory: RequestHeadersFactory,
 		options: VillageMerchantOptions,
-		authenticator: AnyApiAuthenticator<HasAccessToken>
+		authenticator: AnyApiAuthenticator<HasAccessToken>,
+		clientOptions: ClientOptions = ClientOptions()
 	) {
 		self.options = options
 		self.authenticator = authenticator
 
 		admin = OpenApiAdministrationApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		dp = OpenApiDigitalPayRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		payments = OpenApiMerchantPaymentsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paymentAgreements = OpenApiMerchantPaymentAgreementsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paymentSession = OpenApiMerchantPaymentSessionsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		preferences = OpenApiMerchantPreferencesRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		qr = OpenApiQRCodeRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		schemas = OpenApiSchemasRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		transactions = OpenApiMerchantTransactionsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 	}
 }
