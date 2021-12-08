@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name = "VillageWalletSDKOAIClient"
-  spec.version = "4.5.0"
+  spec.version = "4.5.1"
   spec.summary = "Open API implementation of Village API Repositories"
 
   # This description is used to generate tags and improve search results.
