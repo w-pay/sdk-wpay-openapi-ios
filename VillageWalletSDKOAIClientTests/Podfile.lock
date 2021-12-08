@@ -18,7 +18,7 @@ PODS:
   - JSONModel (1.8.0)
   - SwiftHamcrest (2.2.2)
   - VillageWalletSDK (4.4.5)
-  - VillageWalletSDKOAIClient (4.4.0):
+  - VillageWalletSDKOAIClient (4.5.0):
     - AFNetworking (~> 4)
     - ISO8601 (~> 0.6)
     - JSONModel (~> 1.2)
@@ -54,7 +54,7 @@ SPEC CHECKSUMS:
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   SwiftHamcrest: 940c3dae2a31f92da433f5a0b13d42103247051b
   VillageWalletSDK: d47cfba2ca0f5a7a85229672439155945abbd7c8
-  VillageWalletSDKOAIClient: 2c6c3f6bbbde97d00a77b546db49539e2244aa91
+  VillageWalletSDKOAIClient: 1e992e96ba12454055314995c041fcd5c564322b
 
 PODFILE CHECKSUM: 2687e6e7564f7a82b3439587382a240710d6fe67
 

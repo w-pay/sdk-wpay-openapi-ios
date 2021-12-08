@@ -30,54 +30,64 @@ public class OpenApiVillageCustomerApiRepository: VillageCustomerApiRepository {
 	public init(
 		requestHeadersFactory: RequestHeadersFactory,
 		options: VillageCustomerOptions,
-		authenticator: AnyApiAuthenticator<HasAccessToken>
+		authenticator: AnyApiAuthenticator<HasAccessToken>,
+		clientOptions: ClientOptions = ClientOptions()
 	) {
 		self.options = options
 		self.authenticator = authenticator
 
 		admin = OpenApiAdministrationApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		dp = OpenApiDigitalPayRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		instruments = OpenApiPaymentInstrumentsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paymentAgreements = OpenApiCustomerPaymentAgreementsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paymentRequests = OpenApiCustomerPaymentRequestsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paymentSessions = OpenApiCustomerPaymentSessionsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		preferences = OpenApiCustomerPreferencesRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		termsAndConditions = OpenApiCustomerTermsAndConditionsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		transactions = OpenApiCustomerTransactionsRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 	}
 }

@@ -17,75 +17,93 @@ public class OpenApiDigitalPayRepository: DigitalPayRepository {
 	public let transactions: TransactionsApiRepository
 	public let wallet: WalletApiRepository
 
-	public init(requestHeadersFactory: RequestHeadersFactory, options: VillageOptions) {
+	public init(
+		requestHeadersFactory: RequestHeadersFactory,
+		options: VillageOptions,
+		clientOptions: ClientOptions = ClientOptions()
+	) {
 		androidPay = OpenApiAndroidPayApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		applePay = OpenApiApplePayApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		cards = OpenApiCardsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		giftcards = OpenApiGiftcardsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		gifting = OpenApiGiftingRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		googlePay = OpenApiGooglePayApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		instruments = OpenApiInstrumentsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		merchants = OpenApiMerchantsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		openPay = OpenApiOpenPayApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paymentAgreements = OpenApiPaymentAgreementApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		payments = OpenApiPaymentApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		paypal = OpenApiPayPalApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		transactions = OpenApiTransactionsApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 
 		wallet = OpenApiWalletApiRepository(
 			requestHeadersFactory: requestHeadersFactory,
-			options: options
+			options: options,
+			clientOptions: clientOptions
 		)
 	}
 }

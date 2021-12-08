@@ -1,13 +1,27 @@
 import UIKit
 import VillageWalletSDK
 
+public class ClientOptions {
+	public let debug: Bool
+
+	public init(debug: Bool = false) {
+		self.debug = debug
+	}
+}
+
 public class OpenApiClientFactory {
 	private let requestHeadersFactory: RequestHeadersFactory
 	private let options: VillageOptions
+	private let clientOptions: ClientOptions
 
-	public init(requestHeadersFactory: RequestHeadersFactory, options: VillageOptions) {
+	public init(
+		requestHeadersFactory: RequestHeadersFactory,
+		options: VillageOptions,
+	  clientOptions: ClientOptions = ClientOptions()
+	) {
 		self.requestHeadersFactory = requestHeadersFactory
 		self.options = options
+		self.clientOptions = clientOptions
 	}
 
 	internal func createAdministrationApi() -> OAIAdministrationApi {
@@ -126,6 +140,7 @@ public class OpenApiClientFactory {
 
 	private func createApiClient() -> OAIApiClient {
 		let config = OAIDefaultConfiguration()
+		config.debug = clientOptions.debug
 
 		requestHeadersFactory.createHeaders().forEach { name, value in
 			config.setDefaultHeaderValue(value, forKey: name)
